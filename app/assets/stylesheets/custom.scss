@@ -1,0 +1,10 @@
+/* custom.scss */    
+/* import the necessary Bootstrap files */
+@import "variables";
+        
+$theme-colors: (
+  primary: $indigo-A400
+);
+
+/* finally, import Bootstrap to set the changes! */
+@import "bootstrap";
