@@ -7,26 +7,25 @@
     <h1>Informations sur la proposition en instance de validation </h1>
     </p> Cette proposition a été postée par <%= @user.first_name %> <%= @user.last_name %> le <%= @proposal.created_at %></p>
 
-<br>
-<br>
 
-ID : 
-<%= @proposal.id %>
+<p>ID : 
+<%= @proposal.id %> </p>
 
-Titre :
-<%= @proposal.title %>
+<p>Titre :
+<%= @proposal.title %></p>
 
-Description : 
-<%= @proposal.description %>
+<p>Description : 
+<%= @proposal.description %></p>
 
-Ville :
-<%= @proposal.city %>
+<p>Objectif : 
+<%= @proposal.purpose %> </p>
 
-Catégorie :
-<%= @proposal.category %>
+<p>Ville :
+<%= @city.name%> </p>
+
+<p>Catégorie :
+<%= @category.name %> </p>
  
- <br>
- <br>
     <p>
      <%= @url %>
     </p>

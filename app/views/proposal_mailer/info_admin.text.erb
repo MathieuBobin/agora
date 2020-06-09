@@ -1,7 +1,7 @@
 Récap de la proposition n° <%= @proposal.id %> 
 ==========================================================
  
-Proposition postée par <%= @user.first_name %> <%= @user.last_name %> le <%= @order.created_at %>
+Proposition postée par <%= @user.first_name %> <%= @user.last_name %> le <%= @proposal.created_at %>
 
 
 ID : 
@@ -10,14 +10,17 @@ ID :
 Titre :
 <%= @proposal.title %>
 
+Objectif : 
+<%= @proposal.purpose %>
+
 Description : 
 <%= @proposal.description %>
 
 Ville :
-<%= @proposal.city %>
+<%= @city.name %>
 
 Catégorie :
-<%= @proposal.category %>
+<%= @category.name %>
  
  
 <%= @url %>
