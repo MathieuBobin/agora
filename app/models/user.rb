@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Relations
-  belongs_to :city, optional: true
+  belongs_to :city
   has_many :comments
   has_many :likes
   has_many :votes
+
+  # Validations
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
