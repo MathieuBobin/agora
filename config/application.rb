@@ -16,7 +16,7 @@ module Agora
     config.i18n.default_locale = :fr
     config.time_zone = 'Europe/Paris'
     config.active_record.default_timezone = :local
-
+    config.action_mailer.delivery_method = :mailjet
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
