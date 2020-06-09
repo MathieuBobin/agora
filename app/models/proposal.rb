@@ -1,5 +1,6 @@
 class Proposal < ApplicationRecord
   after_create :admin_receipt
+  after_create :user_receipt
   belongs_to :city
   belongs_to :category
   belongs_to :user
@@ -13,6 +14,10 @@ class Proposal < ApplicationRecord
   
   def votes_count
     self.votes.count
+  end
+
+  def user_receipt
+    ProposalMailer.info_user(self).deliver_now
   end
 
   def admin_receipt
