@@ -1,0 +1,38 @@
+<div class="jumbotron jumbotron-fluid" style="background-image: url(https://images.pexels.com/photos/87501/pexels-photo-87501.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-size: 100%;">
+  <div class="container">
+    <h1 class="display-4">Les propositions à Paris</h1>
+    <p class="lead">Retrouvez les meilleurs propositions du moment ci-dessous</p>
+  </div>
+</div>
+
+
+<div class="container">
+<div class="card">
+	<div class="card-content table-responsive table-full-width">
+		<table class="table">
+			<tbody>
+				<%@proposal.each do |x|%>
+        <tr>
+          <td></td>
+					<td><h5>#1</h5></td>
+          <td><img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;" ></td>
+					<td>
+            <h4><%=x.title=%></h4>
+            <span class="badge badge-primary">Primary</span>
+            <a href = "">Voir la proposition</a>
+          </td>
+					<td>
+            <button class="btn btn-primary btn-lg">
+              <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i>
+              <h4>150</h4>
+            </button>
+          </td>
+				</tr>
+        <%end%>
+
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+		    
