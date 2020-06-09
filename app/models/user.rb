@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # Relations
   belongs_to :city
+  has_many :proposals
   has_many :comments
   has_many :likes
   has_many :votes
