@@ -2,6 +2,16 @@ City.destroy_all
 puts "Les villes ont été détruites"
 User.destroy_all
 puts "Les utilisateurs ont été détruits"
+Category.destroy_all
+puts "Les catégories ont été détruites"
+Proposal.destroy_all
+puts "Les catégories ont été détruites"
+Comment.destroy_all
+puts "Les catégories ont été détruites"
+Like.destroy_all
+puts "Les likes ont été détruites"
+Vote.destroy_all
+puts "Les votes ont été détruitss"
 
 
 City.create!(name: "Paris", zip_code: "75000")
@@ -15,13 +25,61 @@ puts "Les villes ont été créées"
   User.create!(
     first_name: Faker::Name.first_name, 
     last_name: Faker::Name.last_name,
-    city: City.first.id,
+    city: City.all.sample,
     email: Faker::Internet.email,
-    encrypted_password: "coucou"
+    password: "ririri"
   )
 end
 
 puts "Les utilisateurs ont été créées"
 
+Category.create!(name: "Ecologie")
+Category.create!(name: "Mobilité")
+Category.create!(name: "Education")
+Category.create!(name: "Santé")
+Category.create!(name: "Sport")
+Category.create!(name: "Société")
 
+puts "Les catégories ont été créées"
 
+50.times do 
+  Proposal.create!(
+    title: Faker::Lorem.sentence(word_count: 10), 
+    purpose: Faker::Lorem.sentence(word_count: 50),
+    description: Faker::Lorem.sentence(word_count: 100),
+    is_online: true,
+    city: City.all.sample,
+    category: Category.all.sample,
+    user: User.all.sample
+  )
+end
+
+puts "Les propositions ont été créées"
+
+40.times do 
+  Comment.create!(
+    content: Faker::Lorem.characters(number: 100),
+    user: User.all.sample,
+    proposal: Proposal.all.sample
+  )
+end
+
+puts "Les commentaires ont été créés"
+
+100.times do 
+  Like.create!(
+    user: User.all.sample,
+    comment: Comment.all.sample
+  )
+end
+
+puts "Les likes ont été créés"
+
+100.times do 
+  Vote.create!(
+    user: User.all.sample,
+    proposal: Proposal.all.sample
+  )
+end
+
+puts "Les votes ont été créés"
