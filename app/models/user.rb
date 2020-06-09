@@ -14,4 +14,13 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  # Insatnce methods
+  def proposals_count
+    self.proposals.count
+  end
+
+  def votes_count
+    self.votes.count
+  end
 end
