@@ -14,20 +14,7 @@
  *= require material-dashboard
  */
 
-.logo-img {
-    position:absolute;
-   top: -14px;
-   left: -15px;
-    
-    
-}
-
-.font-navbar {
-  font-family: Impact, Charcoal, sans-serif;
-  font-size: 20px;
-}
-
-.city-dropdown {
-  left: -428px;
-  top: auto;
-}
+.font-brand {
+  font-size: 35px;
+  bottom: 3px;
+} 
