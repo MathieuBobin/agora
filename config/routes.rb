@@ -6,4 +6,8 @@ Rails.application.routes.draw do
 
   resources :cities
 
+  resources :proposals do 
+    resources :votes, only: [:create, :destroy] 
+  end
+
 end

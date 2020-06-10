@@ -1,13 +1,13 @@
 <div class="jumbotron jumbotron-fluid" style="background-image: url(https://images.pexels.com/photos/87501/pexels-photo-87501.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-size: 100%;">
   <div class="container">
-    <h1 class="display-4">Les propositions à <%=@city.name%></h1>
+    <h1 class="display-4">Les propositions citoyennes à <%=@city.name%></h1>
     <p class="lead">Retrouvez les meilleurs propositions du moment ci-dessous</p>
   </div>
 </div>
 
 
 <div class="container">
-<h3>Les propositions en cours</h3>
+<h3>Les propositions en cours : votez pour vos propositions préférées!</h3>
 <div class="card">
 	<div class="card-content table-responsive table-full-width">
 		<table class="table">
@@ -26,12 +26,18 @@
             <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
             <a href = "">Voir la proposition</a>
           </td>
-					<td>
-            <button class="btn btn-primary btn-lg">
-              <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i>
-              <h4><%=Vote.where(proposal_id: x.id).count%></h4>
-            </button>
-          </td>
+          <%if x.get_vote_user(current_user)%>
+            <td>
+              <%= link_to "#{x.votes_count}", proposal_vote_path(x.id,x.get_vote_user(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
+              <p> Annuler le vote <i class="material-icons"style="font-size: 15px" >clear</i></p>
+            </td>
+          <%else%>
+            <td> 
+              <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
+              <p>Je vote!<i class="material-icons"style="font-size: 15px" >done</i></p>
+            </td>
+          <%end%>
+          <td><td>
 				</tr>
         <%end%>
 			</tbody>

@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
   def show
     puts params
     @city = City.find(params[:id])
-    @proposal = Proposal.all.where(city_id: @city).sort
+    @proposal = @city.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }
   end
 
 end
