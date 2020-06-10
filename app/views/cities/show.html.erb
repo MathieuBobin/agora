@@ -12,23 +12,23 @@
 	<div class="card-content table-responsive table-full-width">
 		<table class="table">
 			<tbody>
-				<%@proposal.each do |x|%>
+				<% @proposals.each do |x| %>
         <tr>
           <td></td>
 					<td>
-            <h5>#<%=@proposal.index(x)+1%></h5>
+            <h5>#<%= @proposals.index(x)+1 %></h5>
           </td>
           <td>
             <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
           </td>
 					<td>
             <h4><%=x.title=%></h4>
-            <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
+            <span class="badge badge-primary"><%= x.category.name %></span>
             <a href = "">Voir la proposition</a>
           </td>
-          <%if x.get_vote_user(current_user)%>
+          <%if x.vote_of(current_user)%>
             <td>
-              <%= link_to "#{x.votes_count}", proposal_vote_path(x.id,x.get_vote_user(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
+              <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
               <p> Annuler le vote <i class="material-icons"style="font-size: 15px" >clear</i></p>
             </td>
           <%else%>

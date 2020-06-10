@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# Additional gems needed for our project
 gem 'devise'
 gem 'stripe'
 gem 'faker'
@@ -16,6 +17,8 @@ gem "aws-sdk-s3", require: false
 gem 'i18n'
 gem 'rails-i18n', '~> 5.0'
 gem 'devise-i18n', '~> 1.9', '>= 1.9.1'
+# -------
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use postgresql as the database for Active Record

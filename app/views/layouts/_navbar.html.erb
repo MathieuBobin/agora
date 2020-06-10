@@ -35,8 +35,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenue <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="#">Mon profil</a></li>
-            <li><a href="#">Se déconnecter</a></li>
+
+            <!-- <li><#%= link_to "Mon profil", user_path(current_user.id), :class => "dropdown-item" %> </li> -->
+            <li> <%= link_to "Se déconnecter", destroy_user_session_path, :class => "dropdown-item", method: :delete %></li>
         
           </ul>
         </li>
@@ -45,8 +46,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion/Inscription <span class="caret"></span></a>
           <ul class="dropdown-menu">
             
-            <li><a href="#">Se connecter</a></li>
-            <li><a href="#">S'inscrire</a></li>
+            <li><a href="/users/sign_in">Se connecter</a></li>
+            <li><a href="/users/sign_up">S'inscrire</a></li>
         
           </ul>
         </li>
