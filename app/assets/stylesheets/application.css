@@ -16,13 +16,18 @@
 
 .logo-img {
     position:absolute;
-    left:-8px;
-    top:-4px;
-    margin: 0px 0px 0px 0px;
-    width: 100px;
-    height: 100px;
+   top: -14px;
+   left: -15px;
+    
+    
 }
 
 .font-navbar {
-  font-size: 100px;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 20px;
+}
+
+.city-dropdown {
+  left: -428px;
+  top: auto;
 }

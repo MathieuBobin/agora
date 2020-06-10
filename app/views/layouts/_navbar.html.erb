@@ -1,28 +1,26 @@
 <nav class="navbar navbar-primary">
 
   <div class="container-fluid">
-<div class="font-navbar">
-    <div class="navbar-header">
-              <%= link_to image_tag("logo.png", alt: "logo"), '/', class: 'navbar-brand logo-img' %>
 
-      <!--<a class="navbar-brand" href="#">Agora</a>-->
+    <div class="navbar-header navbar-left">
+              <%= link_to image_tag("logo_smallv2.png", alt: "logo", style: "width:25%"), '/', class: 'navbar-brand logo-img'%>
+      <a class="navbar-brand agora-dropdown font-navbar" href="#"></a>
     </div>
 
  
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav font-navbar">
+      <ul class="nav navbar-nav">
         
-        <li class="dropdown">
+        <li class="dropdown city-dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Villes disponibles <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Paris</a></li>
-            <li><a href="#">Lyon</a></li>
-            <li><a href="#">Bordeaux</a></li>
-            <li><a href="#">Marseille</a></li>
+            <%City.all.each do |city|%>
+          <li><%= link_to city.name, city_path(city.id) %></li>
+            <%end%> 
           </ul>
         </li>
         
-      <li><a href="#">À propos d'Agora</a></li>
+      <li class="city-dropdown"><a href="#">À propos d'Agora</a></li>
       </ul>
      
       
@@ -55,7 +53,7 @@
      <!-- <#% end %> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-  </div>
+  
 </nav>
 
 <script>
