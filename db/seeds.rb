@@ -1,17 +1,8 @@
-City.destroy_all
-puts "Les villes ont été détruites"
-User.destroy_all
-puts "Les utilisateurs ont été détruits"
-Category.destroy_all
-puts "Les catégories ont été détruites"
-Proposal.destroy_all
-puts "Les catégories ont été détruites"
-Comment.destroy_all
-puts "Les catégories ont été détruites"
-Like.destroy_all
-puts "Les likes ont été détruites"
-Vote.destroy_all
-puts "Les votes ont été détruitss"
+Rails.application.eager_load!
+ApplicationRecord.descendants.each { |model|
+  model.delete_all
+  ActiveRecord::Base.connection.reset_pk_sequence!(model.table_name)
+}
 
 
 City.create!(name: "Paris", zip_code: "75000")
@@ -75,11 +66,3 @@ end
 
 puts "Les likes ont été créés"
 
-100.times do 
-  Vote.create!(
-    user: User.all.sample,
-    proposal: Proposal.all.sample
-  )
-end
-
-puts "Les votes ont été créés"
