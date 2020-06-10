@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action only: [:show]
 
     def index
        User.find(params[:id])
@@ -8,6 +7,8 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        @city = @user.city
+
     end 
 
     def edit
