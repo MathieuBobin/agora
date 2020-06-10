@@ -7,7 +7,7 @@ class Proposal < ApplicationRecord
   has_many :votes
 
   # Active storage
-  # has_one_attached :picture
+  has_one_attached :picture
 
   # Instance methods
   def comments_count
