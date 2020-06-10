@@ -23,12 +23,12 @@
           </td>
 					<td>
             <h4><%=x.title=%></h4>
-            <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
+            <span class="badge badge-primary"><%= x.category.name %></span>
             <a href = "">Voir la proposition</a>
           </td>
-          <%if x.get_vote_user(current_user)%>
+          <%if x.vote_of(current_user)%>
             <td>
-              <%= link_to "#{x.votes_count}", proposal_vote_path(x.id,x.get_vote_user(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
+              <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
               <p> Annuler le vote <i class="material-icons"style="font-size: 15px" >clear</i></p>
             </td>
           <%else%>
