@@ -36,6 +36,6 @@ class Proposal < ApplicationRecord
   end
 
   def vote_of(user)
-    Vote.find_by(user_id: user.id, proposal_id: self.id) if user
+    self.votes.find_by(user: user)
   end
 end
