@@ -1,10 +1,8 @@
 /* custom.scss */    
 /* import the necessary Bootstrap files */
-@import "variables";
+@import "material-dashboard/variables";
         
-$theme-colors: (
-  primary: $indigo-A400
-);
+$brand-primary: #34ace0;
+//$brand-success: #3dc1d3;
 
 /* finally, import Bootstrap to set the changes! */
-@import "bootstrap";
