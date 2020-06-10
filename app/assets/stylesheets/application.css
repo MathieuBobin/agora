@@ -14,15 +14,7 @@
  *= require material-dashboard
  */
 
-.logo-img {
-    position:absolute;
-    left:-8px;
-    top:-4px;
-    margin: 0px 0px 0px 0px;
-    width: 100px;
-    height: 100px;
-}
-
-.font-navbar {
-  font-size: 100px;
-}
+.font-brand {
+  font-size: 35px;
+  bottom: 3px;
+} 
