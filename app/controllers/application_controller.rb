@@ -1,13 +1,9 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-  #before_filter :configure_permitted_parameters, if: :devise_controller?
-
-
   include UsersHelper
-  protected
-
-  def configure_permitted_parameters
+  
+  before_action :configure_device_parameters, if: :devise_controller?
+  
+  def configure_device_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :city_id])
   end
- 
 end

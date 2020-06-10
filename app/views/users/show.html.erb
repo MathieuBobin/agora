@@ -33,10 +33,10 @@
              </div>
              <div class="card-content "> 
                  <table class="table">
-                     <% @user.proposals.each do |proposals| %>
+                     <% @proposals.each do |proposal| %>
                          <tbody>
                              <tr>
-                                 <td><h5><%= proposals.title %></h5></td>
+                                 <td><h5><%= proposal.title %></h5></td>
                                      <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
                                  </td>
                              </tr>
