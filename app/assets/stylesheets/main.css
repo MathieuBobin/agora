@@ -1,0 +1,19 @@
+a:link {
+  text-decoration: none;
+  background-color: cyan;
+}
+
+a:visited {
+  text-decoration: none;
+  background-color: cyan;
+}
+
+a:hover {
+  text-decoration: underline;
+  background-color: cyan;
+}
+
+a:active {
+  text-decoration: underline;
+  background-color: cyan;
+}
