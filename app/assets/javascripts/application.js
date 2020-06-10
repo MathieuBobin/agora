@@ -13,11 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery-ui.min
 //= require jquery-3.1.1.min
+//= require jquery-ui.min
 //= require jquery.validate.min
+//= require jquery.tagsinput
+//= require perfect-scrollbar.jquery.min
 //= require bootstrap.min
 //= require bootstrap-notify
 //= require material.min
 //= require material-dashboard
-//= require perfect-scrollbar.jquery.min

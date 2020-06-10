@@ -29,4 +29,9 @@ class Proposal < ApplicationRecord
   def admin_receipt
     ProposalMailer.info_admin(self).deliver_now
   end
+
+  def get_vote_user(user)
+    Vote.find_by(user_id: user.id, proposal_id: self.id) if user
+  end
+
 end
