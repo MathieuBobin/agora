@@ -16,20 +16,22 @@
           <tr>
             <td></td>
             <td>
-              <h5>#<%= @proposals.index(x)+1 %></h5>
+              <h4>#<%= @proposals.index(x)+1 %></h4>
             </td>
             <td>
               <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
             </td>
             <td>
               <h4><%=x.title=%></h4>
+              <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+              </a>
               <span class="badge badge-primary"><%= x.category.name %></span>
-              <a href = "/proposals/<%=x.id%>">Voir la proposition</a>
             </td>
             <%if x.vote_of(current_user)%>
             <td>
               <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
-              <h5> A voté! <i class="material-icons"style="font-size: 20px" >done</i></h5>
+              <h5> A voté! <i class="material-icons" style="font-size: 20px" >done</i></h5>
             </td>
             <%else%>
             <td> 
