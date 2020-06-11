@@ -9,7 +9,27 @@ class ProposalsController < ApplicationController
   end
 
   def new
+  end
 
+  def create
+    @user = User.find_by(id: current_user.id)
+    @proposal = Proposal.new(
+      title: params[:title],
+      purpose: params[:purpose], 
+      description: params[:description], 
+      is_online: false,
+      city: params[:city],
+      category: params[:category],
+      user: @user
+    )
+    if @proposal.save 
+        redirect_to event_path(@event.id)
+    else
+        render :new 
+        @error = @proposal.errors.any?
+        puts @error
+        puts @proposal.errors.full_messages
+    end
   end
 
   def show
