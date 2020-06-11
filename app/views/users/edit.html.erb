@@ -9,7 +9,7 @@
           <h4 class="card-title">Editer mon profil</h4>
             <form class="form-horizontal">
               <div class="row">
-                <%= form_for(current_user, url: user_path(current_user), html: { method: :put, class: "form-signin" }) do |f| %>
+                <%= form_for(current_user, url: user_path(current_user), html: { method: :patch, class: "form-signin" }) do |f| %>
                   <label class="col-md-3 label-on-left"><%= f.label :email, "Email" %></label>                                              
                     <div class="col-md-9">
                       <div class="form-group is-empty">
