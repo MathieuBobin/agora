@@ -9,15 +9,21 @@ class ProposalsController < ApplicationController
   end
   
   def new
-  
+    @proposal = Proposal.new
+  end
+
+  def create
+    @proposal = Proposal.new(permitted_proposal_params)
+    if @proposal.save 
+      flash[:success] = "Proposition crée ;)"
+    else
+      render :new 
+      flash[:alert] = @proposal.errors.full_messages.to_sentence
+    end
   end
   
   def show
-    @proposal = Proposal.find(permitted_proposal_id)
-  end
-  
-  def edit
-    @proposal = Proposal.find(permitted_proposal_id)
+    @proposal = Proposal.find(permitted_proposal_id_param)
   end
   
   def destroy
@@ -25,7 +31,11 @@ class ProposalsController < ApplicationController
   end
   private
   
-  def permitted_proposal_id
+  def permitted_proposal_id_param
     params.permit(:id).require(:id)
+  end
+
+  def permitted_proposal_params
+    params.require(:proposal).permit(:title, :purpose, :description, :city_id, :category_id).merge({:user => current_user})
   end
 end

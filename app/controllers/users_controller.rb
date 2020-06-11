@@ -9,6 +9,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(pemitted_user_params)
+      flash[:success] = "Ton profil a été mis-à-jour."
+      redirect_to @user
+    else
+      render :edit
+    end
   end
   
   private
