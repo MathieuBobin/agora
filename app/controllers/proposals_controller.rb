@@ -9,10 +9,15 @@ class ProposalsController < ApplicationController
   end
   
   def new
+    @city = current_user.city_id
+    @cityname = City.find_by(id: @city)
   end
 
   def create
     @user = User.find_by(id: current_user.id)
+    puts "$"*30
+    puts params
+    puts "$"*30
     @proposal = Proposal.new(
       title: params[:title],
       purpose: params[:purpose], 

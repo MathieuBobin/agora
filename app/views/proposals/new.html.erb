@@ -3,79 +3,64 @@
   <div class="card">
     <form id="TypeValidation" class="form-horizontal" action="proposals_path" method="CREATE">
       <div class="card-header card-header-text" data-background-color="default">
-        <h4 class="card-title">Nouvelle Proposition</h4>
+        <h4 class="card-title">Propose une initiative à <%= @cityname.name %></h4>
       </div>
       <div class="card-content">
         <div class="row">
-          <label class="col-sm-2 label-on-left">Required Text</label>
-          <div class="col-sm-7">
+          <label class="col-sm-2 label-on-left">Titre</label>
+          <div class="col-sm-9">
             <div class="form-group label-floating">
-              <label class="control-label"></label>
-              <input class="form-control" type="text" name="required" required="true" />
+            <label class="control-label" for="title">*</label>
+            <input class="form-control" type="text" name="title" title="true" />
             </div>
           </div>
-          <label class="col-sm-3 label-on-right">
-            <code>required</code>
-          </label>
         </div>
         <div class="row">
-          <label class="col-sm-2 label-on-left">Email</label>
-          <div class="col-sm-7">
+          <label class="col-sm-2 label-on-left">Précisions</label>
+          <div class="col-sm-9">
             <div class="form-group label-floating">
-              <label class="control-label"></label>
-              <input class="form-control" type="text" name="email" email="true" />
+              <label class="control-label" for="purpose">*</label>
+              <input class="form-control" type="text" name="purpose" purpose="true" />
             </div>
           </div>
-          <label class="col-sm-3 label-on-right">
-            <code>email="true"</code>
-          </label>
         </div>
         <div class="row">
-          <label class="col-sm-2 label-on-left">Number</label>
-            <div class="col-sm-7">
-              <div class="form-group label-floating">
-                  <label class="control-label"></label>
-                  <input class="form-control" type="text" name="number" number="true" />
-              </div>
+          <label class="col-sm-2 label-on-left">Ville</label>
+          <div class="col-sm-9">
+            <div class="form-group label-floating">
+              <%= collection_select(:post, :city_id, City.all, :id, :name, prompt: true) %> 
             </div>
-            <label class="col-sm-3 label-on-right">
-              <code>number="true"</code>
-            </label>
+          </div>
         </div>
-              <div class="row">
-                    <label class="col-sm-2 label-on-left">Url</label>
-                    <div class="col-sm-7">
-                        <div class="form-group label-floating">
-                            <label class="control-label"></label>
-                            <input class="form-control" type="text" name="url" url="true" />
-                        </div>
-                    </div>
-                    <label class="col-sm-3 label-on-right">
-                        <code>url="true"</code>
-                    </label>
-                </div>
-                <div class="row">
-                    <label class="col-sm-2 label-on-left">Equal to</label>
-                    <div class="col-sm-3">
-                        <div class="form-group label-floating column-sizing">
-                            <label class="control-label"></label>
-                            <input class="form-control" id="idSource" type="text" placeholder="#idSource" />
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group label-floating column-sizing">
-                            <label class="control-label"></label>
-                            <input class="form-control" id="idDestination" type="text" placeholder="#idDestination" equalTo="#idSource" />
-                        </div>
-                    </div>
-                    <label class="col-sm-4 label-on-right">
-                        <code>equalTo="#idSource"</code>
-                   </label>
-                </div>
+        <div class="row">
+          <label class="col-sm-2 label-on-left">Categorie</label>
+          <div class="col-sm-9">
+            <div class="form-group label-floating">
+              <%= collection_select(:post, :category_id, Category.all, :id, :name, prompt: true) %> 
             </div>
-            <div class="card-footer text-center">
-                <button type="submit" class="btn btn-default btn-fill">Validate Inputs</button>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-sm-2 label-on-left">Détails</label>
+          <div class="col-sm-9">
+            <div class="form-group label-floating">
+              <label class="control-label" for="description">*</label>
+              <input class="form-control" type="text" name="description" description="true" />
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col-sm-2 label-on-left">Photo</label>
+          <div class="col-sm-9">
+            <div class="form-group label-floating">
+             
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <button type="submit" class="btn btn-default btn-fill">Créer Proposition</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
