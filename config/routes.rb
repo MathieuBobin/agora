@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :avatars, only: :create
   end
+  resources :users do
+    resources :proposals
+  end
 
   resources :proposals do
     resources :pictures, only: :create
