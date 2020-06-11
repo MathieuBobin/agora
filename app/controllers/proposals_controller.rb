@@ -9,9 +9,7 @@ class ProposalsController < ApplicationController
   end
   
   def new
-    puts '$'*110
-    puts "Je suis le user avec l'id #{permitted_user_id}"
-    puts '$'*110
+  
   end
   
   def show
@@ -29,9 +27,5 @@ class ProposalsController < ApplicationController
   
   def permitted_proposal_id
     params.permit(:id).require(:id)
-  end
-  
-  def permitted_user_id
-    params.permit(:user_id).require(:user_id)
   end
 end
