@@ -1,9 +1,17 @@
+<br>
 <div class="container">
   <div class="col-md-3"></div>
     <div class="col-md-6">
+      <div class="card-content">
+        <div class="text-center">
+          <div class="alert alert-info">
+            <span><h4>Mon profil</h4></span>
+          </div>
+        </div>
+      </div>
       <div class="card">
         <div class="card-header card-header-icon" data-background-color="blue">
-          <i class="material-icons">contacts</i>
+          <i class="material-icons">perm_identity</i>
         </div>
         <div class="card-content">
           <h4 class="card-title">Editer mon profil</h4>
@@ -58,24 +66,7 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header card-header-icon" data-background-color="blue">
-          <i class="material-icons">delete_outline</i>
-        </div>
-        <div class="card-content">
-          <h4>Suppression du compte</h4>
-            <div class="text-center">
-              <p>Êtes vous sûr de vouloir supprimer votre compte? Cette action est irréversible. 
-              <%= button_to "Supprimer mon compte", registration_path(current_user), data: { confirm: "Êtes-vous certain.e de vouloir supprimer votre compte?" }, method: :delete, class: "btn btn-primary" %>
-            </div>
-          <div class="col-md-3"></div>
-        </div>
-    </div>
-  </div>
-</div>
+
 <div class="container">
   <div class="col-md-3"></div>
     <div class="col-md-6">
