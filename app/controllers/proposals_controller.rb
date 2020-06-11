@@ -9,31 +9,25 @@ class ProposalsController < ApplicationController
   end
   
   def new
-    @city = current_user.city_id
-    @cityname = City.find_by(id: @city)
+    @proposal = Proposal.new
   end
 
   def create
     @user = User.find_by(id: current_user.id)
-    puts "$"*30
-    puts params
-    puts "$"*30
     @proposal = Proposal.new(
-      title: params[:title],
-      purpose: params[:purpose], 
-      description: params[:description], 
+      title: params[:proposal][:title],
+      purpose: params[:proposal][:purpose], 
+      description: params[:proposal][:description], 
       is_online: false,
-      city: params[:city],
-      category: params[:category],
+      city_id: params[:post][:city_id],
+      category_id: params[:post][:category_id],
       user: @user
     )
     if @proposal.save 
-        redirect_to event_path(@event.id)
+      flash[:success] = "Proposition crée ;)"
     else
-        render :new 
-        @error = @proposal.errors.any?
-        puts @error
-        puts @proposal.errors.full_messages
+      render :new 
+      flash[:alert] = @proposal.errors.full_messages.to_sentence
     end
   end
   
