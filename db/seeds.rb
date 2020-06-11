@@ -1,9 +1,11 @@
 Rails.application.eager_load!
 ApplicationRecord.descendants.each { |model|
-  model.delete_all
-  ActiveRecord::Base.connection.reset_pk_sequence!(model.table_name)
+  unless model == User
+    model.delete_all
+    ActiveRecord::Base.connection.reset_pk_sequence!(model.table_name)
+    puts "La table #{model.table_name} est supprimée"
+  end
 }
-
 
 City.create!(name: "Paris", zip_code: "75000")
 City.create!(name: "Lyon", zip_code: "69000")
@@ -65,4 +67,3 @@ puts "Les commentaires ont été créés"
 end
 
 puts "Les likes ont été créés"
-
