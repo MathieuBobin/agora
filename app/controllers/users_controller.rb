@@ -10,14 +10,12 @@ class UsersController < ApplicationController
   end
   
   def update
-    puts "*****************************"
-    "test"
-    @user = current_user
-    if @user.update(permitted_user_id_param)
+    @user = User.find(params[:id])
+    if @user.update(pemitted_user_params)
       flash[:success] = "Ton profil a été mis-à-jour."
-      redirect_to mon_profil_path
+      redirect_to @user
     else
-      render editer_mon_profil_path
+      render :edit
     end
   end
   private
