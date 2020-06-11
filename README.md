@@ -1,24 +1,32 @@
-# README
+# AGORA
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Synopsis
 
-Things you may want to cover:
+Bienvenue sur Agora! Agora est une plate-forme permettant aux citoyens d'échanger sur des idées à apporter pour améliorer la ville.
 
-* Ruby version
+Les accès: 
+* En environnement de test: https://agora-development.herokuapp.com/
+* EN environnement de production: https://agora-prd.herokuapp.com/
 
-* System dependencies
+Le projet a été réalisé dans le cadre de la session 12 de TheHackingProject.
 
-* Configuration
+## Contributeurs
 
-* Database creation
+* @mathildy
+* @ouin85
+* @TimotheRuffino
+* @Mathildedej
+* @MathieuBobin
 
-* Database initialization
+## Technologies et frameworks
 
-* How to run the test suite
+Back: 
+* Ruby
+* Ruby on rails
 
-* Services (job queues, cache servers, search engines, etc.)
+Front:
+* HTML, CSS, JavaScript
+* BootStrap
 
-* Deployment instructions
-
-* ...
+Database:
+* PostgreSql
