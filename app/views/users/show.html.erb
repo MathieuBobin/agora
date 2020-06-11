@@ -1,15 +1,13 @@
 <br>
 <br>
-
 <div class="container" style="width: 35em;">
   <div class="row justify-content-center">
     <div class="card card-profile">
       <div class="card-avatar">
         <%if @user.avatar.attached?%>
-          <%= image_tag @user.avatar, alt: 'Avatar' %>
+        <%= image_tag @user.avatar, alt: 'Avatar' %>
         <%else%>
-          <p>Aucun avatar</p>
-          <!--<img class="img" src="https://cutewallpaper.org/21/iron-man-profile-picture/Iron-Man-Forum-Avatar-Profile-Photo-ID-131347-Avatar-.jpg" />-->
+        <p>Aucun avatar</p>
         <%end%>
       </div>
       <div class="card-content">
@@ -22,42 +20,38 @@
         <br>
         <div class="p-1 mb-1">
           <%= link_to "Paramètres", edit_user_registration_path, class: "btn btn-primary" %> 
-          <%= link_to "Mon compte", edit_user_path(@user), class: "btn btn-primary" %></div>
+          <%= link_to "Mon compte", edit_user_path(@user), class: "btn btn-primary" %>
         </div>
-      </div> 
-    </div>
+      </div>
+    </div> 
   </div>
+</div>
+
+<br>
   
-  <br>
-  
-  <div class="container" style="width: 70em;">
-    <div class="row justify-content-center">
-      <%if @proposals.count != 0 %>
-        <div class="card">
-          <div class="card-header card-header-text" data-background-color="blue">
-            <h4 class="card-title">Mes propositions</h4>
-          </div>
-          <div class="card-content "> 
-            <table class="table">
-              <% @proposals.each do |proposal| %>
-                <tbody>
-                  <tr>
-                    <td><h5><%= proposal.title %></h5></td>
-                    <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
-                    </td>
-                  </tr>
-                </tbody>
-              <% end %>
-              <%else%>
-                <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
-              <% end %>
-            </table>
-        </div>
+<div class="container" style="width: 70em;">
+  <div class="row justify-content-center">
+    <%if @proposals.count != 0 %>
+    <div class="card">
+      <div class="card-header card-header-text" data-background-color="blue">
+        <h4 class="card-title">Mes propositions</h4>
+      </div>
+      <div class="card-content "> 
+        <table class="table">
+          <% @proposals.each do |proposal| %>
+          <tbody>
+            <tr>
+              <td><h5><%= proposal.title %></h5></td>
+              <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+              </td>
+            </tr>
+          </tbody>
+          <% end %>
+          <%else%>
+          <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
+          <% end %>
+        </table>
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
+</div>

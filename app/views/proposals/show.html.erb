@@ -11,6 +11,14 @@
           <%end%>
         </div>
         <div class="card-content">
+          <div class="card-actions">
+            <a href ='<%= @proposal.city.id %>' class="btn btn-simple" style='color: #2eb67d; '>
+              <i class="material-icons">location_city</i> <%= @proposal.city.name %>
+            </a>
+            <a href ='#' class="btn btn-simple" style='color: #e01e5a; '>
+              <i class="material-icons">category</i> <%= @proposal.category.name %>
+            </a>
+          </div>
           <h4 class="card-title">
             <%= @proposal.title %>
           </h4>
@@ -21,29 +29,6 @@
         <div class="card-footer p-2">
           <%= @proposal.description %>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-
-  <div class="card card-stats">
-    <div class="card-header">
-      <div class="card-image w-50" style="height: 300px; width: 500px ">
-        <%if @proposal.picture.attached?%>
-          <%= image_tag @proposal.picture, alt: 'Picture' %>
-        <%else%>
-          <p>Aucun image</p>
-        <%end%>
-      </div>
-    </div>
-    <div class="card-content">
-      <p class="category">Used Space</p>
-      <h3 class="card-title">49/50<small>GB</small></h3>
-    </div>
-    <div class="card-footer">
-      <div class="stats">
-        <i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
       </div>
     </div>
   </div>

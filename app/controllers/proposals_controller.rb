@@ -14,11 +14,12 @@ class ProposalsController < ApplicationController
 
   def create
     @proposal = Proposal.new(permitted_proposal_params)
-    if @proposal.save 
+    if @proposal.save!
       flash[:success] = "Proposition crée ;)"
+      redirect_to @proposal
     else
-      render :new 
       flash[:alert] = @proposal.errors.full_messages.to_sentence
+      render :new 
     end
   end
   
@@ -36,6 +37,6 @@ class ProposalsController < ApplicationController
   end
 
   def permitted_proposal_params
-    params.require(:proposal).permit(:title, :purpose, :description, :city_id, :category_id).merge({:user => current_user})
+    params.require(:proposal).permit(:title, :purpose, :description, :city_id, :category_id, :picture).merge({:user => current_user})
   end
 end
