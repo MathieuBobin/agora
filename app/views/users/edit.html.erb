@@ -24,34 +24,27 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <label class="col-md-3 label-on-left"> <%= f.label :last_name, "Nom" %></label>                                              
-      <div class="col-md-9">
-        <div class="form-group is-empty">
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+        <div class="row">
+          <label class="col-md-3 label-on-left"> <%= f.label :last_name, "Nom" %></label>                                              
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+            </div>
+          </div>
         </div>
-        <<<<<<< HEAD
+        <div class="row">
+          <label class="col-md-3"></label>
+          <div class="col-md-9">
+            <div class="actions">
+              <%= f.submit "Modifier mon profil", class: "btn btn-primary" %>
+            </div> 
+          </div>
+        </div>
+        <% end %>
+        <div class="col-md-3"></div>
       </div>
     </div>
-    <div class="row">
-      <label class="col-md-3"></label>
-      <div class="col-md-9">
-        <div class="actions">
-          <%= f.submit "Modifier mon profil", class: "btn btn-primary" %>
-        </div> 
-      </div>
-    </div>
-    <% end %>
-    <div class="col-md-3"></div>
-    =======
-    <% end %>
-    <div class="col-md-3"></div>
-    >>>>>>> master
   </div>
-</div>
-</div>
 </div>
 <div class="container">
   <div class="col-md-3"></div>
@@ -73,7 +66,6 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
 <div class="container">
   <div class="col-md-3"></div>
   <div class="col-md-6">
@@ -94,13 +86,8 @@
   </div>
   <div class="container">
     <div class="col-md-3"></div>
-    =======
-    
-    <div class="container">
-      <div class="col-md-3"></div>
-      >>>>>>> master
-      <div class="col-md-6">
-        <%= link_to "Retour", :back, class: "text-info" %></p>
-      </div>
+    <div class="col-md-6">
+      <%= link_to "Retour", :back, class: "text-info" %></p>
     </div>
   </div>
+</div>
