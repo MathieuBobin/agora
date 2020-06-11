@@ -1,4 +1,95 @@
-<%= form_tag user_avatars_path(@user), multipart: true do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "Mettre à jour" %>
-<% end %>
+<div class="container">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header card-header-icon" data-background-color="blue">
+          <i class="material-icons">contacts</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Editer mon profil</h4>
+            <form class="form-horizontal">
+              <div class="row">
+                <%= form_for(current_user, url: user_path(current_user), html: { method: :patch, class: "form-signin" }) do |f| %>
+                  <label class="col-md-3 label-on-left"><%= f.label :email, "Email" %></label>                                              
+                    <div class="col-md-9">
+                      <div class="form-group is-empty">
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <label class="col-md-3 label-on-left"><%= f.label :first_name, "Prénom" %></label>                                              
+                      <div class="col-md-9">
+                        <div class="form-group is-empty">
+                          <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: "form-control" %>
+                        </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <label class="col-md-3 label-on-left"> <%= f.label :last_name, "Nom" %></label>                                              
+                      <div class="col-md-9">
+                        <div class="form-group is-empty">
+                          <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+                      </div>
+                  </div>
+             </div>
+              <div class="row">
+                <label class="col-md-3"></label>
+                  <div class="col-md-9">
+                    <div class="actions">
+                      <%= f.submit "Modifier mon profil", class: "btn btn-primary" %>
+                    </div> 
+                </div>
+              </div>
+            <% end %>
+          <div class="col-md-3"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header card-header-icon" data-background-color="blue">
+          <i class="material-icons">photo</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">Changer ma photo de profil</h4>
+            <%= form_tag user_avatars_path(@user), multipart: true do %> 
+            <%= file_field_tag :avatar , class: "btn btn-sm btn-info"%>
+        <div class="text-center">
+           <%= submit_tag "Mettre à jour", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <div class="col-md-3"></div>      
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header card-header-icon" data-background-color="blue">
+          <i class="material-icons">delete_outline</i>
+        </div>
+        <div class="card-content">
+          <h4>Suppression du compte</h4>
+            <div class="text-center">
+              <p>Êtes vous sûr de vouloir supprimer votre compte? Cette action est irréversible. 
+              <%= button_to "Supprimer mon compte", registration_path(current_user), data: { confirm: "Êtes-vous certain.e de vouloir supprimer votre compte?" }, method: :delete, class: "btn btn-primary" %>
+            </div>
+          <div class="col-md-3"></div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= link_to "Retour", :back, class: "text-info" %></p>
+    </div>
+  </div>
+</div>

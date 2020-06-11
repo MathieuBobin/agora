@@ -24,17 +24,17 @@
             <td>
               <h4><%=x.title=%></h4>
               <span class="badge badge-primary"><%= x.category.name %></span>
-              <a href = "">Voir la proposition</a>
+              <a href = "/proposals/<%=x.id%>">Voir la proposition</a>
             </td>
             <%if x.vote_of(current_user)%>
             <td>
               <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
-              <p> Annuler le vote <i class="material-icons"style="font-size: 15px" >clear</i></p>
+              <h5> A voté! <i class="material-icons"style="font-size: 20px" >done</i></h5>
             </td>
             <%else%>
             <td> 
-              <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
-              <p>Je vote!<i class="material-icons"style="font-size: 15px" >done</i></p>
+              <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-secondary btn-lg", method: :post%>
+              <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
             </td>
             <%end%>
             <td><td>
