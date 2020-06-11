@@ -1,10 +1,5 @@
 <%if @proposal.picture.attached?%>
   <%= image_tag @proposal.picture, alt: 'Picture' %>
 <%else%>
-  <p>=== No picture ===</p>
+  <p>=== Aucune image ===</p>
 <%end%>
-
-<%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-  <%= file_field_tag :picture %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>

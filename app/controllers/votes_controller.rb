@@ -4,18 +4,28 @@ class VotesController < ApplicationController
   def create
     Vote.create!(
       user_id: current_user.id,
-      proposal_id: params[:proposal_id]
+      proposal_id: permitted_proposal_id_param
     )
     
-    @city = Proposal.find(params[:proposal_id]).city
+    @city = Proposal.find(permitted_proposal_id_param).city
 
     redirect_to @city
   end
 
   def destroy
-    Vote.destroy(params[:id])
+    Vote.destroy(permitted_vote_id_param)
 
     @city = Proposal.find(params[:proposal_id]).city
     redirect_to @city
+  end
+
+  private
+
+  def permitted_proposal_id_param
+    params.permit(:proposal_id).require(:proposal_id)
+  end
+
+  def permitted_vote_id_param
+    params.permit(:id).require(:id)
   end
 end

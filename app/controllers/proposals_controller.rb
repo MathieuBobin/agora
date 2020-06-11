@@ -8,7 +8,25 @@ class ProposalsController < ApplicationController
     @user = User.all
   end
 
+  def new
+
+  end
+
   def show
-    @proposal = Proposal.find(params[:id])
+    @proposal = Proposal.find(permitted_proposal_id)
+  end
+
+  def edit
+    @proposal = Proposal.find(permitted_proposal_id)
+  end
+
+  def destroy
+    @proposal = Proposal
+  end
+  
+  private
+
+  def permitted_proposal_id
+    params.permit(:id).require(:id)
   end
 end

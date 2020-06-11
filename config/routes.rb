@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users
+  resources :users do
+    resources :avatars, only: :create
+  end
 
   resources :proposals do
-    resources :pictures, only: [:create]
+    resources :pictures, only: :create
   end
-  
   resources :proposals do 
     resources :votes, only: [:create, :destroy] 
   end
