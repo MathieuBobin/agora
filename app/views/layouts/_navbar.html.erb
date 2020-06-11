@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 <nav class="navbar navbar-primary">
 
   <div class="container-fluid">
@@ -16,14 +19,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-        <li class="dropdown city-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Villes disponibles <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <%City.all.each do |city|%>
-          <li><%= link_to city.name, city_path(city.id) %></li>
-            <%end%> 
-          </ul>
-        </li>
+         <select class="custom-select" style = "width: 400px">
+        <option value="">Villes disponibles</option>
+        
+        <%City.all.each do |x|%>
+          <option value=><%=x.name%></option>
+        <%end%>
+      </select>
         
       <li class="city-dropdown"><a href="#">À propos d'Agora</a></li>
       </ul>
@@ -67,12 +69,11 @@
 
 <script>
   $(document).ready(() => {
-    $("#category").change(() => {
-      let category_id = $("#category").val();
+    $("#city").change(() => {
+      let category_id = $("#city").val();
       
-      let url = "/categories/" + category_id + "/items";
+      let url = "/city/" + city_id;
       
-
       const Http = new XMLHttpRequest();
       Http.open("GET", url, true);
       Http.send();
