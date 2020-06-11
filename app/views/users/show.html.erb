@@ -21,8 +21,8 @@
         <p class="text"><%= @user.city.name %></p>
         <br>
         <div class="p-1 mb-1">
-          <%= link_to "Modifier mon mot de passe", edit_user_registration_path, class: "btn btn-primary btn-round btn-sm" %> 
-          <%= link_to "Éditer mon profil", edit_user_path(@user), class: "btn btn-primary btn-round btn-sm" %></div>
+          <%= link_to "Paramètres", edit_user_registration_path, class: "btn btn-primary" %> 
+          <%= link_to "Mon compte", edit_user_path(@user), class: "btn btn-primary" %></div>
         </div>
       </div> 
     </div>
@@ -32,22 +32,26 @@
   
   <div class="container" style="width: 70em;">
     <div class="row justify-content-center">
-      <div class="card">
-        <div class="card-header card-header-text" data-background-color="blue">
-          <h4 class="card-title">Mes propositions</h4>
-        </div>
-        <div class="card-content "> 
-          <table class="table">
-            <% @proposals.each do |proposal| %>
-            <tbody>
-              <tr>
-                <td><h5><%= proposal.title %></h5></td>
-                <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
-                </td>
-              </tr>
-            </tbody>
-            <% end %>
-          </table>
+      <%if @proposals.count != 0 %>
+        <div class="card">
+          <div class="card-header card-header-text" data-background-color="blue">
+            <h4 class="card-title">Mes propositions</h4>
+          </div>
+          <div class="card-content "> 
+            <table class="table">
+              <% @proposals.each do |proposal| %>
+                <tbody>
+                  <tr>
+                    <td><h5><%= proposal.title %></h5></td>
+                    <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>
+              <%else%>
+                <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
+              <% end %>
+            </table>
         </div>
       </div>
     </div>
