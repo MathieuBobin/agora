@@ -92,7 +92,6 @@
               <tbody>
                 <%@proposal_lyon.each do |x|%>
                 <tr>
-                  <td></td>
                   <td>
                     <h5>#<%=@proposal_lyon.index(x)+1%></h5>
                   </td>
@@ -101,14 +100,13 @@
                   </td>
                   <td>
                     <h4><%=x.title=%></h4>
-                    <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
+                    <span class="badge badge-primary"><%= x.category.name %></span>
                     <a href = "">Voir la proposition</a>
                   </td>
-                  <td><td>
-                  </tr>
-                  <%end%>
-                </tbody>
-              </table>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
             </div>
           </div>
         </div>

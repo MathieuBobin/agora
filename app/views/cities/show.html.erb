@@ -22,9 +22,9 @@
               <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
             </td>
             <td>
-              <h4><%=x.title=%></h4>
+              <h4><%= x.title %></h4>
               <span class="badge badge-primary"><%= x.category.name %></span>
-              <a href = "">Voir la proposition</a>
+              <%= link_to 'Voir la proposition', proposal_path(x.id) %>
             </td>
             <%if x.vote_of(current_user)%>
             <td>

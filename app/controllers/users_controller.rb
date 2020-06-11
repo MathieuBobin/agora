@@ -7,6 +7,12 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(permitted_user_id_param)
   end
+
+  def update
+    puts '$'*110
+    p params
+    puts '$'*110
+  end
   
   private
   

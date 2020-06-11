@@ -1,5 +1,26 @@
-<%if @proposal.picture.attached?%>
-  <%= image_tag @proposal.picture, alt: 'Picture' %>
-<%else%>
-  <p>=== Aucune image ===</p>
-<%end%>
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-content table-responsive table-full-width">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>
+                <%if @proposal.picture.attached?%>
+                  <%= image_tag @user.picture, alt: 'Picture' %>
+                <%else%>
+                  <p>Aucun image</p>
+                <%end%>
+              </td>
+              <td>
+                <h4><%= @proposal.title %></h4>
+                <p><span class="badge badge-primary" style="background-color: red;"><%= @proposal.city.name %></span></p>
+                <p><span class="badge badge-primary"><%= @proposal.category.name %></span></p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
