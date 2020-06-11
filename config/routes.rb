@@ -8,11 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :proposals do
+    resources :votes, only: [:create, :destroy] 
     resources :pictures, only: :create
   end
-  resources :proposals do 
-    resources :votes, only: [:create, :destroy] 
-  end
+  resources :proposals 
 
   resources :cities
 end

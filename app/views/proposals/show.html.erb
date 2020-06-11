@@ -1,25 +1,49 @@
 <div class="container">
+  <br><br><br>
   <div class="row">
-    <div class="card">
-      <div class="card-content table-responsive table-full-width">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>
-                <%if @proposal.picture.attached?%>
-                  <%= image_tag @user.picture, alt: 'Picture' %>
-                <%else%>
-                  <p>Aucun image</p>
-                <%end%>
-              </td>
-              <td>
-                <h4><%= @proposal.title %></h4>
-                <p><span class="badge badge-primary" style="background-color: red;"><%= @proposal.city.name %></span></p>
-                <p><span class="badge badge-primary"><%= @proposal.category.name %></span></p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="col-md-8">
+      <div class="card card-product">
+        <div class="card-image" data-header-animation="true" style="height: 300px">
+          <%if @proposal.picture.attached?%>
+            <%= image_tag @proposal.picture, alt: 'Picture' %>
+          <%else%>
+            <p>Aucun image</p>
+          <%end%>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">
+            <%= @proposal.title %>
+          </h4>
+          <div class="card-description">
+            <%= @proposal.purpose %>
+          </div>
+        </div>
+        <div class="card-footer p-2">
+          <%= @proposal.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="card card-stats">
+    <div class="card-header">
+      <div class="card-image w-50" style="height: 300px; width: 500px ">
+        <%if @proposal.picture.attached?%>
+          <%= image_tag @proposal.picture, alt: 'Picture' %>
+        <%else%>
+          <p>Aucun image</p>
+        <%end%>
+      </div>
+    </div>
+    <div class="card-content">
+      <p class="category">Used Space</p>
+      <h3 class="card-title">49/50<small>GB</small></h3>
+    </div>
+    <div class="card-footer">
+      <div class="stats">
+        <i class="material-icons text-danger">warning</i> <a href="#pablo">Get More Space...</a>
       </div>
     </div>
   </div>

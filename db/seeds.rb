@@ -38,7 +38,7 @@ puts "Les catégories ont été créées"
 50.times do 
   Proposal.create!(
     title: Faker::Lorem.sentence(word_count: 5), 
-    purpose: Faker::Lorem.sentence(word_count: 50),
+    purpose: Faker::Lorem.sentence(word_count: 20),
     description: Faker::Lorem.sentence(word_count: 100),
     is_online: true,
     city: City.all.sample,
