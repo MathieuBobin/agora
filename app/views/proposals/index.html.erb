@@ -77,7 +77,11 @@
                   <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
-                  <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
+                  <%if Proposal.find(x.id).picture.attached?%>
+                    <%= image_tag Proposal.find(x.id).picture, alt: "Card image", width: 170, style: "height: auto"%>
+                  <%else%>
+                    <p>=Image=</p>
+                  <%end%>
                 </td>
                 <td>
                   <p><%= x.title %></p>
@@ -106,7 +110,11 @@
                     <h4>#<%=@proposal_lyon.index(x)+1%></h4>
                   </td>
                   <td>
-                    <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
+                    <%if Proposal.find(x.id).picture.attached?%>
+                      <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
+                    <%else%>
+                      <p>=Image=</p>
+                    <%end%>                  
                   </td>
                   <td>
                     <p><%= x.title %></p>
