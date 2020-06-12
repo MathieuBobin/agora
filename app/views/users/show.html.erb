@@ -6,7 +6,7 @@
     <div class="card card-profile">
       <div class="card-avatar">
         <%if @user.avatar.attached?%>
-          <%= image_tag @user.avatar, alt: 'Avatar' %>
+          <%= image_tag @user.avatar, alt: 'Avatar' , style: "width: 100%;height: auto;"%>
         <%else%>
           <p>Aucun avatar</p>
           <!--<img class="img" src="https://cutewallpaper.org/21/iron-man-profile-picture/Iron-Man-Forum-Avatar-Profile-Photo-ID-131347-Avatar-.jpg" />-->
