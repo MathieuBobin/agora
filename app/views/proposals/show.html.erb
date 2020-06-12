@@ -7,15 +7,8 @@
           <%if @proposal.picture.attached?%>
           <%= image_tag @proposal.picture, alt: 'Picture', class: 'img' %>
           <%else%>
-          <p>Aucun image</p>
+          <p></p>
           <%end%>
-        </div>
-        <div class="card-content" style="padding-top: 0px">
-          <div class="card-actions">
-            <button type="button" class="btn btn-danger btn-simple fix-broken-card">
-              <i class="material-icons">build</i> Remettre l'image
-            </button>
-          </div>
         </div>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
@@ -59,13 +52,12 @@
           </div>
           <div class="footer">
             <div class="card-avatar">
-              <a href="#pablo">
                 <% if @proposal.user.avatar.attached? %>
                   <%= image_tag @proposal.user.avatar, alt: 'Picture', class:'img' %>
+                  <br>
                 <% else %>
-                  <p>Aucun avatar</p>
+                  <p></p>
                 <% end %>
-              </a>
             </div>
           </div>
         </div>
