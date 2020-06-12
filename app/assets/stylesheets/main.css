@@ -1,0 +1,13 @@
+.font-brand {
+  font-size: 35px;
+  bottom: 3px;
+} 
+
+body {
+background-color: #FFFFFF !important;
+}
+
+.text-wrap {
+  word-wrap: break-word;
+}
+

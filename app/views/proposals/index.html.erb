@@ -74,7 +74,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <h4>#<%=@proposal_paris.index(x)+1%></h4>
+                  <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
                   <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
@@ -109,7 +109,7 @@
                     <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
                   </td>
                   <td>
-                    <p><%=x.title=%></p>
+                    <p><%= x.title %></p>
                     <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                       <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                     </a>

@@ -9,14 +9,14 @@ class VotesController < ApplicationController
     
     @city = Proposal.find(permitted_proposal_id_param).city
 
-    redirect_to @city
+    redirect_back fallback_location: root_path
   end
 
   def destroy
     Vote.destroy(permitted_vote_id_param)
 
     @city = Proposal.find(params[:proposal_id]).city
-    redirect_to @city
+    redirect_back fallback_location: root_path
   end
 
   private

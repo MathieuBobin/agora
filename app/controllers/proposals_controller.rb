@@ -15,7 +15,7 @@ class ProposalsController < ApplicationController
   def create
     @proposal = Proposal.new(permitted_proposal_params)
     if @proposal.save!
-      flash[:success] = "Proposition crée ;)"
+      flash[:success] = "Proposition crée avec succès."
       redirect_to @proposal
     else
       flash[:alert] = @proposal.errors.full_messages.to_sentence

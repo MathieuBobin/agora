@@ -5,9 +5,9 @@
     <div class="card card-profile">
       <div class="card-avatar">
         <%if @user.avatar.attached?%>
-        <%= image_tag @user.avatar, alt: 'Avatar' %>
+          <%= image_tag @user.avatar, alt: 'Avatar' %>
         <%else%>
-        <p>Aucun avatar</p>
+          <p>Aucun avatar</p>
         <%end%>
       </div>
       <div class="card-content">

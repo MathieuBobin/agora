@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   def create
     @proposal = Proposal.find(permitted_proposal_id_param)
     @proposal.picture.attach(permitted_picture_param)
+    # redirect_to @proposal
   end
 
   private

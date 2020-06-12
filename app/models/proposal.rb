@@ -14,7 +14,7 @@ class Proposal < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3, maximum: 80}
   validates :purpose, presence: true, length: {minimum: 10, maximum: 500}
   validates :description, presence: true, length: {minimum: 30, maximum: 2000}
-  validate :must_has_atachment
+  # validate :must_has_atachment
 
   # Active storage
   has_one_attached :picture
@@ -38,6 +38,14 @@ class Proposal < ApplicationRecord
 
   def vote_of(user)
     self.votes.find_by(user: user)
+  end
+
+  def general_classification
+    Proposal.all.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
+  end
+
+  def category_classification
+    self.category.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
   end
 
   private
