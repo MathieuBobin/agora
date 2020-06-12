@@ -3,6 +3,7 @@ class PicturesController < ApplicationController
     @proposal = Proposal.find(permitted_proposal_id_param)
     if( permitted_picture_param != nil)
       @proposal.picture.attach(permitted_picture_param)
+      flash[:success] = "Proposition crée ;)"
     end
     redirect_to(users_path)
   end

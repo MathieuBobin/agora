@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+  def index
+    @user = current_user
+    @city = @user.city_id
+  end
+
   def show
     @user = User.find(permitted_user_id_param)
     @proposals = @user.proposals
@@ -6,7 +12,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(permitted_user_id_param)
-    
   end
   
   def update
