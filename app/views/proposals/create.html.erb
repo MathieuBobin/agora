@@ -3,7 +3,7 @@
 <div class="container text-center">
   <div class="row mt-4">
     <div class="col">
-        <h4>Merci pour ta proposition, ajoute lui une belle photo et ce sera complet :</h4>
+        <h4>Merci pour votre proposition, ajoutez lui une belle photo et ce sera complet :</h4>
     </div>
   </div>
 </div>
@@ -17,7 +17,7 @@
             <%= image_tag(@proposal.picture, style: "width:100%") %>
           <%else%>
           <%end%>
-          <h4 class="card-title">Charge ta photo de proposition</h4>
+          <h4 class="card-title">Chargez votre photo de proposition</h4>
             <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
             <%= file_field_tag :picture , class: "btn btn-sm btn-info"%>
         <div class="text-center">
