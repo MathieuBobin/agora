@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
       flash[:success] = "L'image à bien été rajoutée à ta proposition !"
       render 'proposals/create'
     else
-      flash[:alert] = 'Il faut choisir une image à ta proposition !'
+      flash[:alert] = 'Il faut charger une image !'
       render 'proposals/create'
     end
   end
