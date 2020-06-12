@@ -1,26 +1,31 @@
 
-<div class="container">
-<div class="row mt-4">
+<br><br>
+<div class="container text-center">
+  <div class="row mt-4">
     <div class="col">
-        <h2>Merci pour ta proposition, ajoute lui une belle photo et ce sera complet :</h2>
+        <h4>Merci pour ta proposition, ajoute lui une belle photo et ce sera complet :</h4>
     </div>
+  </div>
 </div>
-</div>
+<br>
 <div class="container">
-  <div class="row align-items-center">
-    <br>
-    <div class="col-7">
-      <%if @proposal.picture.attached?%>
-        <%= image_tag(@proposal.picture, style: "width:100%") %>
-      <%else%>
-        <p>Mets ta belle image :)</p>
-      <%end%>
-      <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-        <%= file_field_tag :picture %>
-        <%= submit_tag "Mettre à jour" %>
-      <% end %>
-    </div>
-    <div class="col-5 order-first">
+  <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-content text-center">
+          <%if @proposal.picture.attached?%>
+            <%= image_tag(@proposal.picture, style: "width:100%") %>
+          <%else%>
+          <%end%>
+          <h4 class="card-title">Charge ta photo de proposition</h4>
+            <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
+            <%= file_field_tag :picture , class: "btn btn-sm btn-info"%>
+        <div class="text-center">
+           <%= submit_tag "Charger définitivement mon image", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        <div class="col-md-3"></div>      
+      </div>
     </div>
   </div>
 </div>

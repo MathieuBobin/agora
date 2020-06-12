@@ -10,16 +10,19 @@ class ProposalsController < ApplicationController
   
   def new
     @proposal = Proposal.new
+    @cityid = User.find_by(id: current_user.id).city_id
+    @city = City.find_by(id: @cityid).name
   end
 
   def create
     @user = User.find_by(id: current_user.id)
+    @cityid = User.find_by(id: current_user.id).city_id
     @proposal = Proposal.new(
       title: params[:proposal][:title],
       purpose: params[:proposal][:purpose], 
       description: params[:proposal][:description], 
       is_online: false,
-      city_id: params[:post][:city_id],
+      city_id: @cityid,
       category_id: params[:post][:category_id],
       user: @user
     )
