@@ -1,11 +1,14 @@
 class PicturesController < ApplicationController
   def create
     @proposal = Proposal.find(permitted_proposal_id_param)
-    if( permitted_picture_param != nil)
+    if !params[:picture].nil?
       @proposal.picture.attach(permitted_picture_param)
-      flash[:success] = "Proposition crée ;)"
+      flash[:success] = "L'image à bien été rajoutée à ta proposition !"
+      render 'proposals/create'
+    else
+      flash[:alert] = 'Il faut choisir une image à ta proposition !'
+      render 'proposals/create'
     end
-    redirect_to(users_path)
   end
 
   private
