@@ -1,4 +1,5 @@
 <br>
+<div class = container>
 <div class="col-md-12">
   <div class="card">
     <%= form_for @proposal do |f| %>
@@ -19,7 +20,7 @@
           <label class="col-sm-1 label-on-left"></label>
           <div class="col-sm-9">
             <div class="form-group label-floating">
-              <%= f.label :purpose, "Pourquoi souhaitez vous lancer cette initiative? A quel problème souhaitez répondre?" %>  
+              <%= f.label :purpose, "Pourquoi souhaitez vous lancer cette initiative? A quel problème souhaitez-vous répondre?" %>  
               <%= f.text_area :purpose, rows: 2, autofocus: true, autocomplete: "purpose", class: "form-control" %>
             </div>
           </div>
@@ -49,4 +50,5 @@
     <% end %>
     </div>
   </div>
+</div>
 </div>
