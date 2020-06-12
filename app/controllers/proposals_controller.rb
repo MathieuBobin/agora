@@ -26,7 +26,9 @@ class ProposalsController < ApplicationController
       category_id: params[:post][:category_id],
       user: @user
     )
-    if @proposal.save 
+
+    if @proposal.save
+      flash[:success] = 'Ta proposition a bien été enregistrée !'
     else
       flash[:alert] = @proposal.errors.full_messages.to_sentence
       render :new 

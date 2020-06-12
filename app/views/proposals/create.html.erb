@@ -1,31 +1,35 @@
-
-<br><br>
-<div class="container text-center">
-  <div class="row mt-4">
-    <div class="col">
-        <h4>Merci pour votre proposition, ajoutez lui une belle photo et ce sera complet :</h4>
-    </div>
-  </div>
-</div>
-<br>
 <div class="container">
-  <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
       <div class="card">
         <div class="card-content text-center">
           <%if @proposal.picture.attached?%>
             <%= image_tag(@proposal.picture, style: "width:100%") %>
-          <%else%>
-          <%end%>
-          <h4 class="card-title">Chargez votre photo de proposition</h4>
             <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
-            <%= file_field_tag :picture , class: "btn btn-sm btn-info"%>
-        <div class="text-center">
-           <%= submit_tag "Charger définitivement mon image", class: "btn btn-primary" %>
+              <div class="text-center">
+                <%= file_field_tag :picture , class: "btn btn-xs btn-info text-center"%>
+              </div>
+              <div class="text-center">
+                <%= submit_tag "Changer l'image", class: "btn btn-sm btn-primary" %>
+              </div>
+              <% end %>
+            <%= link_to "Voir les propositions de ma ville", city_path(current_user.city) ,class: "btn btn-sm btn-primary"%>
+          <%else%>
+            <div class="row mt-4">
+              <div class="col">
+                <h6 class='text-muted'>Merci pour votre proposition, elle à bien été envoyée à notre équipe pour validation. Vous recevrez un mail dès que celle-ci sera mise en ligne. Rattachez lui une belle image !</h6>
+                <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
+                  <div class="text-center">
+                    <%= file_field_tag :picture , class: "btn btn-sm btn-info text-center"%>
+                  </div>
+                  <div class="text-center">
+                    <%= submit_tag "Rattachez l'image", class: "btn btn-sm btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <%end%>
         </div>
-        <% end %>
-        <div class="col-md-3"></div>      
-      </div>
     </div>
   </div>
 </div>

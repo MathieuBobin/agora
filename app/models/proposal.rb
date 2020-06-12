@@ -12,7 +12,7 @@ class Proposal < ApplicationRecord
   has_many :votes
 
   # Validations
-  validates :title, presence: true, length: {minimum: 3, maximum: 80}
+  validates :title, presence: true, length: {minimum: 3, maximum: 65}
   validates :purpose, presence: true, length: {minimum: 10, maximum: 500}
   validates :description, presence: true, length: {minimum: 30, maximum: 2000}
 
