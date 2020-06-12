@@ -14,7 +14,7 @@
           <i class="material-icons">perm_identity</i>
         </div>
         <div class="card-content">
-          <h4 class="card-title">Editer mon profil</h4>
+          <h4 class="card-title">Éditer mon profil</h4>
                 <%= form_for(current_user, url: user_path(current_user), html: { method: :put, class: "form-horizontal" }) do |f| %>
               <div class="row">
                   <label class="col-md-3 label-on-left"><%= f.label :first_name, "Prénom" %></label>                                              
