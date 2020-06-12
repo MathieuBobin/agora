@@ -44,7 +44,11 @@
                 <tbody>
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
-                    <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+                    <%if proposal.is_online%>
+                      <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+                    <%else%>
+                      <td class="text-right"><p></h2>En cours de validation <i class="material-icons" style="font-size: 13px">hourglass_empty</i></p>
+                    <%end%>
                     </td>
                   </tr>
                 </tbody>
