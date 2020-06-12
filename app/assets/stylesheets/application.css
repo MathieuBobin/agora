@@ -12,12 +12,5 @@
  *
  *= require bootstrap.min
  *= require material-dashboard
+ *= require main
  */
-
-.font-brand {
-  font-size: 35px;
-  bottom: 3px;
-} 
-body{
-background-color: #FFFFFF !important;
-}

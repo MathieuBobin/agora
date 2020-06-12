@@ -11,8 +11,8 @@ class VotesController < ApplicationController
       user_id: current_user.id,
       proposal_id: permitted_proposal_id_param
     )
-    flash[:success] = "Vote vote a bien été pris en compte! ;)"  
-    redirect_to @city
+    flash[:success] = "Votre vote a bien été pris en compte! ;)"  
+    redirect_back fallback_location: root_path
     end
   end
 
@@ -20,7 +20,7 @@ class VotesController < ApplicationController
     Vote.destroy(permitted_vote_id_param)
 
     @city = Proposal.find(params[:proposal_id]).city
-    redirect_to @city
+    redirect_back fallback_location: root_path
   end
 
   private

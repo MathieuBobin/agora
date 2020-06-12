@@ -3,9 +3,9 @@
     <h1 class="display-4 text-white"><b>Faites porter votre voix et agissez ensemble dans votre ville</b></h1>
     <p  class="text-white">Agora est une plate-forme citoyenne vous permettant de proposer et de partager des initiatives locales  </p>
     <% if user_signed_in? %>
-      <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+    <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
     <%else%>
-      <p><a class="btn btn-primary btn-lg" href="/users/sign_in" role="button">Je veux créer ma proposition</a></p>
+    <p><a class="btn btn-primary btn-lg" href="/users/sign_in" role="button">Je veux créer ma proposition</a></p>
     <%end%>
   </div>
 </div>
@@ -40,7 +40,7 @@
     <br>
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Sélectionnez les meilleures idées ensemble et agissez!<i class="material-icons" style="font-size: 35px">people</i></h2>
+        <h2 class="featurette-heading">Sélectionnez les meilleures idées ensemble et agissez !<i class="material-icons" style="font-size: 35px">people</i></h2>
         <p class="lead">Sur Agora, le système de vote permet de faire ressortir les meilleures propositions. Ensemble, unissez-vous pour faire avancer les choses!</p>
       </div>
       <div class="col-md-5 order-md-1">
@@ -53,15 +53,15 @@
   
   <div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1547104984-924116a9c464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1217&q=80); background-size: 100%;">
     <div class="container">
-      <h3 class="display-4 text-white"><b>Faites porter votre voix et changez votre ville!</b></h3>
-    <% if user_signed_in? %>
+      <h3 class="display-4 text-white"><b>Faites porter votre voix et changez votre ville !</b></h3>
+      <% if user_signed_in? %>
       <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
-    <%else%>
+      <%else%>
       <p><a class="btn btn-primary btn-lg" href="/users/sign_in" role="button">Je veux créer ma proposition</a></p>
-    <%end%>
+      <%end%>
     </div>
   </div>
-  
+
   <div class = "container">
     <h2 class="text-center"><b>Les meilleures propositions du moment</b></h2>
     <div class="col-md-6">
@@ -74,7 +74,7 @@
               <tr>
                 <td></td>
                 <td>
-                  <h4>#<%=@proposal_paris.index(x)+1%></h4>
+                  <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
                   <%if Proposal.find(x.id).picture.attached?%>
@@ -106,7 +106,6 @@
               <tbody>
                 <%@proposal_lyon.each do |x|%>
                 <tr>
-                  <td></td>
                   <td>
                     <h4>#<%=@proposal_lyon.index(x)+1%></h4>
                   </td>
@@ -118,25 +117,24 @@
                     <%end%>                  
                   </td>
                   <td>
-                    <p><%=x.title=%></p>
+                    <p><%= x.title %></p>
                     <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                       <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                     </a>
-                    <span class="badge badge-primary"><%=Category.find(x.category_id).name%></span>
+                    <span class="badge badge-primary"><%= x.category.name %></span>
                   </td>
-                  <td><td>
-                  </tr>
-                  <%end%>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      
-      <div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1547104984-924116a9c464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1217&q=80); background-size: 100%;">
-        <div class="container">
-          <h3 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'où vous venez!</b></h3>
-          <p><a class="btn btn-primary btn-lg" href="mailto: zeagoraproject@gmail.com" role="button">Envoyer un mail</a></p>
-        </div>
+    </div>
+    
+    <div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1547104984-924116a9c464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1217&q=80); background-size: 100%;">
+      <div class="container">
+        <h3 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'ou vous venez !</b></h3>
+        <p><a class="btn btn-primary btn-lg" href="mailto: zeagoraproject@gmail.com" role="button">Envoyer un mail</a></p>
       </div>
+    </div>

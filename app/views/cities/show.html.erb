@@ -7,7 +7,12 @@
 
 
 <div class="container">
+<% if @proposals.count == 0%>
+          <h3> Personne n'a posté de proposition à <%=@city.name%> pour le moment. Si tu veux le faire, clique sur le bouton : </h3>
+          <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      <%else%>
   <h3>Les propositions en cours : votez pour vos propositions préférées!</h3>
+  
   <div class="card">
     <div class="card-content table-responsive table-full-width">
       <table class="table">
@@ -45,6 +50,7 @@
             <%end%>
             <td><td>
             </tr>
+            <%end%>
             <%end%>
           </tbody>
       </table>
