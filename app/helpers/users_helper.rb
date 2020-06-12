@@ -6,4 +6,12 @@ module UsersHelper
   def current_user_votes_count
     current_user.votes_count
   end
+
+  def is_current_user_owner_of?(proposal)
+    proposal.user == current_user
+  end
+
+  def is_current_user_admin?
+    current_user.is_admin?
+  end
 end
