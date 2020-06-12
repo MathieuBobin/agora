@@ -2,6 +2,7 @@ class Proposal < ApplicationRecord
   # Mailer config
   after_create :admin_receipt
   after_create :user_receipt
+  after_update :validates_proposal
   
   # Relations
   belongs_to :city
@@ -38,9 +39,11 @@ class Proposal < ApplicationRecord
   def vote_of(user)
     self.votes.find_by(user: user)
   end
-end
 
-def validates_proposal
-  ProposalMailer.info_admin(self).deliver_now
-end
+
+  def validates_proposal
+    if is_online?
+      ProposalMailer.confirmation_proposal(self).deliver
+    end
+  end
 end

@@ -24,8 +24,10 @@ class ProposalMailer < ApplicationMailer
   def confirmation_proposal(proposal)
     @user = proposal.user
     @url  = 'https://agora-prd.herokuapp.com/' 
-
-    mail(to: @user.email, subject: 'Ta proposition a été acceptée !') 
+    
+    
+      mail(to: @user.email, subject: 'Ta proposition a été acceptée !') 
+    
   end
 
 end
