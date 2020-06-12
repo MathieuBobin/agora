@@ -6,7 +6,7 @@ Bienvenue sur Agora! Agora est une plate-forme permettant aux citoyens d'échang
 
 Les accès: 
 * En environnement de test: https://agora-development.herokuapp.com/
-* EN environnement de production: https://agora-prd.herokuapp.com/
+* En environnement de production: https://agora-prd.herokuapp.com/
 
 Le projet a été réalisé dans le cadre de la session 12 de TheHackingProject.
 

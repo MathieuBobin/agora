@@ -73,8 +73,8 @@
       <div class="col">
         <div class="card">
           <div class="card-content text-center">
-            <h5 class="text-muted">Votez pour cette proposition</h5>
             <% unless is_current_user_owner_of?(@proposal) %>
+              <h5 class="text-muted">Votez pour cette proposition</h5>
               <%if @proposal.vote_of(current_user)%>
                 <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
               <%else%>
