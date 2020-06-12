@@ -56,6 +56,28 @@ Proposal.create!(title: "Un parking pour tous",
                  )
 end
 
+1.times do 
+  Proposal.create!(title: "Travaux terrain de tennis Roseraie de Nantes", 
+                   purpose: "Restaurer le terrain de tennis qui a subi des intempéris", 
+                   description: "Les récents intempéris ont eu raion du terrain, et surtout du sol. Il est difficile de jouer dans de bonnes conditions. Je propose la restauration bénévole de ce terrain afin qu'il soit de nouveau pratiquable. Votez pour cette proposition si cela vous intéresse, et joignez-vous à moi pour les travaux.",
+                   is_online: true,
+                   city: @Nantes,
+                   category: @Sport,
+                   user: User.all.sample
+                   )
+end
+
+1.times do 
+  Proposal.create!(title: "Travaux terrain de Tennis du Lac Kir", 
+                   purpose: "Restaurer le terrain de tennis qui a subi des intempéris", 
+                   description: "Les récents intempéris ont eu raion du terrain, et surtout du sol. Il est difficile de jouer dans de bonnes conditions. Je propose la restauration bénévole de ce terrain afin qu'il soit de nouveau pratiquable. Votez pour cette proposition si cela vous intéresse, et joignez-vous à moi pour les travaux.",
+                   is_online: true,
+                   city: @Dijon,
+                   category: @Sport,
+                   user: User.all.sample
+                   )
+end
+
 1.times do
 Proposal.create!(title: "Un arbre dans le parc", 
                  purpose: "Plantation d'un arbre dans le parc des enfants", 
@@ -90,6 +112,39 @@ end
   end
 
 1.times do
+  Proposal.create!(title: "Potager commun", 
+                   purpose: "Création d'un potager commun pour la résidence des Colombes", 
+                   description: "Certains résidents des Colombes ont emmis l'idée de créer un potager commun pour toute la résidence. Il existe une petite parcelle exploitable pour ce petit projet.",
+                   is_online: true,
+                   city: @Toulouse,
+                   category: @Ecologie,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Fête du cassoulet", 
+                   purpose: "Fête du cassoulet Toulousain et petit stand de dégustation", 
+                   description: "Célébrons ce plat emblématique de notre région autour de dégustations et de revisites",
+                   is_online: true,
+                   city: @Toulouse,
+                   category: @Société,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Distribution de masques", 
+                   purpose: "Distribution de masques confectionnés par nos habitants", 
+                   description: "Je propose un petit stand de distribution de masques confectionnés par nos habitans. Prix : 0,50 centimes. Tout sera reversé à la ville.",
+                   is_online: true,
+                   city: @Toulouse,
+                   category: @Société,
+                   user: User.all.sample
+                   ) 
+end
+
+1.times do
   Proposal.create!(title: "Distribution de masques", 
                    purpose: "Distribution de masques confectionnés par nos habitants", 
                    description: "Je propose un petit stand de distribution de masques confectionnés par nos habitans. Prix : 0,50 centimes. Tout sera reversé à la ville.",
@@ -98,12 +153,23 @@ end
                    category: @Société,
                    user: User.all.sample
                    ) 
-    end
+end
+
+1.times do
+  Proposal.create!(title: "Potager commun", 
+                   purpose: "Création d'un potager commun pour la résidence des Herbiers", 
+                   description: "Certains résidents des Herbiers ont emmis l'idée de créer un potager commun pour toute la résidence. Il existe une petite parcelle exploitable pour ce petit projet.",
+                   is_online: true,
+                   city: @Reims,
+                   category: @Ecologie,
+                   user: User.all.sample
+                   )
+end
 
 1.times do
   Proposal.create!(title: "Distribution de gel hydroalcoolique", 
                    purpose: "Distribution de gel hydroalcoolique gratuite", 
-                   description: "Plusieurs de tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
+                   description: "Plusieurs tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
                    is_online: true,
                    city: @Montpellier,
                    category: @Santé,
@@ -112,9 +178,20 @@ end
 end 
 
 1.times do
+  Proposal.create!(title: "Spectacle du printemps", 
+                   purpose: "Une petite représentation de nos danseurs du club Comédie", 
+                   description: "Le club Comédie vous propose une petite représenation de danse Place de la Comédie, le 30 Août 2020. L'occasion de vous faire découvrir notre univers et de célébrer la fin de l'été.",
+                   is_online: true,
+                   city: @Montpellier,
+                   category: @Société,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
   Proposal.create!(title: "Distribution de gel hydroalcoolique", 
                    purpose: "Distribution de gel hydroalcoolique gratuite", 
-                   description: "Plusieurs de tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
+                   description: "Plusieurs tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
                    is_online: true,
                    city: @Paris,
                    category: @Santé,
@@ -171,11 +248,44 @@ end
                    purpose: "Ne pas réouvrir les écoles suite aux annonces du gouvernement", 
                    description: "La réouverture des écoles représente un vrai danger pour nos enfants et pour nous mêmes. Votons contre! ",
                    is_online: true,
+                   city: @Grenoble,
+                   category: @Santé,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Dépistage covid-19", 
+                   purpose: "Dépistage covid-19 pour tous", 
+                   description: "Aménagement d'un stand pour dépister en masse le coronavirus et contrer la maladie. Respectons les gestes barrières.",
+                   is_online: true,
+                   city: @Grenoble,
+                   category: @Santé,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Fermeture permanente des écoles", 
+                   purpose: "Ne pas réouvrir les écoles suite aux annonces du gouvernement", 
+                   description: "La réouverture des écoles représente un vrai danger pour nos enfants et pour nous mêmes. Votons contre! ",
+                   is_online: true,
                    city: @Rouen,
                    category: @Santé,
                    user: User.all.sample
                    )
 end
+
+1.times do
+  Proposal.create!(title: "Distribution de gel hydroalcoolique", 
+                   purpose: "Distribution de gel hydroalcoolique gratuite", 
+                   description: "Plusieurs tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
+                   is_online: true,
+                   city: @Rouen,
+                   category: @Santé,
+                   user: User.all.sample
+                    )
+end 
 
 1.times do
   Proposal.create!(title: "Fermeture permanente des écoles", 
@@ -211,12 +321,45 @@ end
 end
 
 1.times do
+  Proposal.create!(title: "Aménagement d'un terrain de pétanque", 
+                   purpose: "Aménagement d'un terrain de pétanque dans le 2ème arrondissement", 
+                   description: "De plus en plus d'adeptes de la pétanque à Marseille, mais pas plus de terrain ! Aménageons un terrain (ou plus) afin de pallier à ce manque",
+                   is_online: true,
+                   city: @Marseille,
+                   category: @Sport,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Piste cyclable", 
+                   purpose: "Aménagement d'une piste cyclable à la Préfecture ", 
+                   description: "Difficile de circuler sur le même trottoir que les piétons pour les cyclistes ! Mettons en place un piste prévu à cet effet.",
+                   is_online: true,
+                   city: @Marseille,
+                   category: @Mobilité,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
   Proposal.create!(title: "Contre la construction de l'usine Pétrochimique", 
                    purpose: "L'usine Pétrochimique prévoit de s'implanter en Anjou, mobilisons nous...", 
                    description: "L'usine Pétrochimique prévoit de s'implanter en Anjou, mobilisons nous ! La politique écologique de cette usine va à l'encontre de nos principes. Il est urgent de préserver nos terres. Pour cela, il faut créer une pétition.",
                    is_online: true,
                    city: @Angers,
                    category: @Ecologie,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Piste cyclable", 
+                   purpose: "Aménagement d'une piste cyclable à la Roseraie ", 
+                   description: "Difficile de circuler sur le même trottoir que les piétons pour les cyclistes ! Mettons en place un piste prévu à cet effet.",
+                   is_online: true,
+                   city: @Angers,
+                   category: @Mobilité,
                    user: User.all.sample
                    )
 end
@@ -233,6 +376,17 @@ end
 end
 
 1.times do
+  Proposal.create!(title: "Don du sang", 
+                   purpose: "Collecte de sang à la mairie, tous les mois", 
+                   description: "Face à la crise du coronavirus, les hôpitaux ont du mobiliser beaucoup de ressources. Aidons les en donnant notre sang, pour sauver plus de vie et anticiper une nouvelle crise.",
+                   is_online: true,
+                   city: @Nice,
+                   category: @Santé,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
   Proposal.create!(title: "Indroduction au language des signes en classe de primaire", 
                    purpose: "Donner des cours de language des signes en classe de primaire afin de sensibiliser les plus jeunes", 
                    description: "Cette démarche consiste à sensibiliser les plus jeunes à l'handicap et de favoriser l'intégration des enfants sourds et muets. Une demie heure y serait consacrée chaque semaine.",
@@ -242,6 +396,28 @@ end
                    user: User.all.sample
                    )
 end
+
+1.times do
+  Proposal.create!(title: "Don du sang", 
+                   purpose: "Collecte de sang à la mairie, tous les mois", 
+                   description: "Face à la crise du coronavirus, les hôpitaux ont du mobiliser beaucoup de ressources. Aidons les en donnant notre sang, pour sauver plus de vie et anticiper une nouvelle crise.",
+                   is_online: true,
+                   city: @Nantes,
+                   category: @Santé,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Distribution de gel hydroalcoolique", 
+                   purpose: "Distribution de gel hydroalcoolique gratuite", 
+                   description: "Plusieurs tubes de gel hydroalcoolique ont été donné à ma société. Disposant d'un nombre suffisant, je porpose de faire une distribution à la mairie, gratuite. Les gels seront limités à un habitant pour éviter tout abus.",
+                   is_online: true,
+                   city: @Nantes,
+                   category: @Santé,
+                   user: User.all.sample
+                    )
+end 
 
 1.times do
   Proposal.create!(title: "Indroduction au language des signes en classe de primaire", 
@@ -255,12 +431,11 @@ end
 end
 
 1.times do
-  Proposal.create!(title: "Indroduction au language des signes en classe de primaire", 
-                   purpose: "Donner des cours de language des signes en classe de primaire afin de sensibiliser les plus jeunes", 
-                   description: "Cette démarche consiste à sensibiliser les plus jeunes à l'handicap et de favoriser l'intégration des enfants sourds et muets. Une demie heure y serait consacrée chaque semaine.",
-                   is_online: true,
-                   city: @Lille,
-                   category: @Education,
+  Proposal.create!(title: "Cinéma plein air à Bellcour", 
+                   purpose: "Cinéma plein air à Bellcour, sur la place", 
+                   description: "Que diriez-vous d'implanter des séances de cinéma en pleine air sur la place de Bellecour? Projection sur un grand écran et entrer à un euros",
+                   city: @Lyon,
+                   category: @Société,
                    user: User.all.sample
                    )
 end
@@ -277,12 +452,34 @@ end
 end
 
 1.times do
+  Proposal.create!(title: "Indroduction au language des signes en classe de primaire", 
+                   purpose: "Donner des cours de language des signes en classe de primaire afin de sensibiliser les plus jeunes", 
+                   description: "Cette démarche consiste à sensibiliser les plus jeunes à l'handicap et de favoriser l'intégration des enfants sourds et muets. Une demie heure y serait consacrée chaque semaine.",
+                   is_online: true,
+                   city: @Lille,
+                   category: @Education,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
   Proposal.create!(title: "Tournoi inter-collèges : compétition de basket", 
                    purpose: "Organisation d'un tournoi de basket, opposant les diffèrents collèges de Lille", 
                    description: "Cette initiative est proposée par plusieurs collèges Lillois. Le tournai pourrait avoir lieu dans le gymanse place Sébastopol est accueillir 1000 spectateurs.",
                    is_online: true,
                    city: @Lille,
                    category: @Sport,
+                   user: User.all.sample
+                   )
+end
+
+1.times do
+  Proposal.create!(title: "Dépistage COVID-19", 
+                   purpose: "Dépistage gratuit pour les Lillois au COVID-19", 
+                   description: "Foyer de l'épidémie, controns la maladie en déspistant massivement nos habitants !",
+                   is_online: true,
+                   city: @Lille,
+                   category: @Santé,
                    user: User.all.sample
                    )
 end
