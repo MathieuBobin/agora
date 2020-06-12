@@ -2,6 +2,7 @@ class Proposal < ApplicationRecord
   # Mailer config
   after_create :admin_receipt
   after_create :user_receipt
+  after_update :validates_proposal
   
   # Relations
   belongs_to :city
@@ -14,7 +15,6 @@ class Proposal < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3, maximum: 80}
   validates :purpose, presence: true, length: {minimum: 10, maximum: 500}
   validates :description, presence: true, length: {minimum: 30, maximum: 2000}
-  # validate :must_has_atachment
 
   # Active storage
   has_one_attached :picture
@@ -50,7 +50,9 @@ class Proposal < ApplicationRecord
 
   private
   
-  def must_has_atachment
-    errors.add(:base, "Il faut associer une image à ta proposition !") unless self.picture.attached?
+  def validates_proposal
+    if is_online?
+      ProposalMailer.confirmation_proposal(self).deliver
+    end
   end
 end

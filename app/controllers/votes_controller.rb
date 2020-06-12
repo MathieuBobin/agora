@@ -2,14 +2,18 @@ class VotesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
   
   def create
-    Vote.create!(
+    @city = Proposal.find(permitted_proposal_id_param).city
+    if current_user.city.id != Proposal.find(params[:proposal_id]).city_id
+      flash[:alert] = "Vous ne pouvez pas voter pour les propositions en dehors de votre ville! ;)"
+      redirect_to @city
+    else
+      Vote.create!(
       user_id: current_user.id,
       proposal_id: permitted_proposal_id_param
     )
-    
-    @city = Proposal.find(permitted_proposal_id_param).city
-
+    flash[:success] = "Votre vote a bien été pris en compte! ;)"  
     redirect_back fallback_location: root_path
+    end
   end
 
   def destroy
