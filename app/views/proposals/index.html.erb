@@ -77,7 +77,11 @@
                   <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
-                  <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
+                  <%if Proposal.find(x.id).picture.attached?%>
+                    <%= image_tag Proposal.find(x.id).picture, alt: "Card image", width: 170, style: "height: auto"%>
+                  <%else%>
+                    <p>=Image=</p>
+                  <%end%>
                 </td>
                 <td>
                   <p><%= x.title %></p>
@@ -106,7 +110,11 @@
                     <h4>#<%=@proposal_lyon.index(x)+1%></h4>
                   </td>
                   <td>
-                    <img src = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="height: 100px; width: 100px;">
+                    <%if Proposal.find(x.id).picture.attached?%>
+                      <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
+                    <%else%>
+                      <p>=Image=</p>
+                    <%end%>                  
                   </td>
                   <td>
                     <p><%= x.title %></p>
@@ -126,7 +134,23 @@
     
     <div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1547104984-924116a9c464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1217&q=80); background-size: 100%;">
       <div class="container">
-        <h3 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'ou vous venez !</b></h3>
-        <p><a class="btn btn-primary btn-lg" href="mailto: zeagoraproject@gmail.com" role="button">Envoyer un mail</a></p>
+        <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter!</b></h3>
+        <div class="dropdown">
+          <button href="#" class="btn dropdown-toggle btn-primary btn-lg"" data-toggle="dropdown" aria-expanded="true" >
+              <i class="material-icons">home</i>  Les villes disponibles
+              <b class="caret"></b>
+          </button>
+          <ul class="dropdown-menu">
+          <%City.all.each do |x|%>
+            <li><a href="cities/<%=x.id%>"><%=x.name%></a></li>
+          <%end%>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <div class = "container text-center">
+      <h4 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'ou vous venez !</b></h4>
+      <p><a class="btn btn-primary " href="mailto: zeagoraproject@gmail.com" role="button"><i class="material-icons">mail</i>   Nous contacter</a></p>
+    </div>
+    <br>
