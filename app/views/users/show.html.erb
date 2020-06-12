@@ -9,7 +9,6 @@
           <%= image_tag @user.avatar, alt: 'Avatar' , style: "width: 100%;height: auto;"%>
         <%else%>
           <p>Aucun avatar</p>
-          <!--<img class="img" src="https://cutewallpaper.org/21/iron-man-profile-picture/Iron-Man-Forum-Avatar-Profile-Photo-ID-131347-Avatar-.jpg" />-->
         <%end%>
       </div>
       <div class="card-content">
@@ -45,7 +44,11 @@
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
                     <%if proposal.is_online%>
-                      <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+                      <td class="text-right"> 
+                      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=proposal.id%>" role="button">
+                        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                      </a>
+                      </td>
                     <%else%>
                       <td class="text-right"><p></h2>En cours de validation <i class="material-icons" style="font-size: 13px">hourglass_empty</i></p>
                     <%end%>
