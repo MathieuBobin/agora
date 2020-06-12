@@ -1,17 +1,17 @@
 <br>
 <br>
-
 <div class="container" style="width: 35em;">
   <div class="row justify-content-center">
     <div class="card card-profile">
-      <div class="card-avatar">
-        <%if @user.avatar.attached?%>
-          <%= image_tag @user.avatar, alt: 'Avatar' %>
-        <%else%>
-          <p>Aucun avatar</p>
+      <!--A activer quand on pourra charger un photo de profil>
+      <!--<div class="card-avatar">-->
+        <%#if @user.avatar.attached?%>
+          <%#= image_tag @user.avatar, alt: 'Avatar' %>
+        <%#else%>
+          <!--<p>Aucun avatar</p>-->
           <!--<img class="img" src="https://cutewallpaper.org/21/iron-man-profile-picture/Iron-Man-Forum-Avatar-Profile-Photo-ID-131347-Avatar-.jpg" />-->
-        <%end%>
-      </div>
+        <%#end%>
+      <!--</div>-->
       <div class="card-content">
         <h6 class="category text-gray">Mes informations</h6>
         <br>
@@ -25,9 +25,12 @@
           <%= link_to "Paramètres", edit_user_registration_path, class: "btn btn-primary" %> 
           </div>
         </div>
-      </div> 
-    </div>
+      </div>
+    </div> 
   </div>
+</div>
+
+<br>
   
   <br>
   
@@ -45,7 +48,11 @@
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
                     <%if proposal.is_online%>
-                      <td class="text-right"> <button class="btn btn-primary btn-xs">Voir la proposition</button>
+                      <td class="text-right"> 
+                      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=proposal.id%>" role="button">
+                        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                      </a>
+                      </td>
                     <%else%>
                       <td class="text-right"><p></h2>En cours de validation <i class="material-icons" style="font-size: 13px">hourglass_empty</i></p>
                     <%end%>
@@ -61,8 +68,4 @@
       </div>
     </div>
   </div>
-  
-  
-  
-  
-  
+</div>

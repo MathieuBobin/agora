@@ -1,16 +1,16 @@
-
+<br>
 <div class="col-md-12">
   <div class="card">
     <%= form_for @proposal do |f| %>
-      <div class="card-header card-header-text" data-background-color="default">
-        <h4 class="card-title">Propose une initiative dans ta ville:</h4>
+      <div class="card-header card-header-text" data-background-color="blue">
+        <h4 class="card-title">Proposez une initiative à <%= @city %></h4>
       </div>
       <div class="card-content">
         <div class="row">
           <label class="col-sm-1 label-on-left"></label>
           <div class="col-sm-9">
             <div class="form-group label-floating">
-              <%= f.label :title, "Titre *" %>   
+              <%= f.label :title, "Donnez un titre à votre proposition" %>   
               <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "form-control" %>
             </div>
           </div>
@@ -19,8 +19,8 @@
           <label class="col-sm-1 label-on-left"></label>
           <div class="col-sm-9">
             <div class="form-group label-floating">
-              <%= f.label :purpose, "Précisions *" %>  
-              <%= f.text_field :purpose, autofocus: true, autocomplete: "purpose", class: "form-control" %>
+              <%= f.label :purpose, "Pourquoi souhaitez vous lancer cette initiative? A quel problème souhaitez répondre?" %>  
+              <%= f.text_area :purpose, rows: 2, autofocus: true, autocomplete: "purpose", class: "form-control" %>
             </div>
           </div>
         </div>
@@ -28,16 +28,7 @@
           <label class="col-sm-1 label-on-left"></label>
           <div class="col-sm-9">
             <div class="form-group label-floating">
-              <%= f.label :city_id, "Ville *" %>
-              <%= collection_select(:post, :city_id, City.all, :id, :name, prompt: true) %> 
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <label class="col-sm-1 label-on-left"></label>
-          <div class="col-sm-9">
-            <div class="form-group label-floating">
-            <%= f.label :category_id, "Categorie *" %>
+            <%= f.label :category_id, "Choisissez votre categorie: " %>
               <%= collection_select(:post, :category_id, Category.all, :id, :name, prompt: true) %> 
             </div>
           </div>
@@ -46,23 +37,20 @@
           <label class="col-sm-1 label-on-left"></label>
           <div class="col-sm-9">
             <div class="form-group label-floating">
-              <%= f.label :description, "Détails*" %>  
-              <%= f.text_field :description, autofocus: true, autocomplete: "description", class: "form-control" %>
+              <%= f.label :description, " Expliquez votre proposition! N'hésitez pas à donner des détails ;)" %>  
+              <%= f.text_area :description, rows: 5, autofocus: true, autocomplete: "description", class: "form-control" %>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <label class="col-sm-2 label-on-left">Photo</label>
-          <div class="col-sm-9">
-            <div class="form-group label-floating">
-             
-            </div>
-          </div>
+            <%= f.file_field :picture, class: "btn btn-sm btn-info" %>
         </div>
         <div class="card-footer text-center">
-          <button type="submit" class="btn btn-default btn-fill">Créer Proposition</button>
+          <button type="submit" class="btn btn-primary btn-fill">Créer Proposition</button>
         </div>
       </div>
+      <div class="card-footer text-center">
+        <button type="submit" class="btn btn-default btn-fill">Créer Proposition</button>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

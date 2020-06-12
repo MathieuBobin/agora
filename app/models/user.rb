@@ -30,6 +30,10 @@ class User < ApplicationRecord
     self.votes.count
   end
 
+  def is_admin?
+    self.email == 'zeagoraproject@gmail.com'
+  end
+
   #Mailer
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
