@@ -39,3 +39,8 @@ class Proposal < ApplicationRecord
     self.votes.find_by(user: user)
   end
 end
+
+def validates_proposal
+  ProposalMailer.info_admin(self).deliver_now
+end
+end
