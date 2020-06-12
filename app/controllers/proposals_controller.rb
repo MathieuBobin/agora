@@ -27,7 +27,6 @@ class ProposalsController < ApplicationController
       user: @user
     )
     if @proposal.save 
-      flash[:success] = "Proposition crée ;)"
     else
       render :new 
       flash[:alert] = @proposal.errors.full_messages.to_sentence
