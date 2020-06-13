@@ -18,8 +18,8 @@
         <p class="text"><%= @user.city.name %></p>
         <br>
         <div class="p-1 mb-1">
-          <%= link_to "Mon profil" , edit_user_path(@user), class: "btn btn-primary" %>
-          <%= link_to "Paramètres", edit_user_registration_path, class: "btn btn-primary" %> 
+          <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , edit_user_path(@user), class: "btn btn-primary" %>
+          <%= link_to 'Paramètres &nbsp <i class="material-icons" style="font-size: 19px">settings</i>'.html_safe, edit_user_registration_path, class: "btn btn-primary" %> 
         </div>
       </div>
     </div> 
