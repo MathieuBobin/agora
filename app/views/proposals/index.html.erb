@@ -17,16 +17,16 @@
   <div class="row">
     <div class="col-md-7">
       <h2 class="featurette-heading">Consultez et votez pour les propositions de votre ville <i class="material-icons" style="font-size: 35px">how_to_vote</i>
-      <p class="lead">Chaque jour des citoyens des votre ville postent des propositions pour améliorer le quotidien de la ville. Consultez et débattez des propositions ensemble!</p>
+      <p class="lead">Chaque jour des citoyens des votre ville postent des propositions pour améliorer le quotidien de la ville. Consultez et débattez des propositions ensemble !</p>
     </div>
     <div class="col-md-5">
-      <img class="my-img" src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" width="577,5" height="375" >
+      <img class="my-img" src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" >
     </div>
   </div>
   <br><br>
   <div class="row">
     <div class="col-md-5">
-      <img class="my-img" src="https://images.unsplash.com/photo-1550418290-a8d86ad674a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" width="577,5" height="375" >
+      <img class="my-img" src="https://images.unsplash.com/photo-1550418290-a8d86ad674a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" >
     </div>
     <div class="col-md-7">
       <h2 class="featurette-heading">Proposez des idées sur des thèmes qui vous inspirent <i class="material-icons" style="font-size: 35px">wb_incandescent</i></h2>
@@ -36,11 +36,11 @@
   <br><br>
   <div class="row">
     <div class="col-md-7">
-      <h2 class="featurette-heading">Sélectionnez les meilleures idées ensemble et agissez !<i class="material-icons" style="font-size: 35px">people</i></h2>
+      <h2 class="featurette-heading">Sélectionnez les meilleures idées ensemble et agissez ! <i class="material-icons" style="font-size: 35px">people</i></h2>
       <p class="lead">Sur Agora, le système de vote permet de faire ressortir les meilleures propositions. Ensemble, unissez-vous pour faire avancer les choses!</p>
     </div>
     <div class="col-md-5">
-      <img class="my-img" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" width="577,5" height="375" >
+      <img class="my-img" src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" >
     </div>
   </div>
 </div>
@@ -66,22 +66,22 @@
       <div class="card-content">
         <table class="table table-responsive table-full-width">
           <tbody>
-            <%@proposal_paris.each do |x|%>
+            <% @proposal_paris.each do |x|%>
               <tr>
                 <td></td>
                 <td>
                   <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
-                  <%if Proposal.find(x.id).picture.attached?%>
-                  <%= image_tag Proposal.find(x.id).picture, alt: "Card image", width: 170, style: "height: auto"%>
+                  <%if x.picture.attached?%>
+                    <%= image_tag x.picture, alt: "Card image", class: 'my-img' %>
                   <%else%>
-                  <p>=Image=</p>
+                    <p>=Image=</p>
                   <%end%>
                 </td>
                 <td>
                   <p><%= x.title %></p>
-                  <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                  <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%= x.id %>" role="button">
                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                   </a>
                   <span class="badge badge-primary"><%= x.category.name %></span>
@@ -108,7 +108,7 @@
               </td>
               <td>
                 <%if x.picture.attached?%>
-                  <%= image_tag x.picture, alt: "Card image",  width: 170, style: "height: auto"%>
+                  <%= image_tag x.picture, alt: "Card image", class: 'my-img' %>
                 <%else%>
                   <p>=Image=</p>
                 <%end%>                  
@@ -131,9 +131,9 @@
     
 <div class="jumbotron my-jumbotron" style="background-image: url(https://images.unsplash.com/photo-1547104984-924116a9c464?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1217&q=80);">
   <div class="container">
-    <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter!</b></h3>
+    <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter !</b></h3>
     <div class="dropdown">
-      <button href="#" class="btn dropdown-toggle btn-primary btn-lg"" data-toggle="dropdown" aria-expanded="true" >
+      <button href="#" class="btn dropdown-toggle btn-primary btn-lg" data-toggle="dropdown" aria-expanded="true" >
         <i class="material-icons">home</i>  Les villes disponibles
         <b class="caret"></b>
       </button>
