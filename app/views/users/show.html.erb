@@ -15,7 +15,7 @@
         <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h4>
         <br>
         <p class="text"><%= @user.email %></p>
-        <p class="text"><%= @user.city.name %></p>
+        <%= link_to "#{@user.city.name}", city_path(@user.city), class: 'btn btn-primary btn-round btn-xs' %>
         <br>
         <div class="p-1 mb-1">
           <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , edit_user_path(@user), class: "btn btn-primary" %>
