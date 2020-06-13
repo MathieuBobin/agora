@@ -15,6 +15,7 @@ class Proposal < ApplicationRecord
   validates :title, presence: true, length: {minimum: 3, maximum: 65}
   validates :purpose, presence: true, length: {minimum: 10, maximum: 500}
   validates :description, presence: true, length: {minimum: 30, maximum: 2000}
+  # validate :must_has_attachment
 
   # Active storage
   has_one_attached :picture
@@ -58,5 +59,9 @@ class Proposal < ApplicationRecord
     if is_online?
       ProposalMailer.confirmation_proposal(self).deliver
     end
+  end
+
+  def must_has_attachment
+    errors.add(:base, "Il faut associer une image à ta proposition !") unless self.picture.attached?
   end
 end
