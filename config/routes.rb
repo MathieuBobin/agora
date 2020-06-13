@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'proposals#index'
-  get '/contact', to: 'users#contact' 
+  get '/contact', to: 'additional_views#contact'
 
   devise_for :users
   resources :users
