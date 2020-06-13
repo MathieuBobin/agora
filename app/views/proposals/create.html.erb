@@ -2,17 +2,17 @@
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <div class="card">
-      <%if @proposal.picture.attached?%>
+      <% if @proposal.picture.attached? %>
         <div class="card-content text-center">
           <%= image_tag(@proposal.picture, style: "width:100%") %>
           <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
             <div class="text-center">
-              <%= file_field_tag :picture , class: "btn btn-xs btn-info text-center"%>
+              <%= file_field_tag :picture, class: "btn btn-xs btn-info text-center"%>
             </div>
             <div class="text-center">
               <%= submit_tag "Changer l'image", class: "btn btn-sm btn-primary" %>
             </div>
-            <% end %>
+          <% end %>
           <%= link_to "Voir les propositions de ma ville", city_path(current_user.city) ,class: "btn btn-sm btn-primary"%>
         </div>
       <%else%>
