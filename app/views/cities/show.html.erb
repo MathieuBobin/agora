@@ -25,7 +25,7 @@
                 </td>
                 <td>
                   <%if x.picture.attached?%>
-                    <%= image_tag x.picture, alt: "Card image", class: 'my-img' %>
+                    <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
                   <%else%>
                     <p>=Image=</p>
                   <%end%>
