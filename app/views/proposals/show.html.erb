@@ -3,13 +3,11 @@
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
       <div class="card card-product">
-        <div class="card-image" data-header-animation="true">
-          <%if @proposal.picture.attached?%>
-          <%= image_tag @proposal.picture, alt: 'Picture', class: 'img' %>
-          <%else%>
-          <p></p>
-          <%end%>
-        </div>
+        <%if @proposal.picture.attached?%>
+          <div class="card-image" data-header-animation="true">
+            <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
+          </div>
+        <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
             <small class='btn btn-secondry btn-round btn-xs'><%= @proposal.category.name %></small> -
@@ -45,20 +43,17 @@
             <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
-                <small class="text-muted">Besoin d'éditer la demande ? Ecrivez au support Agora!</small><br>
+                <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
                 <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
               <% end %>
             </div>
           </div>
           <div class="footer">
-            <div class="card-avatar">
-                <% if @proposal.user.avatar.attached? %>
-                  <%= image_tag @proposal.user.avatar, alt: 'Picture', class:'img' %>
-                  <br>
-                <% else %>
-                  <p></p>
-                <% end %>
-            </div>
+            <% if @proposal.user.avatar.attached? %>
+              <div class="card-avatar">
+                <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -66,12 +61,12 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-              <h5 class="text-muted">Votez pour cette proposition</h5>
-              <%if @proposal.vote_of(current_user)%>
-                <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
-              <%else%>
-                <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-secondary", method: :post %>
-              <% end %>
+            <h5 class="text-muted">Votez pour cette proposition</h5>
+            <%if @proposal.vote_of(current_user)%>
+            <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+            <%else%>
+            <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-secondary", method: :post %>
+            <% end %>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
           </div>
@@ -86,12 +81,12 @@
       </div>
       <div class="col">
         <% if user_signed_in? %>
-          <% if is_current_user_admin? %>
-            <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-              <%= file_field_tag :picture %>
-              <%= submit_tag "Mettre à jour" %>
-            <% end %>
-          <% end %>
+        <% if is_current_user_admin? %>
+        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+        <%= file_field_tag :picture %>
+        <%= submit_tag "Mettre à jour" %>
+        <% end %>
+        <% end %>
         <% end %>
       </div>
     </div>
