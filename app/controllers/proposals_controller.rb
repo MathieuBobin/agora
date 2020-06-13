@@ -21,7 +21,6 @@ class ProposalsController < ApplicationController
       title: params[:proposal][:title],
       purpose: params[:proposal][:purpose], 
       description: params[:proposal][:description], 
-      is_online: false,
       city_id: @cityid,
       category_id: params[:post][:category_id],
       user: @user

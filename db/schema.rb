@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_163507) do
+ActiveRecord::Schema.define(version: 2020_06_13_113934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_163507) do
     t.string "title"
     t.text "purpose"
     t.text "description"
-    t.boolean "is_online"
+    t.boolean "is_online", default: false
     t.bigint "city_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
