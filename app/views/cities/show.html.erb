@@ -40,7 +40,7 @@
                 <%if x.vote_of(current_user)%>
                   <td>
                     <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
-                    <h5> A voté! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                    <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
                   </td>
                 <%else%>
                   <td> 
