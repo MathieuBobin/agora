@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  before_action :authenticate_user!, only: :new
+  
   def index
     @paris = City.find(1)
     @proposal_paris= @paris.proposals.where(is_online: true).sort { |p1, p2| p2.votes_count <=> p1.votes_count }.first(5)
