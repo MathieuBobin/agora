@@ -2,7 +2,7 @@ class Proposal < ApplicationRecord
   # Mailer config
   after_create :admin_receipt
   after_create :user_receipt
-  after_update :validates_proposal
+  after_update :validate_proposal
   
   # Relations
   belongs_to :city
@@ -48,9 +48,13 @@ class Proposal < ApplicationRecord
     self.category.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
   end
 
+  def on_line
+    self.update(is_online: true)
+  end
+
   private
   
-  def validates_proposal
+  def validate_proposal
     if is_online?
       ProposalMailer.confirmation_proposal(self).deliver
     end

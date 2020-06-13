@@ -40,7 +40,7 @@
                 <tbody>
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
-                    <%if proposal.is_online%>
+                    <% if proposal.is_online %>
                       <td class="text-right"> 
                       <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(proposal) %>" role="button">
                         <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition

@@ -15,16 +15,7 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: current_user.id)
-    @cityid = User.find_by(id: current_user.id).city_id
-    @proposal = Proposal.new(
-      title: params[:proposal][:title],
-      purpose: params[:proposal][:purpose], 
-      description: params[:proposal][:description], 
-      city_id: @cityid,
-      category_id: params[:post][:category_id],
-      user: @user
-    )
+    @proposal = Proposal.new(permitted_proposal_params)
 
     if @proposal.save
       flash[:success] = 'Ta proposition a bien été enregistrée !'
@@ -41,6 +32,7 @@ class ProposalsController < ApplicationController
   def destroy
     @proposal = Proposal
   end
+  
   private
   
   def permitted_proposal_id_param
@@ -48,6 +40,7 @@ class ProposalsController < ApplicationController
   end
 
   def permitted_proposal_params
-    params.require(:proposal).permit(:title, :purpose, :description, :city_id, :category_id, :picture).merge({:user => current_user})
+    # params.require(:proposal).permit(:title, :purpose, :description, :category_id, :picture).merge({:user => current_user, :city => current_user.city})
+    params.require(:proposal).permit(:title, :purpose, :category_id, :description).merge({:user => current_user, :city => current_user.city})
   end
 end

@@ -30,7 +30,7 @@
           <div class="col-sm-9">
             <div class="form-group label-floating">
             <%= f.label :category_id, "Choisissez votre categorie : " %>
-              <%= collection_select(:post, :category_id, Category.all, :id, :name, prompt: true) %> 
+              <%= collection_select(:proposal, :category_id, Category.all, :id, :name, prompt: true) %> 
             </div>
           </div>
         </div>
