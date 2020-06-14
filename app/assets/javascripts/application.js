@@ -21,4 +21,4 @@
 //= require bootstrap-notify
 //= require material.min
 //= require material-dashboard
-//= require_tree .
+//= require proposals/proposals

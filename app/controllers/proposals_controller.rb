@@ -21,6 +21,7 @@ class ProposalsController < ApplicationController
 
     if @proposal.save
       flash[:success] = 'Ta proposition a bien été enregistrée !'
+      redirect_to proposal_created_path
     else
       flash[:alert] = @proposal.errors.full_messages.to_sentence
       render :new 
