@@ -42,7 +42,6 @@ class ProposalsController < ApplicationController
   end
 
   def permitted_proposal_params
-    # params.require(:proposal).permit(:title, :purpose, :category_id, :description, :picture).merge({:user => current_user, :city => current_user.city})
-    params.require(:proposal).permit(:title, :purpose, :category_id, :description).merge({:user => current_user, :city => current_user.city})
+    params.require(:proposal).permit(:title, :purpose, :category_id, :description, :picture).merge({:user => current_user, :city => current_user.city})
   end
 end
