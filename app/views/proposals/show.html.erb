@@ -61,22 +61,23 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-            <h5 class="text-muted">Votez pour cette proposition</h5>
-            <%if @proposal.vote_of(current_user)%>
-            <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
-            <%else%>
-            <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
-            <% end %>
+              <h5 class="text-muted">Votez pour cette proposition</h5>
+              <%if @proposal.vote_of(current_user)%>
+                <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+              <%else%>
+                <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
+              <% end %>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
           </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">arrow_circle_up</i> classement général : <%= @proposal.general_classification %> <br>
-              <i class="material-icons">arrow_circle_up</i>
-              <i class="material-icons">category</i> Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %>
+          <% unless @proposal.votes_count == 0 %>
+            <div class="card-footer">
+              <div class="price">
+                <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement général : <%= @proposal.general_classification %></span></small>
+                <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %></span></small>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
       <div class="col">
