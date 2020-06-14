@@ -7,7 +7,8 @@ class PicturesController < ApplicationController
     else
       flash[:alert] = 'Il faut charger une image !'
     end
-    render 'proposals/create'
+
+    redirect_back fallback_location: proposal_path(@proposal)
   end
 
   private

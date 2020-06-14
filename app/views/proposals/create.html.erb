@@ -2,32 +2,11 @@
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <div class="card">
-      <% if @proposal.picture.attached? %>
-        <div class="card-content text-center">
-          <%= image_tag(@proposal.picture, style: "width:100%") %>
-          <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
-            <div class="text-center">
-              <%= file_field_tag :picture, class: "btn btn-xs btn-info text-center"%>
-            </div>
-            <div class="text-center">
-              <%= submit_tag "Changer l'image", class: "btn btn-sm btn-primary" %>
-            </div>
-          <% end %>
-          <%= link_to "Voir les propositions de ma ville", city_path(current_user.city) ,class: "btn btn-sm btn-primary"%>
-        </div>
-      <%else%>
-        <div class="card-content text-center">
-          <h6 class='text-muted'>Merci pour votre proposition, elle a bien été envoyée à notre équipe pour validation. Vous recevrez un mail dès que celle-ci sera mise en ligne. Rattachez lui une belle image ici !</h6>
-          <%= form_tag  proposal_pictures_path(@proposal), multipart: true do %> 
-            <div class="text-center">
-              <%= file_field_tag :picture , class: "btn btn-sm btn-info text-center"%>
-            </div>
-            <div class="text-center">
-              <%= submit_tag "Rattachez l'image", class: "btn btn-sm btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-      <%end%>
+      <div class="card-content text-center">
+        <h6 class='text-muted'>Merci pour votre proposition, elle a bien été envoyée à notre équipe pour validation. Vous recevrez un mail dès que celle-ci sera mise en ligne. Rattachez lui une belle image ici !</h6>
+        <%= link_to "Voir les propositions de ma ville", city_path(current_user.city) ,class: "btn  btn-md btn-primary"%>
+      </div>
     </div>
   </div>
+  <div class="col-md-2"></div>
 </div>
