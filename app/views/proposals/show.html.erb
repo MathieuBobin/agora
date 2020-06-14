@@ -10,7 +10,7 @@
         <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
-            <small class='btn btn-secondry btn-round btn-xs'><%= @proposal.category.name %></small> -
+            <small class='btn btn-success btn-round btn-xs'><%= @proposal.category.name %></small> -
             <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
           </h4>
         </div>
@@ -65,7 +65,7 @@
             <%if @proposal.vote_of(current_user)%>
             <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
             <%else%>
-            <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-secondary", method: :post %>
+            <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
             <% end %>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
