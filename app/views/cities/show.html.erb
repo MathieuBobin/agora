@@ -5,6 +5,26 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="form-row">
+    <div class="form-group col-xs col-sm-6">
+      <label for="category">Catégorie :</label>
+      <select multiple class="form-control" name="" id="">
+        <option value="1">Education</option>
+        <option value="2">Santé</option>
+        <option value="3">Mobilité</option>
+      </select>
+    </div>
+    <div class="form-group col-xs col-sm-6">
+      <label for="autre">Plus de filtre :</label>
+      <select class="form-control" name="" id="">
+        <option value="1">Plus récente</option>
+        <option value="2">Plus votée</option>
+        <option value="3">Plus commentée</option>
+      </select>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <% if @proposals.count == 0 %>
