@@ -32,3 +32,11 @@ background-color: #FFFFFF !important;
   justify-content: start;
   align-items: center;
 }
+
+.flex-column
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}

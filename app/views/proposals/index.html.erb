@@ -71,12 +71,12 @@
                     <p>=Image=</p>
                   <%end%>
                 </td>
-                <td>
+                <td class="flex-column">
                   <p><%= x.title %></p>
+                  <span class="badge badge-primary"><%= x.category.name %></span>
                   <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                   </a>
-                  <span class="badge badge-primary"><%= x.category.name %></span>
                 </td>
                 <td><td>
               </tr>
@@ -105,12 +105,12 @@
                   <p>=Image=</p>
                 <%end%>                  
               </td>
-              <td>
+              <td class="flex-column">
                 <p><%= x.title %></p>
+                <span class="badge badge-primary"><%= x.category.name %></span>
                 <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
                   <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                 </a>
-                <span class="badge badge-primary"><%= x.category.name %></span>
               </td>
             </tr>
             <%end%>
