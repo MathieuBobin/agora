@@ -30,9 +30,22 @@
   </div>
 </div>
 
+<% @numnow = 0%>
+<% @numthen = 0%>
+<% @proposals.each do |x| %>
+  <%if (x.differencebetween == false)%>
+    <% @numnow += 1%>
+  <%else%>
+    <% @numthen += 1%>
+  <%end%>
+<%end%>
+
 <div class="container">
   <% if @proposals.count == 0 %>
-    <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment. Si tu veux le faire, clique sur le bouton : </h3>
+    <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment.  Change ça en cliquant sur le bouton : </h3>
+    <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+  <%elsif @numnow == 0 %>
+    <h3> Aucune proposition en cours à <%= @city.name %>. Change ça en cliquant sur le bouton : </h3>
     <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
   <%else%>
     <h3>Les propositions en cours : votez pour vos propositions préférées !</h3>
@@ -43,6 +56,66 @@
             <table class="table table-responsive table-full-width">
               <tbody>
                 <% @proposals.each do |x| %>
+                <%if (x.differencebetween == false)%>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <h4>#<%= @proposals.index(x)+1 %></h4>
+                    </td>
+                    <td>
+                      <%if x.picture.attached?%>
+                        <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                      <%else%>
+                        <p>=Image=</p>
+                      <%end%>
+                    </td>
+                    <td>
+                      <h4><%=x.title=%></h4>
+                      <% t = (Time.now- (x.created_at+(60*60*24*30)))%>
+                      <h5> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</h5>
+                      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                      </a>
+                      <span class="badge badge-primary"><%= x.category.name %></span>
+                    </td>
+                    <%if x.vote_of(current_user)%>
+                      <td>
+                        <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
+                        <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                      </td>
+                    <%else%>
+                      <td> 
+                        <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-secondary btn-lg", method: :post%>
+                        <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
+                      </td>
+                    <%end%>
+                    <td><td>
+                  </tr>
+                  <%else%>
+                  <%end%>
+                <%end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>
+
+<div class="container">
+  <% if @numthen == 0 %>
+  <h3> Pas de proposition terminé à <%= @city.name %> pour le moment. </h3>
+  <%else%>
+    <h3>Les propositions passées :</h3>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-content">
+            <table class="table table-responsive table-full-width">
+              <tbody>
+                <% @proposals.each do |x| %>
+                  <%if (x.differencebetween == true)%>
                   <tr>
                     <td></td>
                     <td>
@@ -62,19 +135,10 @@
                       </a>
                       <span class="badge badge-primary"><%= x.category.name %></span>
                     </td>
-                    <%if x.vote_of(current_user)%>
-                      <td>
-                        <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
-                        <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
-                      </td>
-                    <%else%>
-                      <td> 
-                        <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-secondary btn-lg", method: :post%>
-                        <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
-                      </td>
-                    <%end%>
                     <td><td>
                   </tr>
+                  <%else%>
+                  <%end%>
                 <%end%>
               </tbody>
             </table>
