@@ -1,5 +1,6 @@
 <div class="container">
-  <br><br><br><br>
+  <br>
+  <h3>La proposition</h3>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
       <div class="card card-product">
@@ -10,17 +11,17 @@
         <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
-            <small class='btn btn-success btn-round btn-xs'><%= @proposal.category.name %></small> -
             <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
+            <span class="badge badge-primary"><%= @proposal.category.name %></span>
           </h4>
         </div>
         <div class="card-content">
           <ul class="nav nav-pills nav-pills-warnin">
             <li class="active primary">
-              <a href="#pill1" data-toggle="tab">A quel problème souhaite répondre <%= @proposal.user.first_name %> ?</a>
+              <a href="#pill1" data-toggle="tab">Problème adressé</a>
             </li>
             <li>
-              <a href="#pill2" data-toggle="tab">Concrètement que souhaite t-il mettre en place ?</a>
+              <a href="#pill2" data-toggle="tab">Solution proposée</a>
             </li>
           </ul>
           <div class="tab-content">
@@ -92,4 +93,38 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class = container>
+<br>
+<h3>Espace débat</h3><br>
+  <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+    <%= label_tag "Que pensez-vous de cette proposition?" %>
+    <%= text_field_tag 'title',"", {class: 'form-control'}%>
+    <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
+  <% end %>
+<br>
+<table class="table">
+    <tbody>
+      <%@comments.each do |x|%>
+        <tr>
+            <td>
+              <b>
+              <% if @proposal.user.avatar.attached? %>
+                <div class="avatar">
+                  <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
+                </div>
+              <%else%>
+                <div class="avatar">
+                  <i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+                </div>
+              <%end%>
+              </b><br>
+              <p><%=x.content%></p>
+              <p class = primary> Message posté le <%=x.created_at.to_formatted_s(:short)%></p>
+            </td>
+        </tr>
+      <%end%>
+    </tbody>
+</table>
 </div>
