@@ -11,6 +11,58 @@ background-color: #FFFFFF !important;
   word-wrap: break-word;
 }
 
+.idea-icon {
+  position: relative;
+  top: 6px;
+  left: 1px;
+}
+
+.vote-icon {
+  position: relative;
+  top: 3px;
+  left: 1px;
+}
+
+.group-icon {
+  position: relative;
+  top: 7px;
+  left: 1px;
+}
+
+.text-home {
+  position: relative;
+  top: 25px;
+}
+
+.img-top {
+  position: relative;
+  top: 35px;
+}
+
+.img-center {
+  position: relative;
+  bottom: 30px;
+}
+
+.img-group {
+  position: relative;
+  bottom: 20px;
+}
+
+.img-bottom {
+  position: relative;
+  bottom: 35px;
+}
+
+.city {
+  position: relative;
+  top: 25px;
+}
+
+.box:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
 .my-jumbotron
 {
   background-position: center;
@@ -39,4 +91,9 @@ background-color: #FFFFFF !important;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+}
+
+.badge
+{
+  background-color: #5bc0de;
 }

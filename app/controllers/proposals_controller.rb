@@ -30,6 +30,7 @@ class ProposalsController < ApplicationController
   
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
+    @comments = Comment.where(proposal_id: params[:id])
   end
   
   def destroy
