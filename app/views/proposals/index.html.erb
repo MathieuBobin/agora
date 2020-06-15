@@ -233,37 +233,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-  </div>
-  <div class="col-md-6">
-    <h3 class="text-center"><b>Lyon</b></h3>
-    <div class="card">
-      <div class="card-content">
-        <table class="table table-responsive table-full-width">
-          <tbody>
-            <%@proposal_lyon.each do |x|%>
-            <tr>
-              <td></td>
-              <td>
-                <h4>#<%=@proposal_lyon.index(x)+1%></h4>
-              </td>
-              <td>
-                <%if x.picture.attached?%>
-                  <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
-                <%else%>
-                  <p>=Image=</p>
-                <%end%>                  
-              </td>
-              <td class="flex-column">
-                <p><%= x.title %></p>
-                   <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
-                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                     </a>
-                     <span class="badge badge-primary"><%= x.category.name %></span>
-                   </p>
-              </td>
-            </tr>
-=======
 
 <br>
 <br>    
@@ -280,7 +249,6 @@
           <ul class="dropdown-menu">
             <%City.all.each do |x|%>
               <li><a href="cities/<%=x.id%>"><%=x.name%></a></li>
->>>>>>> master
             <%end%>
           </ul>
       </div>
