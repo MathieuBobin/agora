@@ -104,7 +104,9 @@
     <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
   <% end %>
 <br>
-<h4><b>Espace débat</b></h4><br>
+<%if @comments.count != 0%>
+  <h4><b>Les avis des citoyens </b></h4><br>
+<%end%>
 <table class="table">
     <tbody>
       <%@comments.each do |x|%>
@@ -124,8 +126,10 @@
               <p><%=x.content%></p>
               <p class = primary> 
               Message posté le <%=x.created_at.to_formatted_s(:short)%>
-              <%if current_user.id == x.user.id%>
-                <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+              <%if user_signed_in?%>
+                <%if current_user.id == x.user.id%>
+                  <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+                <%end%>
               <%end%>
               </p>
             </td>
