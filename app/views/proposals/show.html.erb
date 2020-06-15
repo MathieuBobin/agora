@@ -62,12 +62,16 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-              <h5 class="text-muted">Votez pour cette proposition</h5>
-              <%if @proposal.vote_of(current_user)%>
-                <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+              <%if (@proposal.differencebetween == false)%>
+                <h5 class="text-muted">Votez pour cette proposition</h5>
+                <%if @proposal.vote_of(current_user)%>
+                  <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+                <%else%>
+                  <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
+                <% end %>
               <%else%>
-                <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
-              <% end %>
+                <h5> Vote terminé</h5>
+              <%end%>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
           </div>
@@ -104,7 +108,9 @@
     <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
   <% end %>
 <br>
-<h4><b>Espace débat</b></h4><br>
+<%if @comments.count != 0%>
+  <h4><b>Les avis des citoyens </b></h4><br>
+<%end%>
 <table class="table">
     <tbody>
       <%@comments.each do |x|%>
@@ -124,8 +130,10 @@
               <p><%=x.content%></p>
               <p class = primary> 
               Message posté le <%=x.created_at.to_formatted_s(:short)%>
-              <%if current_user.id == x.user.id%>
-                <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+              <%if user_signed_in?%>
+                <%if current_user.id == x.user.id%>
+                  <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+                <%end%>
               <%end%>
               </p>
             </td>
