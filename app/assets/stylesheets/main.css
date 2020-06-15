@@ -40,3 +40,8 @@ background-color: #FFFFFF !important;
   justify-content: center;
   align-items: start;
 }
+
+.badge
+{
+  background-color: #5bc0de;
+}
