@@ -15,22 +15,6 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    puts '$'*110
-    p params
-    puts '$'*110
-    p permitted_proposal_params
-    puts '$'*110
-
-    # @proposal = Proposal.new(
-    #   title: params[:proposal][:title],
-    #   purpose: params[:proposal][:purpose], 
-    #   description: params[:proposal][:description], 
-    #   is_online: false,
-    #   city_id: @cityid,
-    #   category_id: params[:post][:category_id],
-    #   user: @user
-    # )
-
     @proposal = Proposal.new(permitted_proposal_params)
 
     if @proposal.save
