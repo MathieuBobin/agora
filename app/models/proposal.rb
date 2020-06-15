@@ -2,7 +2,7 @@ class Proposal < ApplicationRecord
   # Mailer config
   after_create :admin_receipt
   after_create :user_receipt
-  after_update :validates_proposal
+  after_update :validate_proposal
   
   # Relations
   belongs_to :city
@@ -11,13 +11,14 @@ class Proposal < ApplicationRecord
   has_many :comments
   has_many :votes
 
-  # Validations
-  validates :title, presence: true, length: {minimum: 3, maximum: 65}
-  validates :purpose, presence: true, length: {minimum: 10, maximum: 500}
-  validates :description, presence: true, length: {minimum: 30, maximum: 2000}
-
   # Active storage
   has_one_attached :picture
+
+  # Validations
+  validates :title, presence: true, length: { minimum: 3, maximum: 65 }
+  validates :purpose, presence: true, length: { minimum: 10, maximum: 500 }
+  validates :description, presence: true, length: { minimum: 30, maximum: 2000 }
+  validate :must_has_attachment
 
   # Instance methods
   def comments_count
@@ -26,6 +27,22 @@ class Proposal < ApplicationRecord
   
   def votes_count
     self.votes.count
+  end
+  
+  def vote_of(user)
+    self.votes.find_by(user: user)
+  end
+  
+  def general_classification
+    Proposal.all.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
+  end
+  
+  def category_classification
+    self.category.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
+  end
+  
+  def on_line
+    self.update(is_online: true)
   end
 
   def user_receipt
@@ -36,23 +53,15 @@ class Proposal < ApplicationRecord
     ProposalMailer.info_admin(self).deliver_now
   end
 
-  def vote_of(user)
-    self.votes.find_by(user: user)
-  end
-
-  def general_classification
-    Proposal.all.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
-  end
-
-  def category_classification
-    self.category.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }.index(self) + 1
-  end
-
   private
   
-  def validates_proposal
+  def validate_proposal
     if is_online?
       ProposalMailer.confirmation_proposal(self).deliver
     end
+  end
+
+  def must_has_attachment
+    errors.add(:base, "Il faut associer une image à ta proposition !") unless self.picture.attached?
   end
 end

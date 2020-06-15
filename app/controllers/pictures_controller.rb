@@ -1,14 +1,14 @@
 class PicturesController < ApplicationController
   def create
     @proposal = Proposal.find(permitted_proposal_id_param)
-    if !params[:picture].nil?
+    unless params[:picture].nil?
       @proposal.picture.attach(permitted_picture_param)
       flash[:success] = "L'image à bien été rajoutée à ta proposition !"
-      render 'proposals/create'
     else
       flash[:alert] = 'Il faut charger une image !'
-      render 'proposals/create'
     end
+
+    redirect_back fallback_location: proposal_path(@proposal)
   end
 
   private

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'proposals#index'
-  get '/contact', to: 'users#contact' 
+  get '/contact', to: 'additional_views#contact'
+  get '/proposal_created', to: 'additional_views#proposal_created'
 
   devise_for :users
   resources :users
@@ -11,8 +12,10 @@ Rails.application.routes.draw do
   resources :proposals do
     resources :votes, only: [:create, :destroy] 
     resources :pictures, only: :create
+    resources :comments
   end
   resources :proposals 
 
   resources :cities
+  
 end

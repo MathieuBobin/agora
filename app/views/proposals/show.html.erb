@@ -1,28 +1,27 @@
 <div class="container">
-  <br><br><br><br>
+  <br>
+  <h3>La proposition</h3>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
       <div class="card card-product">
-        <div class="card-image" data-header-animation="true">
-          <%if @proposal.picture.attached?%>
-          <%= image_tag @proposal.picture, alt: 'Picture', class: 'img' %>
-          <%else%>
-          <p></p>
-          <%end%>
-        </div>
+        <%if @proposal.picture.attached?%>
+          <div class="card-image" data-header-animation="true">
+            <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
+          </div>
+        <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
-            <small class='btn btn-secondry btn-round btn-xs'><%= @proposal.category.name %></small> -
             <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
+            <span class="badge badge-primary"><%= @proposal.category.name %></span>
           </h4>
         </div>
         <div class="card-content">
           <ul class="nav nav-pills nav-pills-warnin">
             <li class="active primary">
-              <a href="#pill1" data-toggle="tab">A quel problème souhaite répondre <%= @proposal.user.first_name %> ?</a>
+              <a href="#pill1" data-toggle="tab">Problème adressé</a>
             </li>
             <li>
-              <a href="#pill2" data-toggle="tab">Concrètement que souhaite t-il mettre en place ?</a>
+              <a href="#pill2" data-toggle="tab">Solution proposée</a>
             </li>
           </ul>
           <div class="tab-content">
@@ -45,20 +44,17 @@
             <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
-                <small class="text-muted">Besoin d'éditer la demande ? Ecrivez au support Agora!</small><br>
+                <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
                 <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
               <% end %>
             </div>
           </div>
           <div class="footer">
-            <div class="card-avatar">
-                <% if @proposal.user.avatar.attached? %>
-                  <%= image_tag @proposal.user.avatar, alt: 'Picture', class:'img' %>
-                  <br>
-                <% else %>
-                  <p></p>
-                <% end %>
-            </div>
+            <% if @proposal.user.avatar.attached? %>
+              <div class="card-avatar">
+                <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -68,32 +64,67 @@
             <% unless is_current_user_owner_of?(@proposal) %>
               <h5 class="text-muted">Votez pour cette proposition</h5>
               <%if @proposal.vote_of(current_user)%>
-                <%= link_to "A voté", proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+                <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
               <%else%>
-                <%= link_to "Je vote", proposal_votes_path(@proposal.id), :class => "btn btn-secondary", method: :post %>
+                <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
               <% end %>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
           </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">arrow_circle_up</i> classement général : <%= @proposal.general_classification %> <br>
-              <i class="material-icons">arrow_circle_up</i>
-              <i class="material-icons">category</i> Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %>
+          <% unless @proposal.votes_count == 0 %>
+            <div class="card-footer">
+              <div class="price">
+                <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement général : <%= @proposal.general_classification %></span></small>
+                <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %></span></small>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
       <div class="col">
         <% if user_signed_in? %>
-          <% if is_current_user_admin? %>
-            <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-              <%= file_field_tag :picture %>
-              <%= submit_tag "Mettre à jour" %>
-            <% end %>
-          <% end %>
+        <% if is_current_user_admin? %>
+        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+        <%= file_field_tag :picture %>
+        <%= submit_tag "Mettre à jour" %>
+        <% end %>
+        <% end %>
         <% end %>
       </div>
     </div>
   </div>
+</div>
+
+<div class = container>
+<br>
+<h3>Espace débat</h3><br>
+  <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+    <%= label_tag "Que pensez-vous de cette proposition?" %>
+    <%= text_field_tag 'title',"", {class: 'form-control'}%>
+    <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
+  <% end %>
+<br>
+<table class="table">
+    <tbody>
+      <%@comments.each do |x|%>
+        <tr>
+            <td>
+              <b>
+              <% if @proposal.user.avatar.attached? %>
+                <div class="avatar">
+                  <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
+                </div>
+              <%else%>
+                <div class="avatar">
+                  <i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+                </div>
+              <%end%>
+              </b><br>
+              <p><%=x.content%></p>
+              <p class = primary> Message posté le <%=x.created_at.to_formatted_s(:short)%></p>
+            </td>
+        </tr>
+      <%end%>
+    </tbody>
+</table>
 </div>

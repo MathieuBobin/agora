@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery-3.1.1.min
 //= require jquery-ui.min
 //= require jquery.validate.min
@@ -22,3 +21,5 @@
 //= require bootstrap-notify
 //= require material.min
 //= require material-dashboard
+//= require_tree .
+//= require_tree ./public

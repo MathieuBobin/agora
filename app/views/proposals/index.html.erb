@@ -178,18 +178,18 @@
                   <h4>#<%= @proposal_paris.index(x)+1 %></h4>
                 </td>
                 <td>
-                  <%if Proposal.find(x.id).picture.attached?%>
-                    <%= image_tag Proposal.find(x.id).picture, alt: "Card image", width: 170, style: "height: auto"%>
+                  <%if x.picture.attached?%>
+                    <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
                   <%else%>
                     <p>=Image=</p>
                   <%end%>
                 </td>
-                <td>
+                <td class="flex-column">
                   <p><%= x.title %></p>
-                  <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                  <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                   </a>
-                  <span class="badge badge-primary"><%= x.category.name %></span>
+                   <span class="badge"><%= x.category.name %></span>
                 </td>
                 <td><td>
                 </tr>
@@ -264,4 +264,6 @@
       <h4 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'ou vous venez !</b></h4>
       <p><a class="btn btn-primary " href="mailto: zeagoraproject@gmail.com" role="button"><i class="material-icons">mail</i>   Nous contacter</a></p>
     </div>
-    <br>
+  </div>
+</div>
+    

@@ -1,4 +1,6 @@
 class ProposalsController < ApplicationController
+  before_action :authenticate_user!, only: :new
+  
   def index
     @paris = City.find(1)
     @proposal_paris= @paris.proposals.where(is_online: true).sort { |p1, p2| p2.votes_count <=> p1.votes_count }.first(5)
@@ -15,20 +17,11 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: current_user.id)
-    @cityid = User.find_by(id: current_user.id).city_id
-    @proposal = Proposal.new(
-      title: params[:proposal][:title],
-      purpose: params[:proposal][:purpose], 
-      description: params[:proposal][:description], 
-      is_online: false,
-      city_id: @cityid,
-      category_id: params[:post][:category_id],
-      user: @user
-    )
+    @proposal = Proposal.new(permitted_proposal_params)
 
     if @proposal.save
       flash[:success] = 'Ta proposition a bien été enregistrée !'
+      redirect_to proposal_created_path
     else
       flash[:alert] = @proposal.errors.full_messages.to_sentence
       render :new 
@@ -37,11 +30,13 @@ class ProposalsController < ApplicationController
   
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
+    @comments = Comment.where(proposal_id: params[:id])
   end
   
   def destroy
     @proposal = Proposal
   end
+  
   private
   
   def permitted_proposal_id_param
@@ -49,6 +44,6 @@ class ProposalsController < ApplicationController
   end
 
   def permitted_proposal_params
-    params.require(:proposal).permit(:title, :purpose, :description, :city_id, :category_id, :picture).merge({:user => current_user})
+    params.require(:proposal).permit(:title, :purpose, :category_id, :description, :picture).merge({:user => current_user, :city => current_user.city})
   end
 end

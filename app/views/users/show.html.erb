@@ -7,7 +7,6 @@
         <div class="card-avatar">
           <%= image_tag @user.avatar, alt: 'Avatar' , style: "width: 100%;height: auto;"%>
           </div>
-        <%else%>
         <%end%>
       <div class="card-content">
         <h6 class="category text-gray">Mes informations</h6>
@@ -15,7 +14,7 @@
         <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h4>
         <br>
         <p class="text"><%= @user.email %></p>
-        <p class="text"><%= @user.city.name %></p>
+        <%= link_to "#{@user.city.name}", city_path(@user.city), class: 'btn btn-primary btn-round btn-xs' %>
         <br>
         <div class="p-1 mb-1">
           <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , edit_user_path(@user), class: "btn btn-primary" %>
@@ -40,7 +39,7 @@
                 <tbody>
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
-                    <%if proposal.is_online%>
+                    <% if proposal.is_online %>
                       <td class="text-right"> 
                       <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(proposal) %>" role="button">
                         <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
