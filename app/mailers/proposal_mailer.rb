@@ -30,4 +30,9 @@ class ProposalMailer < ApplicationMailer
     
   end
 
+  def send_email_after_votes(proposal, user)
+    @user = proposal.user
+    @url = 'https://agora-prd.herokuapp.com/'
+    mail(to: @user.email, subject: 'Mise en relation !') 
+  end
 end

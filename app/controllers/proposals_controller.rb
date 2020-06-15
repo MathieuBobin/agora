@@ -37,6 +37,15 @@ class ProposalsController < ApplicationController
     @proposal = Proposal
   end
   
+  def send_email_after_votes
+    @proposal = Proposal.find(permitted_proposal_id_param)
+    @user = User.find_by(id: current_user.id)
+
+    ProposalMailer.send_email_after_votes(@proposal, @user).deliver
+    flash[:notice] = "Mail has been sent."
+    redirect_to root_path
+  end
+
   private
   
   def permitted_proposal_id_param

@@ -53,6 +53,10 @@ class Proposal < ApplicationRecord
     ProposalMailer.info_admin(self).deliver_now
   end
 
+  def mail_vote
+    ProposalMailer.send_email_after_votes(self).deliver_now
+  end
+
   private
   
   def validate_proposal
