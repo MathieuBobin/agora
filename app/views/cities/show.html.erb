@@ -16,7 +16,7 @@
           <div class="row">
             <br><br>
             <div class="col-xs col-sm-6">
-              <select id="category" class="selectpicker" data-style="select-with-transition" multiple title="Choisissez une catégorie" data-size="7">
+              <select id="categories" class="selectpicker" data-style="select-with-transition" multiple title="Choisissez une catégorie" data-size="7">
                 <% @categories.each do |category| %>
                 <option value="<%= category.id %>"><%= category.name %></option>
                 <% end %>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="container">
+<div id=<%= @city.id %> class="my-city container">
   <% if @proposals.count == 0 %>
     <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment. Si tu veux le faire, clique sur le bouton : </h3>
     <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
@@ -95,24 +95,5 @@
 </div>
   
 <script>
-  $(document).ready(() => {
-    $('#validate_btn').click(() => {
-      let url = "/categories";
-      $.ajax({
-        url: url,
-        type: 'GET',
-        dataType: 'html',
-        // data: { category_id: category_id },
-        success: (result) => {
-          console.log(result);
-          // $('#items_container').remove(); 
-          // let items_container = $(result).filter('#items_container')[0];
-          // $('#category_selector').after(items_container);
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-    })
-  })
+  
 </script>
