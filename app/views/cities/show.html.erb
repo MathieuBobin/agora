@@ -41,49 +41,49 @@
 
 <div class="container">
   <% if @proposals.count == 0 %>
-  <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment. Si tu veux le faire, clique sur le bouton : </h3>
-  <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+    <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment. Si tu veux le faire, clique sur le bouton : </h3>
+    <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
   <%else%>
-  <h3>Les propositions en cours : votez pour vos propositions préférées !</h3>
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <div class="card-content">
-          <table class="table table-responsive table-full-width">
-            <tbody>
-              <% @proposals.each do |x| %>
-              <tr>
-                <td></td>
-                <td>
-                  <h4>#<%= @proposals.index(x)+1 %></h4>
-                </td>
-                <td>
-                  <%if x.picture.attached?%>
-                  <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
-                  <%else%>
-                  <p>=Image=</p>
-                  <%end%>
-                </td>
-                <td>
-                  <h4><%=x.title=%></h4>
-                  <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
-                    <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                  </a>
-                  <span class="badge badge-primary"><%= x.category.name %></span>
-                </td>
-                <%if x.vote_of(current_user)%>
-                <td>
-                  <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
-                  <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
-                </td>
-                <%else%>
-                <td> 
-                  <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-success btn-lg", method: :post%>
-                  <h5> Voter <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
-                </td>
-                <%end%>
-                <td><td>
-                </tr>
+    <h3>Les propositions en cours : votez pour vos propositions préférées !</h3>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-content">
+            <table class="table table-responsive table-full-width">
+              <tbody>
+                <% @proposals.each do |x| %>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <h4>#<%= @proposals.index(x)+1 %></h4>
+                    </td>
+                    <td>
+                      <%if x.picture.attached?%>
+                        <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                      <%else%>
+                        <p>=Image=</p>
+                      <%end%>
+                    </td>
+                    <td>
+                      <h4><%=x.title=%></h4>
+                      <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                        <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                      </a>
+                      <span class="badge badge-primary"><%= x.category.name %></span>
+                    </td>
+                    <%if x.vote_of(current_user)%>
+                      <td>
+                        <%= link_to "#{x.votes_count}", proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-primary btn-lg", method: :delete%>
+                        <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                      </td>
+                    <%else%>
+                      <td> 
+                        <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-success btn-lg", method: :post%>
+                        <h5> Voter <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
+                      </td>
+                    <%end%>
+                    <td><td>
+                  </tr>
                 <%end%>
               </tbody>
             </table>
@@ -91,28 +91,28 @@
         </div>
       </div>
     </div>
-    <%end%>
-  </div>
+  <%end%>
+</div>
   
-  <script>
-    $(document).ready(() => {
-      $('#validate_btn').click(() => {
-        console.log('click')
-        let url = "/items";
-        $.ajax({
-          url: url,
-          type: 'GET',
-          dataType: 'html',
-          data: { category_id: category_id },
-          success: (result) => {
-            $('#items_container').remove(); 
-            let items_container = $(result).filter('#items_container')[0];
-            $('#category_selector').after(items_container);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-        });
-      })
+<script>
+  $(document).ready(() => {
+    $('#validate_btn').click(() => {
+      let url = "/categories";
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        // data: { category_id: category_id },
+        success: (result) => {
+          console.log(result);
+          // $('#items_container').remove(); 
+          // let items_container = $(result).filter('#items_container')[0];
+          // $('#category_selector').after(items_container);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
     })
-  </script>
+  })
+</script>
