@@ -2,7 +2,7 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-md-6"> 
+    <div class="col-md-6 order-md-1"> 
       <h1>Agissez ensemble pour changer votre ville</h1>
       <h4 class="text-white">Agora est une plateforme citoyenne vous permettant de proposer et de partager des initiatives locales</h4>
        <% if user_signed_in? %>
@@ -12,8 +12,8 @@
     <%end%>
     </div>
 
-     <div class="col-md-6 img-top">
-         <%= image_tag("share.svg", style: "width:120%") %>
+     <div class="col-md-6 order-md-2 img-top">
+         <%= image_tag("share.svg", style: "width:100%") %>
       </div>
   </div>
 
@@ -28,7 +28,7 @@
   <br>
 
    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
+      <div class="col-md-7 order-md-1">
         <h2 class="featurette-heading">Proposez <i class="material-icons idea-icon" style="font-size: 33px">wb_incandescent</i></h2>
         <p class="lead text-home">Une idée vous inspire depuis longtemps ? Sur Agora, vous êtes libres de la montrer à vos concitoyens. Nous veillons à ce que les propositions les plus pertinentes soient présentes.</p>
       </div>
@@ -38,10 +38,10 @@
 
     </div>
   <div class="row featurette">
-   <div class="col-md-5 img-center">
+   <div class="col-md-5 order-sm-2 order-xs-2 img-center ">
        <%= image_tag("voting.svg", style: "width:75%") %>
       </div>
-    <div class="col-md-7">
+    <div class="col-md-7 order-sm-1 order-xs-1">
       <h2 class="featurette-heading">Votez  <i class="material-icons vote-icon" style="font-size: 33px">how_to_vote</i>
         <p class="lead text-home">Chaque jour des citoyens comme vous réfléchissent à comment améliorer le quotidien de votre ville. Consultez et débattez des propositions ensemble!</p>
       </div>
@@ -53,11 +53,11 @@
     <br>
     <br>
     <div class="row featurette">
-      <div class="col-md-7 order-md-2">
+      <div class="col-md-7 order-md-1">
         <h2 class="featurette-heading">Agissez  <i class="material-icons group-icon" style="font-size: 33px">people</i></h2>
         <p class="lead text-home">Sur Agora, le système de vote permet de faire ressortir les meilleures propositions. Quand l'idée a reçu assez de votes positifs, nos équipes vous accompagnent pour rendre vos projets possibles. </p>
       </div>
-      <div class="col-md-5 order-md-1 img-center">
+      <div class="col-md-5 order-md-2 img-center">
         <%= image_tag("group.svg", style: "width:80%") %>
       </div>
     </div>
