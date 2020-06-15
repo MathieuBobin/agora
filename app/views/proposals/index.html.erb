@@ -73,10 +73,11 @@
                 </td>
                 <td class="flex-column">
                   <p><%= x.title %></p>
-                  <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
+                  <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                  </a>
-                   <span class="badge"><%= x.category.name %></span>
+                    </a>
+                    <span class="badge"><%= x.category.name %></span>
+                  </p>
                 </td>
                 <td><td>
               </tr>
@@ -107,10 +108,11 @@
               </td>
               <td class="flex-column">
                 <p><%= x.title %></p>
-                <a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
-                  <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                </a>
-               <span class="badge badge-primary"><%= x.category.name %></span>
+                   <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
+                     <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                     </a>
+                     <span class="badge badge-primary"><%= x.category.name %></span>
+                   </p>
               </td>
             </tr>
             <%end%>
