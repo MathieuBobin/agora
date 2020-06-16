@@ -4,7 +4,7 @@
 <%if user_signed_in?%>
   <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
     <%= label_tag "Que pensez-vous de cette proposition?" %>
-    <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
+    <p><%= text_field_tag 'title',"", {class: 'form-control'} %></p>
     <%=submit_tag "Envoyer", {class: 'btn btn-primary text-right'}%>
   <%end%>
  <%else%>
