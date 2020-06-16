@@ -28,22 +28,12 @@ class ProposalsController < ApplicationController
   
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
-    @comments = Comment.where(proposal_id: params[:id])
+    @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }
   end
   
   def destroy
     @proposal = Proposal
   end
-  
-  #def send_email_after_votes
-   # @proposal = Proposal.find(permitted_proposal_id_param)
-    #@user = User.find_by(id: current_user.id)
-    #@vote = Vote.where(proposal_id: @proposal.id)
-
-    #ProposalMailer.send_email_after_votes(@proposal, @user).deliver
-    #flash[:notice] = "Mail has been sent."
-    #redirect_to root_path
-  #end
 
   private
   

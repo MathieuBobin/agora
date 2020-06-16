@@ -96,6 +96,9 @@
                           <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                             <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                           </a>
+                          <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                            <i class="material-icons" style="font-size: 15px">mode_comment</i> <%=x.comments.count%>
+                          </a>
                           <span class="badge badge-primary"><%= x.category.name %></span>
                         </td>
                           <td class='text-center'>
@@ -126,7 +129,7 @@
   <div class="container">
     <% if @numthen == 0 %>
       <div class='no-proposal'>
-        <h3> Pas de proposition terminé à <%= @city.name %> pour le moment. </h3>
+        <h3> Pas de proposition terminée à <%= @city.name %> pour le moment. </h3>
       </div>
     <%else%>
       <h3>Les propositions passées :</h3>
@@ -157,6 +160,23 @@
                         </a>
                         <span class="badge badge-primary"><%= x.category.name %></span>
                       </td>
+                      <%if x.votes_count <= 100 %>
+                         <%if x.vote_of(current_user)%>
+                           <td>
+                               <%= link_to "#{x.votes_count} <i class='material-icons' style='font-size: 19px'>how_to_vote</i>".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
+                               <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                           </td>
+                         <%else%>
+                           <td> 
+                               <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
+                               <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
+                           </td>       
+                          <%end%>
+                      <%else%> 
+                        <td> 
+                           <button class="btn btn-warning">VOTES CLOS</button>
+                        </td>   
+                      <%end%>
                       <td><td>
                     </tr>
                     <%else%>

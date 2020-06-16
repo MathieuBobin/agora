@@ -64,8 +64,6 @@ class Proposal < ApplicationRecord
     ProposalMailer.info_admin(self).deliver_now
   end
 
- 
-
   private
   
   def validate_proposal
