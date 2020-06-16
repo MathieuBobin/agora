@@ -1,21 +1,22 @@
 $(document).ready(() => {
   $('#validate_btn').click(() => {
     let url = "/cities/" + $('.my-city')[0].id;
-    let category_ids = [];
+    let categoryIds = [];
       $.each($("#categories option:selected"), function() {            
-          category_ids.push($(this).val());
+        categoryIds.push($(this).val());
       });
-    let additional_filter = $('#more_filters option:selected').val();
+    let additionalFilter = $('#more_filters option:selected').val();
     $.ajax({
       url: url,
       type: 'GET',
       dataType: 'html',
-      data: { category_ids: category_ids, additional_filter: additional_filter },
+      data: { category_ids: categoryIds, additional_filter: additionalFilter },
       success: (result) => {
         console.log(result);
-        // $('#items_container').remove(); 
-        // let items_container = $(result).filter('#items_container')[0];
-        // $('#category_selector').after(items_container);
+        $('.my-city').remove();        
+        let myCity = $(result).filter('.my-city')[0];
+        $('#filter').after(myCity);
+        $('#no-proposal').remove();        
       },
       error: (error) => {
         console.log(error);
