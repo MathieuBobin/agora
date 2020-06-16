@@ -16,6 +16,7 @@
 //= require jquery-ui.min
 //= require jquery.validate.min
 //= require jquery.tagsinput
+//= require jquery.select-bootstrap
 //= require perfect-scrollbar.jquery.min
 //= require bootstrap.min
 //= require bootstrap-notify

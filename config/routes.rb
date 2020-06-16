@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   resources :users do
     resources :avatars, only: :create
   end
+
   resources :proposals
   resources :proposals do
     resources :votes, only: [:create, :destroy] 
     resources :pictures, only: :create
     resources :comments
   end
-  resources :proposals 
 
   resources :cities
   
