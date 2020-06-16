@@ -18,9 +18,17 @@ class Proposal < ApplicationRecord
   validates :title, presence: true, length: { minimum: 3, maximum: 65 }
   validates :purpose, presence: true, length: { minimum: 10, maximum: 500 }
   validates :description, presence: true, length: { minimum: 30, maximum: 2000 }
-  validate :must_has_attachment
+  # validate :must_has_attachment
 
   # Instance methods
+  def differencebetween
+    if(Time.now > (self.created_at+(60*60*24*30)))
+      return true
+    else
+      return false
+    end
+  end
+
   def comments_count
     self.comments.count
   end
@@ -51,6 +59,10 @@ class Proposal < ApplicationRecord
 
   def admin_receipt
     ProposalMailer.info_admin(self).deliver_now
+  end
+
+  def mail_vote
+    ProposalMailer.send_email_after_votes(self).deliver_now
   end
 
   private
