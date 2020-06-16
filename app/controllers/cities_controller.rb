@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   def show
-    @city = current_user_city
+    @city = City.find(params[:id])
     @categories = Category.all
     category_ids = params[:category_ids]
     additional_filter = params[:additional_filter]
