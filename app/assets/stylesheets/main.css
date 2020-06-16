@@ -112,3 +112,8 @@ background-color: #FFFFFF !important;
   top: 5px;
   left: 0px;
 }
+
+.nav-btn {
+  position: relative;
+  top: 1px;
+}
