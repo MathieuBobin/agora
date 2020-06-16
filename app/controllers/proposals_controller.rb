@@ -46,8 +46,11 @@ class ProposalsController < ApplicationController
   end
 
   def tweet_proposal
-    @proposal = Proposal.find(permitted_proposal_id_param)
-    tweet(@proposal)
+    puts '$'*110
+    puts 'Tweet'
+    puts '$'*110
+    # @proposal = Proposal.find(permitted_proposal_id_param)
+    # tweet(@proposal)
   end
 
   private
