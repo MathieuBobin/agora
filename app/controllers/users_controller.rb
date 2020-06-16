@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user
-   
+    @user = User.find(permitted_user_id_param)
     @proposals = @user.proposals.sort { |p1, p2| p2.votes_count <=> p1.votes_count }
   end 
   
   def edit
-    @user = current_user
+    @user = User.find(permitted_user_id_param)
   end
 
   def update
