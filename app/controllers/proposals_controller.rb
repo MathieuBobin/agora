@@ -38,6 +38,7 @@ class ProposalsController < ApplicationController
   def send_email_after_votes
     @proposal = Proposal.find(permitted_proposal_id_param)
     @user = User.find_by(id: current_user.id)
+    @vote = Vote.where(proposal_id: @proposal.id)
 
     ProposalMailer.send_email_after_votes(@proposal, @user).deliver
     flash[:notice] = "Mail has been sent."
@@ -53,4 +54,4 @@ class ProposalsController < ApplicationController
   def permitted_proposal_params
     params.require(:proposal).permit(:title, :purpose, :category_id, :description, :picture).merge({:user => current_user, :city => current_user.city})
   end
-end
+end 

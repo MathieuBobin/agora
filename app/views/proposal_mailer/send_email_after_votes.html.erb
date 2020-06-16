@@ -5,6 +5,15 @@
   </head>
   <body>
     <h1>Salut <%= @user.first_name %> !</h1>
+
+    
+
+<p> Voici les votants : </p>
+    <% @votes.each do |vote|%>
+<p> <%= vote.user.email%> <p>
+<%end %>
+
+
    
 <p>Cet email t'informe que ta proposition a été validée par la communauté. Tu peux désormais te rendre sur <%= @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
  </p>

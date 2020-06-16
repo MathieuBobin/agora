@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Salut <%= @user.first_name %> !</h1>
-   
-<p>Cet email t'informe que ta proposition a été validée par la communauté. Tu peux désormais te rendre sur <%= @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
- </p>
- <p>
-     Encore bravo pour ta super idée et à très vite sur Agora !
-    </p>
+Mise en relation avec les utilisateur ayant votés pour votre proposition
 
+========================================================
 
-   <p> L'équipe Agora <p> 
-
-  </body>
-</html>
+Cet email t'informe que ta proposition a été validée par la communauté. Tu peux désormais te rendre sur <%= @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
+ <% @votes.each do |vote|%>
+Voici les votants : <%= vote.user.email%> 
+<%end %>
