@@ -1,10 +1,16 @@
-<div class="jumbotron jumbotron-fluid" style="background-image: url(https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-size: 100%;">
-  <div class="container">
-    <h1 class="display-4">Les propositions citoyennes à <%= @city.name %></h1>
-    <p class="lead">Retrouvez les meilleurs propositions du moment ci-dessous</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 city">
+      <h1 class="display-4">Les propositions citoyennes à <%=@city.name%></h1>
+      <p class="lead">Retrouvez les meilleures propositions du moment ci-dessous</p>
+    </div>
+    <div class="col-md-5 city">
+     <%= image_tag("city.svg", style: "width:100%") %>
+    </div>
   </div>
 </div>
-
+<br>
+<br>
 <div id="filter" class="container">
   <div class="row">
     <div class="col-xs col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -90,6 +96,9 @@
                           <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                             <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                           </a>
+                          <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                            <i class="material-icons" style="font-size: 15px">mode_comment</i> <%=x.comments.count%>
+                          </a>
                           <span class="badge badge-primary"><%= x.category.name %></span>
                         </td>
                           <td class='text-center'>
@@ -120,7 +129,7 @@
   <div class="container">
     <% if @numthen == 0 %>
       <div class='no-proposal'>
-        <h3> Pas de proposition terminé à <%= @city.name %> pour le moment. </h3>
+        <h3> Pas de proposition terminée à <%= @city.name %> pour le moment. </h3>
       </div>
     <%else%>
       <h3>Les propositions passées :</h3>

@@ -36,18 +36,19 @@
       <%= image_tag("idea.svg", style: "width:75%;") %>
     </div>
     
+    
+
   </div>
   <div class="row featurette">
-    <div class="col-md-5 order-sm-2 order-xs-2 img-center ">
-      <%= image_tag("voting.svg", style: "width:75%") %>
-    </div>
-    <div class="col-md-7 order-sm-1 order-xs-1">
+    <div class="col-md-5 col-lg-7 col-lg-push-5  ">
       <h2 class="featurette-heading">Votez  <i class="material-icons vote-icon" style="font-size: 33px">how_to_vote</i>
         <p class="lead text-home">Chaque jour des citoyens comme vous réfléchissent à comment améliorer le quotidien de votre ville. Consultez et débattez des propositions ensemble!</p>
+    </div>
+    <div class="col-md-7 col-lg-5 col-lg-pull-7 img-center">
+          <%= image_tag("voting.svg", style: "width:75%") %>
       </div>
       
     </div>
-    
     
     
     <br>
@@ -65,6 +66,65 @@
   <br>
   <br>
   
+  <h2 class="text-center"><b>Et après ?</b></h2>
+
+<div class="container">
+    
+  
+    <ul class="timeline">
+        <li>
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">people</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Rassemblez-vous !</h4>
+              
+            </div>
+            <div class="timeline-body">
+              <p>Le grand moment est arrivé ! Nous nous occupons de vous mettre en relation avec toux ceux qui ont soutenus votre projet.</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">add</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Créez votre association</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Selon la taille de votre projet, vous aurez besoin de créer une association à but non-lucrative.</p>
+             
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">create</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Montez votre dossier</h4>
+            </div>
+            <div class="timeline-body">
+              <p>Pour être prise en compte par la mairie, votre projet devra être présenté sous forme de dossier.</p>
+            </div>
+          </div>
+        </li>
+      
+        <li class="timeline-inverted">
+          <div class="timeline-badge primary"><i class="material-icons group-icon img-and-after">grade</i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">Rendez le monde meilleur </h4>
+            </div>
+            <div class="timeline-body">
+              <p>Votre idée a amélioré le quotidien de vos concitoyens et rendu votre ville encore plus belle. Bravo ! </p>
+             
+            </div>
+          </div>
+        </li>
+       
+    </ul>
+</div>
+
+
   <h2 class="text-center"><b>Ils parlent de nous</b></h2>
   
   <div class="container">
