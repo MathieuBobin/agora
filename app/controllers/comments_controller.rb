@@ -12,6 +12,17 @@ class CommentsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def edit
+    puts "coucou! je suis dans la methode edit du controller proposals"
+    puts params
+    Comment.create!(
+      content: params[:title],
+      user: current_user,
+      comment_id: params[:id]
+    )
+    redirect_back fallback_location: root_path
+  end
+
   def destroy
     Comment.destroy(params[:id])
     flash[:success] = "Votre commentaire a bien été supprimé !"  

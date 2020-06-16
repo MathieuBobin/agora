@@ -18,15 +18,15 @@
             <td>
               <b>
               <div class="avatar">
-                <i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+                <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><h5>
                 <%if x.user.id == x.proposal.user.id%>
                   <span class="badge badge-primary">Initiateur</span>
                 <%end%>
               </div>
-              </b><br
+              </b>
               <p><%=x.content%></p>
               <p class = primary> 
-              Message posté le <%=x.created_at.to_formatted_s(:short)%> -
+              <em>Message posté le <%=x.created_at.to_formatted_s(:short)%> -</em>
               <%if user_signed_in?%>
                 <%if current_user.id != x.user.id%>
                   <%if Like.where(user_id: current_user.id,comment_id: x.id).any? %>
@@ -42,8 +42,13 @@
                 <%end%>
               <%end%>
               <div class = "container" style="width: 90rem;">
-              
-              <%=form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+              <%x.comments.each do |x|%>
+                <b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><br><br>
+                <%=x.content%><br><br>
+                <em>Message posté le <%=x.created_at.to_formatted_s(:short)%></em>
+                <br><br>
+              <%end%>
+              <%=form_tag url_for(edit_proposal_comment_path(@proposal.id, x.id)), method: :get do %> 
                 <%= label_tag "Répondre à #{x.user.first_name}" %>
                 <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
                 <%=submit_tag "Envoyer", {class: 'btn btn-primary'}%>
