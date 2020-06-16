@@ -103,15 +103,18 @@ background-color: #FFFFFF !important;
 
 .badge
 {
-  background-color: #5bc0de;
+  background-color: #00bcd4;
 }
 
 .footer-down
 {
-  background-color: #1D6DB8;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #bdbdbd ;
+  background-color: white ;
 }
 
-.text-white
+.text-white-footer
 {
-  color: #FFFFFF;
+  color: #212121;
 }
