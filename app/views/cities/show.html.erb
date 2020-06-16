@@ -76,7 +76,7 @@
               <table class="table table-responsive table-full-width">
                 <tbody>
                   <% @proposals.each do |x| %>
-                    <%if (x.differencebetween == false) && x.votes_count < 1%>
+                    <%if (x.differencebetween == false) && x.votes_count < 100%>
                       <tr>
                         <td></td>
                         <td>
@@ -140,7 +140,7 @@
               <table class="table table-responsive table-full-width">
                 <tbody>
                   <% @proposals.each do |x| %>
-                    <%if (x.differencebetween == true) ||  x.votes_count >= 1%>
+                    <%if (x.differencebetween == true) ||  x.votes_count >= 100%>
                     <tr>
                       <td></td>
                       <td>
@@ -166,7 +166,7 @@
                             <p class="text-center">Expirée</p>
                           </div>   
                           <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
-                        <%elsif x.votes_count >= 1%> 
+                        <%elsif x.votes_count >= 100%> 
                           <div class="alert alert-info">
                             <p class="text-center">Validée</p>
                           </div>
