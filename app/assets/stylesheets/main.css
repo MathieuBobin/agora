@@ -117,3 +117,9 @@ background-color: #FFFFFF !important;
   position: relative;
   top: 1px;
 }
+
+.img-profile {
+  position: relative;
+  bottom: 15px;
+  
+}
