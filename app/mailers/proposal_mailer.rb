@@ -43,7 +43,13 @@ class ProposalMailer < ApplicationMailer
     @url6 = 'https://www.amf.asso.fr/documents-modalites-participation-citoyens-aux-decisions-locales/7718'
     @url7 = 'http://periurbain.cget.gouv.fr/sites/default/files/Dossier%20pre%CC%81sentation%20Formation%20Emergence%20juin%202016-Les%20Pionnie%CC%80res.pdf'
 
-    if @proposal.votes_count == 100
+    @user_list = @votes.each do |vote| 
+      vote.user.email
+    end
+
+    attachments['emails_utilisateurs.txt'] = {:mime_type => 'application/pdf',
+      :content => @user_list }
+    if @proposal.votes_count == 5
     mail(to: @user.email, subject: 'Mise en relation !')
     end
     
