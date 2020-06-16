@@ -1,7 +1,10 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :proposal
+  belongs_to :proposal, optional: true
+  belongs_to :comment, optional: true
+  has_many :comments
   has_many :likes
+  
 
   # Validations
   validates :content, length: {minimum: 0, maximum: 300}
