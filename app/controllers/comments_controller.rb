@@ -24,5 +24,4 @@ class CommentsController < ApplicationController
     params.permit(:proposal_id).require(:proposal_id)
   end
 
-
 end
