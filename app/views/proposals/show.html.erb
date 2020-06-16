@@ -147,6 +147,13 @@
                   <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
                 <%end%>
               <%end%>
+              <div class= container>
+              <%=form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+                <%= label_tag "Répondre à #{x.user.first_name}" %>
+                <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
+                <%=submit_tag "Envoyer", {class: 'btn btn-primary btn-sm'}%>
+              <%end%>
+              </div>
               </p>
             </td>
         </tr>
