@@ -104,7 +104,20 @@ background-color: #FFFFFF !important;
 
 .badge
 {
-  background-color: #5bc0de;
+  background-color: #00bcd4;
+}
+
+.footer-down
+{
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #bdbdbd ;
+  background-color: white ;
+}
+
+.text-white-footer
+{
+  color: #212121;
 }
 
 .img-and-after {
