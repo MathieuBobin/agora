@@ -164,11 +164,13 @@
                         <%if (x.differencebetween == true) %>
                           <div class="alert alert-warning">
                             <p class="text-center">Expirée</p>
-                          </div>      
+                          </div>   
+                          <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
                         <%elsif x.votes_count >= 1%> 
                           <div class="alert alert-info">
                             <p class="text-center">Validée</p>
                           </div>
+                          <p class="text-muted text-center">Cette proposition a atteint les 100 votes!</p> 
                         <%end%>
                       <td>
                     </tr>
