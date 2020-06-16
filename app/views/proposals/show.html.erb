@@ -46,6 +46,9 @@
           <div class="card-content">
             <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
             <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
+            <%= link_to '<i class="fa fa-twitter"></i> Tweeter ma proposition'.html_safe, :controller => "proposals", :action => "tweet_proposal", :id => @proposal.id %>
+            <%= link_to "Send mail", :controller => "proposals", :action => "send_email_after_votes", :id => @proposal.id %>
+
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
                 <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
@@ -91,12 +94,12 @@
       </div>
       <div class="col">
         <% if user_signed_in? %>
-        <% if is_current_user_admin? %>
-        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-        <%= file_field_tag :picture %>
-        <%= submit_tag "Mettre à jour" %>
-        <% end %>
-        <% end %>
+          <% if is_current_user_admin? %>
+            <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+              <%= file_field_tag :picture %>
+              <%= submit_tag "Mettre à jour" %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

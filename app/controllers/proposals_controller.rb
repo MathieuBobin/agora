@@ -45,6 +45,11 @@ class ProposalsController < ApplicationController
     redirect_to root_path
   end
 
+  def tweet_proposal
+    @proposal = Proposal.find(permitted_proposal_id_param)
+    tweet(@proposal)
+  end
+
   private
   
   def permitted_proposal_id_param
