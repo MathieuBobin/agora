@@ -56,7 +56,7 @@
       <div class="card-content">
         <h4 class="card-title">Changer ma photo de profil</h4>
         <%= form_tag user_avatars_path(@user), multipart: true do %> 
-        <%= file_field_tag :avatar , class: "btn btn-sm btn-info"%>
+        <%= file_field_tag :avatar, class: "btn btn-sm btn-primary btn-round"%>
         <div class="text-center">
           <%= submit_tag "Mettre à jour", class: "btn btn-primary" %>
         </div>
