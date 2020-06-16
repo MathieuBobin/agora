@@ -1,8 +1,6 @@
 <div class="container">
   <br>
   <h3>La proposition</h3>
-  
-  <%= link_to "Send mail", :controller => "proposals", :action => "send_email_after_votes", :id => @proposal.id %>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
       <div class="card card-product">
@@ -64,7 +62,7 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-              <%if (@proposal.differencebetween == false)%>
+              <%if (@proposal.differencebetween == false) && @proposal.votes_count <= 100 %>   
                 <h5 class="text-muted">Votez pour cette proposition</h5>
                 <%if @proposal.vote_of(current_user)%>
                   <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
@@ -72,10 +70,10 @@
                   <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
                 <% end %>
               <%else%>
-                <h5> Vote terminé</h5>
+                <button class="btn btn-warning">Les votes ne sont plus pris en comtpe</button>               
               <%end%>
             <% end %>
-            <h5><%= @proposal.votes_count %> Votes</h5>
+            <h5><%= @proposal.votes_count %> VOTES</h5>
           </div>
           <% unless @proposal.votes_count == 0 %>
             <div class="card-footer">

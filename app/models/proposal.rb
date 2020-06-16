@@ -62,7 +62,9 @@ class Proposal < ApplicationRecord
   end
 
   def mail_vote
+    if @proposal.votes_count = 2
     ProposalMailer.send_email_after_votes(self).deliver_now
+    end
   end
 
   private
