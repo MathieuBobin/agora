@@ -24,11 +24,11 @@
     </div> 
   </div>
 </div>
-<br>
-  <br>
-  <div class="container">
-    <div class="row justify-content-center">
-      <%if @proposals.count != 0 %>
+<div class="container">
+  <div class="row justify-content-center">
+    <%if @proposals.count != 0 %>
+      <br>
+      <br>
       <div class="col">
         <div class="card">
           <div class="card-header card-header-text" data-background-color="blue">
@@ -36,8 +36,8 @@
           </div>
           <div class="card-content "> 
             <table class="table">
-              <% @proposals.each do |proposal| %>
-                <tbody>
+              <tbody>
+                <% @proposals.each do |proposal| %>
                   <tr>
                     <td><h5><%= proposal.title %></h5></td>
                     <% if proposal.is_online %>
@@ -51,15 +51,16 @@
                     <%end%>
                     </td>
                   </tr>
-                </tbody>
-              <% end %>
-              <%else%>
-                <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
-              <% end %>
+                <% end %>
+              </tbody>
             </table>
           </div>
         </div>
       </div>
-    </div>
+    <%else%>
+      <div class="col">
+        <p class="text-center text-muted">Vous n'avez pas encore créé de propositions.</p>
+      </div>
+    <% end %>
   </div>
 </div>

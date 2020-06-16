@@ -12,7 +12,6 @@ $(document).ready(() => {
       dataType: 'html',
       data: { category_ids: categoryIds, additional_filter: additionalFilter },
       success: (result) => {
-        console.log(result);
         $('.my-city').remove();        
         let myCity = $(result).filter('.my-city')[0];
         $('#filter').after(myCity);
