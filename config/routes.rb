@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'proposals#index'
   get '/contact', to: 'additional_views#contact'
   get '/proposal_created', to: 'additional_views#proposal_created'
-  tweet 'proposals#tweet'
+  get '/tweet', to: 'proposals#tweet' as: 'tweet'
 
   devise_for :users
   resources :users
