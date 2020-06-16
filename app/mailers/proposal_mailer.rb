@@ -36,7 +36,7 @@ class ProposalMailer < ApplicationMailer
     @votes = proposal.votes
     @url = 'https://agora-prd.herokuapp.com/'
     
-    if @proposal.votes_count == 5
+    if @proposal.votes_count == 100
     mail(to: @user.email, subject: 'Mise en relation !')
     end
     
