@@ -65,7 +65,7 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-              <%if (@proposal.differencebetween == false) && @proposal.votes_count <= 100 %>
+              <%if (@proposal.differencebetween == false) && @proposal.votes_count < 100 %>
                 <% t = (Time.now- (@proposal.created_at+(60*60*24*30)))%>
                 <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                 <h5 class="text-muted">Votez pour cette proposition</h5>
@@ -73,12 +73,24 @@
                   <%= link_to '<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> A voté'.html_safe, proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-success", method: :delete %>
                 <%else%>
                   <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-primary", method: :post %>
-              <% end %>
+                <%end%>
               <%else%>
-                <button class="btn btn-warning">Les votes ne sont plus pris en comtpe</button>               
+                <%if (@proposal.differencebetween == true) %>
+                  <div class="alert alert-default">
+                    <p>Le temps limite de vote est dépassé :(</p>
+                  </div>      
+                <%else%> 
+                  <div class="alert alert-default">
+                    <p>Le nombre de votes maximal est atteint !</p>
+                  </div>
+                <%end%>
               <%end%>
             <% end %>
-            <h5><%= @proposal.votes_count %> VOTES</h5>
+            <%if @proposal.votes_count == 1 || @proposal.votes_count == 0%>
+              <h5><%= @proposal.votes_count %> VOTE</h5>
+            <%else%>
+              <h5><%= @proposal.votes_count %> VOTES</h5>
+            <%end%>
           </div>
           <% unless @proposal.votes_count == 0 %>
             <div class="card-footer">
