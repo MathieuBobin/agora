@@ -92,17 +92,18 @@
                           </a>
                           <span class="badge badge-primary"><%= x.category.name %></span>
                         </td>
-                        <%if x.vote_of(current_user)%>
                           <td class='text-center'>
-                            <%= link_to "#{x.votes_count} <i class='material-icons' style='font-size: 19px'>how_to_vote</i>".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
-                            <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                            <%if x.vote_of(current_user)%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté!".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
+                            <%else%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
+                            <%end%>
+                            <%if x.votes_count>1%>
+                              <h5> <%=x.votes_count%> votes</h5>
+                            <%else%>
+                              <h5> <%=x.votes_count%> vote</h5>
+                            <%end%>
                           </td>
-                        <%else%>
-                          <td class='text-center'> 
-                            <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
-                            <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
-                          </td>
-                        <%end%>
                         <td><td>
                       </tr>
                     <%end%>
