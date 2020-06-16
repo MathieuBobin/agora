@@ -77,8 +77,8 @@
                   <%= link_to ' Je vote', proposal_votes_path(@proposal.id), :class => "btn btn-primary", method: :post %>
                 <% end %>
               <%else%>
-                <h5> Vote terminé</h5>
-              <%end%>
+                <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-primary", method: :post %>
+              <% end %>
             <% end %>
             <h5><%= @proposal.votes_count %> Votes</h5>
           </div>
@@ -108,35 +108,39 @@
 
 <div class = container>
 <br>
-<h3>Espace débat</h3><br>
+<h3><b>Espace débat</b></h3><br>
+<%if user_signed_in?%>
   <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
     <%= label_tag "Que pensez-vous de cette proposition?" %>
-    <%= text_field_tag 'title',"", {class: 'form-control'}%>
+    <%= text_field_tag 'title',"", {class: 'form-control border'}%>
     <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
-  <% end %>
-<br>
-<%if @comments.count != 0%>
-  <h4><b>Les avis des citoyens </b></h4><br>
+  <%end%>
+ <%else%>
+  <p>Pensez à vous connecter pour participer au débat ;)</p>
 <%end%>
-<table class="table">
+<br>
+<table class="table border">
     <tbody>
       <%@comments.each do |x|%>
         <tr>
             <td>
               <b>
-              <% if @proposal.user.avatar.attached? %>
-                <div class="avatar">
-                  <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
-                </div>
-              <%else%>
-                <div class="avatar">
-                  <i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
-                </div>
-              <%end%>
+              <div class="avatar">
+                <i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+              </div>
               </b><br>
               <p><%=x.content%></p>
               <p class = primary> 
-              Message posté le <%=x.created_at.to_formatted_s(:short)%>
+              Message posté le <%=x.created_at.to_formatted_s(:short)%> -
+              <%if user_signed_in?%>
+                <%if current_user.id != x.user.id%>
+                  <%if Like.where(user_id: current_user.id,comment_id: x.id).any? %>
+                    <%= link_to "Aimé (#{Like.where(comment_id: x.id).count})",proposal_comment_like_path(@proposal.id, x.id, Like.where(user_id: current_user.id,comment_id: x.id).first.id ), class: 'btn btn-success btn-xs',method: :delete %>
+                  <%else%>
+                    <%= link_to "J'aime (#{Like.where(comment_id: x.id).count})",proposal_comment_likes_path(@proposal.id, x.id), class: 'btn btn-primary btn-xs',method: :post %>              
+                  <%end%>
+                <%end%>
+              <%end%>
               <%if user_signed_in?%>
                 <%if current_user.id == x.user.id%>
                   <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
