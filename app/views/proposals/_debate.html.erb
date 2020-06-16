@@ -1,0 +1,63 @@
+<div class = container>
+<br>
+<h3><b>L'espace débat</b></h3><br>
+<%if user_signed_in?%>
+  <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+    <%= label_tag "Que pensez-vous de cette proposition?" %>
+    <p><%= text_field_tag 'title',"", {class: 'form-control'} %></p>
+    <%=submit_tag "Envoyer", {class: 'btn btn-primary text-right'}%>
+  <%end%>
+ <%else%>
+  <p>Pensez à vous connecter pour participer au débat ;)</p>
+<%end%>
+<br>
+<table class="table border">
+    <tbody>
+      <%@comments.each do |x|%>
+        <tr>
+            <td>
+              <b>
+              <div class="avatar">
+                <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><h5>
+                <%if x.user.id == x.proposal.user.id%>
+                  <span class="badge badge-primary">Initiateur</span>
+                <%end%>
+              </div>
+              </b>
+              <p><%=x.content%></p>
+              <p class = primary> 
+              <em>Message posté le <%=x.created_at.to_formatted_s(:short)%> -</em>
+              <%if user_signed_in?%>
+                <%if current_user.id != x.user.id%>
+                  <%if Like.where(user_id: current_user.id,comment_id: x.id).any? %>
+                    <%= link_to "Aimé (#{Like.where(comment_id: x.id).count})",proposal_comment_like_path(@proposal.id, x.id, Like.where(user_id: current_user.id,comment_id: x.id).first.id ), class: 'btn btn-success btn-xs',method: :delete %>
+                  <%else%>
+                    <%= link_to "J'aime (#{Like.where(comment_id: x.id).count})",proposal_comment_likes_path(@proposal.id, x.id), class: 'btn btn-primary btn-xs',method: :post %>              
+                  <%end%>
+                <%end%>
+              <%end%>
+              <%if user_signed_in?%>
+                <%if current_user.id == x.user.id%>
+                  <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+                <%end%>
+              <%end%>
+              <div class = "container" style="width: 90rem;">
+              <%x.comments.each do |x|%>
+                <b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><br><br>
+                <%=x.content%><br><br>
+                <em>Message posté le <%=x.created_at.to_formatted_s(:short)%></em>
+                <br><br>
+              <%end%>
+              <%=form_tag url_for(edit_proposal_comment_path(@proposal.id, x.id)), method: :get do %> 
+                <%= label_tag "Répondre à #{x.user.first_name}" %>
+                <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
+                <%=submit_tag "Envoyer", {class: 'btn btn-primary'}%>
+              <%end%>
+              </div>
+              </p>
+            </td>
+        </tr>
+      <%end%>
+    </tbody>
+</table>
+</div>

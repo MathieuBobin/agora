@@ -414,6 +414,14 @@ puts "Les propositions ont été créées"
   )
 end
 
+100.times do
+  Comment.create(
+    content: Faker::Lorem.characters(number: 100),
+    user: User.all.sample,
+    comment: Comment.all.sample
+  )
+end
+
 puts "Les commentaires ont été créés"
 
 100.times do 
