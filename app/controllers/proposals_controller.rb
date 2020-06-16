@@ -34,16 +34,6 @@ class ProposalsController < ApplicationController
   def destroy
     @proposal = Proposal
   end
-  
-  def send_email_after_votes
-    @proposal = Proposal.find(permitted_proposal_id_param)
-    @user = User.find_by(id: current_user.id)
-    @vote = Vote.where(proposal_id: @proposal.id)
-
-    ProposalMailer.send_email_after_votes(@proposal, @user).deliver
-    flash[:notice] = "Mail has been sent."
-    redirect_to root_path
-  end
 
   private
   

@@ -3,6 +3,7 @@ class Proposal < ApplicationRecord
   after_create :admin_receipt
   after_create :user_receipt
   after_update :validate_proposal
+  #after_create :mail_vote
   
   # Relations
   belongs_to :city
@@ -37,6 +38,8 @@ class Proposal < ApplicationRecord
     self.votes.count
   end
   
+ 
+
   def vote_of(user)
     self.votes.find_by(user: user)
   end
@@ -59,12 +62,6 @@ class Proposal < ApplicationRecord
 
   def admin_receipt
     ProposalMailer.info_admin(self).deliver_now
-  end
-
-  def mail_vote
-    if @proposal.votes_count = 2
-    ProposalMailer.send_email_after_votes(self).deliver_now
-    end
   end
 
   private
