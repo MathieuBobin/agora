@@ -46,6 +46,7 @@
           <div class="card-content">
             <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
             <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
+            <p class='text-muted'> Crée le <%= @proposal.created_at.to_date %></p>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
                 <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
@@ -67,6 +68,8 @@
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
               <%if (@proposal.differencebetween == false)%>
+                <% t = (Time.now- (@proposal.created_at+(60*60*24*30)))%>
+                <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                 <h5 class="text-muted">Votez pour cette proposition</h5>
                 <%if @proposal.vote_of(current_user)%>
                   <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> A voté'.html_safe, proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-success", method: :delete %>
