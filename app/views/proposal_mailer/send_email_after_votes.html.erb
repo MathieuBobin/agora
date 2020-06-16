@@ -5,24 +5,38 @@
   </head>
   <body>
     <h1>Salut <%= @user.first_name %> !</h1>
-
-    <p>Cet email t'informe que ta proposition a été validée par la communauté. Tu peux désormais te rendre sur <%= @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
- </p>
-
-<p> Voici les votants : </p>
-    <% @votes.each do |vote|%>
-<p> <%= vote.user.email%> <p>
-<%end %>
-
-
-   
-
- <p>
-     Encore bravo pour ta super idée et à très vite sur Agora !
-    </p>
-
-
-   <p> L'équipe Agora. <p> 
-
+      <p>
+        Cet email t'informe que ta proposition a été validée par la communauté. Tu peux désormais te rendre sur <%= link_to "Agora.com", @url %> pour la consulter et répondre aux commentaires des autres utilisateurs.
+      </p>
+       <p>Voici des liens utiles qui t'aideront à mettre en place ton projet :</p>
+       <%= link_to "- Comment mettre en place une démocratie participative", @url1 %> 
+       <br>
+       <%= link_to "- Les démarches de participation citoyenne", @url2 %> 
+       <br>
+       <%= link_to "- Monter un projet", @url3 %> 
+       <br>
+        <%= link_to "- Qu'est-ce qu'un projet citoyen?", @url4 %> 
+       <br>
+        <%= link_to "- Budget participatif", @url4 %> 
+       <br>
+        <%= link_to "- Modalités de participation des citoyens aux décisions locales", @url5 %> 
+       <br>
+        <%= link_to "- Exemple de dossier à monter", @url6 %> 
+       <br>
+       <br>
+       <br>
+      <p>
+        Tu peux désormais contacter les citoyens ayant votés pour ta proposition pour t'organiser avec eux. 
+      <br>
+        Voici les votants : 
+      </p>
+        <% @votes.each do |vote|%>
+          <p> <%= vote.user.email%> <p>
+        <%end %>
+    <br>
+      <p>
+        Encore bravo pour ta super idée et à très vite sur Agora !
+      </p>
+    <p> L'équipe Agora. <p> 
   </body>
 </html>
