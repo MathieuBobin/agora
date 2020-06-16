@@ -47,7 +47,7 @@
             <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
-                <%= link_to '<i class="fa fa-twitter"></i> Tweeter ma proposition'.html_safe, :controller => "proposals", :action => "tweet_proposal", :id => @proposal.id %>
+                <%= link_to '<i class="fa fa-twitter"></i> Tweeter ma proposition'.html_safe, :controller => "proposals", :action => "tweet_proposal", :id => @proposal.id, class: btn btn-simple btn-twitter" %><br>
                 <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
                 <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
               <% end %>
