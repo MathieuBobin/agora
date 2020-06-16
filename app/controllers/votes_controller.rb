@@ -32,8 +32,8 @@ class VotesController < ApplicationController
   def not_permit_to_vote_in_other_cities
     proposal = Proposal.find(permitted_proposal_id_param)
     unless proposal.city.id == current_user.city.id
-      flash[:alert] = "Vous ne pouvez pas voter pour les propositions en dehors de votre ville ! Vous êtes redirigé vers la page de votre ville !"
-      redirect_to current_user.city
+      flash[:alert] = "Vous ne pouvez pas voter pour les propositions en dehors de votre ville !"
+      redirect_back fallback_location: root_path
     end
   end
 end

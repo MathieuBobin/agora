@@ -13,8 +13,10 @@
         <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
-            <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
-            <span class="badge badge-primary"><%= @proposal.category.name %></span>
+            <div class='flex-row-center'>
+              <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
+              <span class="badge badge-primary"><%= @proposal.category.name %></span>
+            </div>
           </h4>
         </div>
         <div class="card-content">
@@ -67,9 +69,9 @@
               <%if (@proposal.differencebetween == false)%>
                 <h5 class="text-muted">Votez pour cette proposition</h5>
                 <%if @proposal.vote_of(current_user)%>
-                  <%= link_to 'A voté', proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-primary", method: :delete %>
+                  <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> A voté'.html_safe, proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-success", method: :delete %>
                 <%else%>
-                  <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-success", method: :post %>
+                  <%= link_to ' Je vote', proposal_votes_path(@proposal.id), :class => "btn btn-primary", method: :post %>
                 <% end %>
               <%else%>
                 <h5> Vote terminé</h5>

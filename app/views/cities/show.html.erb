@@ -73,7 +73,7 @@
                     <tr>
                       <td></td>
                       <td>
-                        <h4>#<%= @proposals.index(x)+1 %></h4>
+                        <h3 class='text-primary'><%= @proposals.index(x)+1 %></h3>
                       </td>
                       <td>
                         <%if x.picture.attached?%>
@@ -83,21 +83,21 @@
                         <%end%>
                       </td>
                       <td>
-                        <h4><%=x.title=%></h4>
+                        <h4 class='text-wrap'><%= x.title %></h4>
                         <% t = (Time.now- (x.created_at+(60*60*24*30)))%>
-                        <p> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
+                        <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                         <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                           <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                         </a>
                         <span class="badge badge-primary"><%= x.category.name %></span>
                       </td>
                       <%if x.vote_of(current_user)%>
-                        <td>
+                        <td class='text-center'>
                           <%= link_to "#{x.votes_count} <i class='material-icons' style='font-size: 19px'>how_to_vote</i>".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
                           <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
                         </td>
                       <%else%>
-                        <td> 
+                        <td class='text-center'> 
                           <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
                           <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
                         </td>
@@ -131,7 +131,7 @@
                   <tr>
                     <td></td>
                     <td>
-                      <h4>#<%= @proposals.index(x)+1 %></h4>
+                      <h3 class='text-primary'><%= @proposals.index(x)+1 %></h3>
                     </td>
                     <td>
                       <%if x.picture.attached?%>
@@ -141,7 +141,7 @@
                       <%end%>
                     </td>
                     <td>
-                      <h4><%=x.title=%></h4>
+                      <h4 class='text-wrap'><%=x.title %></h4>
                       <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                         <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                       </a>

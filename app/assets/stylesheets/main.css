@@ -42,7 +42,6 @@ background-color: #FFFFFF !important;
 .img-center {
   position: relative;
   bottom: 30px;
- 
 }
 
 .img-group {
@@ -83,6 +82,14 @@ background-color: #FFFFFF !important;
   display: flex;
   flex-direction: row;
   justify-content: start;
+  align-items: center;
+}
+
+.flex-row-center
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
