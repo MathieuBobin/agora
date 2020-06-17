@@ -59,16 +59,16 @@
   <div class="container">
     <% if @proposals.count == 0 %>
       <div class='no-proposal'>
-        <h3> Personne n'a posté de proposition à <%= @city.name %> pour le moment.  Change ça en cliquant sur le bouton : </h3>
+        <h3><b>Personne n'a posté de proposition à <%= @city.name %> pour le moment.  Change ça en cliquant sur le bouton :</b></h3>
         <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
       </div>
     <%elsif @numnow == 0 %>
       <div class='no-proposal'>
-        <h3> Aucune proposition en cours à <%= @city.name %>. Change ça en cliquant sur le bouton : </h3>
+        <h3><b> Aucune proposition en cours à <%= @city.name %>. Change ça en cliquant sur le bouton : </b></h3>
         <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
       </div>
     <%else%>
-      <h3>Les propositions en cours : votez pour vos propositions préférées !</h3>
+      <h3><b>Les propositions en cours : votez pour vos propositions préférées !</b></h3>
       <div class="row">
         <div class="col">
           <div class="card">
@@ -92,7 +92,7 @@
                         <td>
                           <h4 class='text-wrap'><%= x.title %></h4>
                           <% t = (Time.now- (x.created_at+(60*60*24*30)))%>
-                          <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
+                          <p class='text-muted' style='font-style: italic;'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                           <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                             <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                           </a>
@@ -103,9 +103,9 @@
                         </td>
                           <td class='text-center'>
                             <%if x.vote_of(current_user)%>
-                              <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté!".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", method: :delete%>
                             <%else%>
-                              <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-md", method: :post%>
                             <%end%>
                             <%if x.votes_count>1%>
                               <h5> <%=x.votes_count%> votes</h5>
@@ -129,10 +129,10 @@
   <div class="container">
     <% if @numthen == 0 %>
       <div class='no-proposal'>
-        <h3> Pas de proposition terminée à <%= @city.name %> pour le moment. </h3>
+        <h3><b>Pas de proposition terminée à <%= @city.name %> pour le moment. </b></h3>
       </div>
     <%else%>
-      <h3>Les propositions terminées :</h3>
+      <h3><b>Les propositions terminées :</b></h3>
       <div class="row">
         <div class="col">
           <div class="card">

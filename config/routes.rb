@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   #get 'ma_ville', to: 'cities#show', as: 'ma_ville'
   #get '/send_email_after_votes', to: 'proposals#send_email_after_votes', as: :send_vote_mail
 
+  resources :cities
+  
   devise_for :users
   resources :users
   resources :users do
@@ -19,9 +21,8 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :destroy] 
     resources :pictures, only: :create
     resources :comments do
-      resources :likes
+      resources :likes, only: [:create, :destroy, :edit]
+      resources :comments, only: [:create, :destroy, :edit]
     end
   end
-
-  resources :cities
 end

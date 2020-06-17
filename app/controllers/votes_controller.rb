@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_action :not_permit_to_vote_in_other_cities, only: :create
   
   def create
-    Vote.create!(
+    Vote.create(
       user: current_user,
       proposal_id: permitted_proposal_id_param
     )

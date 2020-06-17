@@ -46,7 +46,7 @@
           <div class="card-content">
             <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
             <h6 class="card-title" style="margin-bottom: 0px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
-            <p class='text-muted'> Crée le <%= @proposal.created_at.strftime('%d/%m/%Y) %></p>
+            <small class='text-muted' style='font-style: italic;'> Crée le <%= @proposal.created_at.strftime('%d/%m/%Y') %></small>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
                 <button id="tweet-btn" class="btn btn-simple btn-twitter" style="margin-top: 0px; margin-bottom: 0px">
@@ -72,8 +72,8 @@
             <% unless is_current_user_owner_of?(@proposal) %>
               <%if (@proposal.differencebetween == false) && @proposal.votes_count < 100 %>
                 <% t = (Time.now- (@proposal.created_at+(60*60*24*30)))%>
-                <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
-                <h5 class="text-muted">Votez pour cette proposition</h5>
+                <h5 class="text-muted" style='margin-bottom: 0px;'>Votez pour cette proposition</h5>
+                <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                 <%if @proposal.vote_of(current_user)%>
                   <%= link_to '<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> A voté'.html_safe, proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-success", method: :delete %>
                 <%else%>
@@ -92,7 +92,7 @@
               <%end%>
             <% end %>
             <%if @proposal.votes_count == 1 || @proposal.votes_count == 0%>
-              <h5><%= @proposal.votes_count %> VOTE</h5>
+              <h5><%= @proposal.votes_count %> VOTES</h5>
             <%else%>
               <h5><%= @proposal.votes_count %> VOTES</h5>
             <%end%>
