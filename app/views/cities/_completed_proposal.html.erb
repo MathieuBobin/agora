@@ -1,9 +1,6 @@
 <tr>
   <td></td>
   <td>
-    <h3 class='text-primary'><%= proposals.index(x)+1 %></h3>
-  </td>
-  <td>
     <%if x.picture.attached?%>
       <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
     <%else%>
