@@ -62,10 +62,10 @@
               <div class="card-avatar">
                 <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
               </div>
-              <% else %>
+            <% else %>
               <div class="card-avatar">
                 <%= image_tag("avatar.png", style: "width:100%; height: auto;")%> 
-            </div>
+              </div>
             <% end %>
           </div>
         </div>
@@ -102,7 +102,7 @@
             <%end%>
           </div>
           <% unless @proposal.votes_count == 0 %>
-            <div class="card-footer">
+            <div class="card-footer" style="padding-top: 0px;  padding-bottom: 0px;">
               <div class="price">
                 <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement général : <%= @proposal.general_classification %></span></small>
                 <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %></span></small>
