@@ -18,10 +18,13 @@
             <td>
               <b>
               <div class="avatar">
-                <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><h5>
-                <%if x.user.id == x.proposal.user.id%>
-                  <span class="badge badge-primary">Initiateur</span>
-                <%end%>
+                <h5>
+                  <b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+                  <%if x.user.id == x.proposal.user.id%>
+                    <span class="badge badge-primary">Initiateur</span>
+                  <%end%>
+                  </b>
+                <h5>
               </div>
               </b>
               <p><%=x.content%></p>
@@ -46,12 +49,19 @@
                 <b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%></b><br><br>
                 <%=x.content%><br><br>
                 <em>Message posté le <%=x.created_at.to_formatted_s(:short)%></em>
+              <%if user_signed_in?%>
+                <%if current_user.id == x.user.id%>
+                  <%= link_to 'effacer',proposal_comment_path(@proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %>
+                <%end%>
+              <%end%>
                 <br><br>
               <%end%>
-              <%=form_tag url_for(edit_proposal_comment_path(@proposal.id, x.id)), method: :get do %> 
-                <%= label_tag "Répondre à #{x.user.first_name}" %>
-                <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
-                <%=submit_tag "Envoyer", {class: 'btn btn-primary'}%>
+              <%if user_signed_in?%>
+                <%=form_tag url_for(edit_proposal_comment_path(@proposal.id, x.id)), method: :get do %> 
+                  <%= label_tag "Répondez à #{x.user.first_name}" %>
+                  <p><%= text_field_tag 'title',"", {class: 'form-control border'} %></p>
+                  <%=submit_tag "Envoyer", {class: 'btn btn-primary'}%>
+                <%end%>
               <%end%>
               </div>
               </p>

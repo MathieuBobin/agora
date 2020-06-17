@@ -78,7 +78,11 @@
                 <button class="btn btn-warning">Les votes ne sont plus pris en comtpe</button>               
               <%end%>
             <% end %>
-            <h5><%= @proposal.votes_count %> VOTES</h5>
+            <%if @proposal.votes_count >1 %>
+              <h5><%= @proposal.votes_count %> VOTES</h5>
+            <%else%>
+              <h5><%= @proposal.votes_count %> VOTE </h5>
+            <%end%>
           </div>
           <% unless @proposal.votes_count == 0 %>
             <div class="card-footer">
