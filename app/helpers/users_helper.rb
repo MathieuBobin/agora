@@ -14,4 +14,8 @@ module UsersHelper
   def is_current_user_admin?
     current_user.is_admin?
   end
+
+  def current_user_city
+    current_user.city
+  end
 end

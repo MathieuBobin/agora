@@ -17,6 +17,7 @@ gem "aws-sdk-s3", require: false
 gem 'i18n'
 gem 'rails-i18n', '~> 5.0'
 gem 'devise-i18n', '~> 1.9', '>= 1.9.1'
+gem 'twitter'
 # -------
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

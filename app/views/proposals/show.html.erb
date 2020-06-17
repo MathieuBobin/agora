@@ -1,6 +1,8 @@
-<div class="container">
+<div id=<%= @proposal.id %> class="my-proposal container">
   <br>
   <h3><b>La proposition</b></h3>
+  <br>
+  <br>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
       <div class="card card-product">
@@ -43,10 +45,13 @@
         <div class="card card-testimonial">
           <div class="card-content">
             <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
-            <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
-            <p class='text-muted'> Crée le <%= @proposal.created_at.to_date %></p>
+            <h6 class="card-title" style="margin-bottom: 0px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
+            <small class='text-muted' style='font-style: italic;'> Crée le <%= @proposal.created_at.strftime('%d/%m/%Y') %></small>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
+                <button id="tweet-btn" class="btn btn-simple btn-twitter" style="margin-top: 0px; margin-bottom: 0px">
+                  <i class="fa fa-twitter"></i> Tweeter ma proposition
+                </button><br>
                 <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
                 <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
               <% end %>
@@ -65,17 +70,25 @@
         <div class="card">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
-              <%if (@proposal.differencebetween == false) && @proposal.votes_count <= 100 %>
+              <%if (@proposal.differencebetween == false) && @proposal.votes_count < 100 %>
                 <% t = (Time.now- (@proposal.created_at+(60*60*24*30)))%>
-                <p class='text-muted'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
-                <h5 class="text-muted">Votez pour cette proposition</h5>
+                <h5 class="text-muted" style='margin-bottom: 0px;'>Votez pour cette proposition</h5>
+                <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
                 <%if @proposal.vote_of(current_user)%>
                   <%= link_to '<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> A voté'.html_safe, proposal_vote_path(@proposal.id, @proposal.vote_of(current_user).id), :class => "btn btn-success", method: :delete %>
                 <%else%>
                   <%= link_to '<i class="material-icons" style="font-size: 19px">how_to_vote</i> Je vote'.html_safe, proposal_votes_path(@proposal.id), :class => "btn btn-primary", method: :post %>
-              <% end %>
+                <%end%>
               <%else%>
-                <button class="btn btn-warning">Les votes ne sont plus pris en comtpe</button>               
+                <%if (@proposal.differencebetween == true) %>
+                  <div class="alert alert-warning">
+                    <p class="text-center">Expirée</p>
+                  </div>    
+                <%else%> 
+                  <div class="alert alert-info">
+                    <p class="text-center">Validée</p>
+                  </div>
+                <%end%>
               <%end%>
             <% end %>
             <%if @proposal.votes_count >1 %>
@@ -96,12 +109,12 @@
       </div>
       <div class="col">
         <% if user_signed_in? %>
-        <% if is_current_user_admin? %>
-        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-        <%= file_field_tag :picture %>
-        <%= submit_tag "Mettre à jour" %>
-        <% end %>
-        <% end %>
+          <% if is_current_user_admin? %>
+            <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+              <%= file_field_tag :picture %>
+              <%= submit_tag "Mettre à jour" %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
