@@ -182,106 +182,99 @@
     </div>
   </div>
 </div>
-  <br><br><br>
-  <br>
-  <div class = "container">
-    <h2 class="text-center"><b>Les meilleures propositions du moment</b></h2>
-    <div class="col-md-6">
-      <h3 class="text-center"><b>Paris</b></h3>
-      <div class="card box">
-        <div class="card-content table-responsive table-full-width">
-          <table class="table">
-            <tbody>
-              <%@proposal_paris.each do |x|%>
-              <tr>
-                <td></td>
-                <td>
-                  <h3 class="text-primary"><%= @proposal_paris.index(x)+1 %></h3>
-                </td>
-                <td>
-                  <%if x.picture.attached?%>
-                  <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
-                  <%else%>
-                  <p>=Image=</p>
-                  <%end%>
-                </td>
-                <td class="flex-column">
-                  <p class="text-wrap"><%= x.title %></p>
-                  <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
-                    <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                  </a>
-                  <span class="badge"><%= x.category.name %></span>
-                </p>
+<br><br><br>
+<br>
+<div class = "container">
+  <h2 class="text-center"><b>Les meilleures propositions du moment</b></h2>
+  <div class="col-md-6">
+    <h3 class="text-center"><b>Paris</b></h3>
+    <div class="card box">
+      <div class="card-content table-responsive table-full-width">
+        <table class="table">
+          <tbody>
+            <%@proposal_paris.each do |x|%>
+            <tr>
+              <td>
+              <td>
+                <%if x.picture.attached?%>
+                <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                <%else%>
+                <p>=Image=</p>
+                <%end%>
               </td>
-              <td><td>
-              </tr>
-              <%end%>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <h3 class="text-center"><b>Lyon</b></h3>
-      <div class="card box">
-        <div class="card-content table-responsive table-full-width">
-          <table class="table">
-            <tbody>
-              <%@proposal_lyon.each do |x|%>
-              <tr>
-                <td></td>
-                <td>
-                  <h3 class='text-primary'><%=@proposal_lyon.index(x)+1%></h3>
-                </td>
-                <td>
-                  <%if Proposal.find(x.id).picture.attached?%>
-                  <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
-                  <%else%>
-                  <p>=Image=</p>
-                  <%end%>                  
-                </td>
-                <td>
-                  <p class='text-wrap'><%= x.title %></p>
-                  <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
-                    <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
-                  </a>
-                  <span class="badge badge-primary"><%= x.category.name %></span>
-                </td>
-              </tr>
-              <%end%>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br><br><br><br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter!</b></h3>
-        <div class="dropdown">
-          <button href="#" class="btn dropdown-toggle btn-primary btn-lg" data-toggle="dropdown" aria-expanded="true" >
-            <i class="material-icons">home</i>  Les villes disponibles
-            <b class="caret"></b>
-          </button>
-          <ul class="dropdown-menu">
-            <% City.all.each do |x| %>
-              <li><a href="cities/<%=x.id %>"><%= x.name %></a></li>
+              <td class="flex-column">
+                <p class="text-wrap"><%= x.title %></p>
+                <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
+                  <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                </a>
+                <span class="badge"><%= x.category.name %></span>
+              </p>
+            </td>
+            </tr>
             <%end%>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-6 img-bottom">
-        <%= image_tag("town.svg", style: "width:70%") %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  <br><br><br><br>
-  <div class = "container text-center">
-    <h4 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'où vous venez !</b></h4>
-    <p><a class="btn btn-primary " href="mailto: zeagoraproject@gmail.com" role="button"><i class="material-icons">mail</i>   Nous contacter</a></p>
+  <div class="col-md-6">
+    <h3 class="text-center"><b>Lyon</b></h3>
+    <div class="card box">
+      <div class="card-content table-responsive table-full-width">
+        <table class="table">
+          <tbody>
+            <%@proposal_lyon.each do |x|%>
+            <tr>
+              <td>
+              <td>
+                <%if Proposal.find(x.id).picture.attached?%>
+                <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
+                <%else%>
+                <p>=Image=</p>
+                <%end%>                  
+              </td>
+              <td>
+                <p class='text-wrap'><%= x.title %></p>
+                <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                  <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                </a>
+                <span class="badge badge-primary"><%= x.category.name %></span>
+              </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter!</b></h3>
+      <div class="dropdown">
+        <button href="#" class="btn dropdown-toggle btn-primary btn-lg" data-toggle="dropdown" aria-expanded="true" >
+          <i class="material-icons">home</i>  Les villes disponibles
+          <b class="caret"></b>
+        </button>
+        <ul class="dropdown-menu">
+          <% City.all.each do |x| %>
+            <li><a href="cities/<%=x.id %>"><%= x.name %></a></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-6 img-bottom">
+      <%= image_tag("town.svg", style: "width:70%") %>
+    </div>
+  </div>
+</div>
+<br><br><br><br>
+<div class = "container text-center">
+  <h4 class="display-4 text-white"><b>Votre ville n'est pas encore disponible ? Dites-nous d'où vous venez !</b></h4>
+  <p><a class="btn btn-primary " href="mailto: zeagoraproject@gmail.com" role="button"><i class="material-icons">mail</i>   Nous contacter</a></p>
+</div>
 </div>
 </div>
 
