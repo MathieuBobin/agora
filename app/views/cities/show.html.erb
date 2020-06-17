@@ -87,7 +87,7 @@
                           <%if x.picture.attached?%>
                             <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
                           <%else%>
-                            <p>=Image=</p>
+                            <%= image_tag("no_picture.png", width: 170, style: "height: auto")%>
                           <%end%>
                         </td>
                         <td>

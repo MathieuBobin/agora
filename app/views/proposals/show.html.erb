@@ -10,6 +10,10 @@
           <div class="card-image" data-header-animation="true">
             <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
           </div>
+        <%else%>
+          <div class="card-image" data-header-animation="true">
+            <%= image_tag("no_picture.png", style: "height: 50vh;")%>
+          </div>
         <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
