@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'proposals#index'
   get '/contact', to: 'additional_views#contact'
+  get '/faq', to: 'additional_views#faq'
   get '/proposal_created', to: 'additional_views#proposal_created'
   get '/policy', to: 'additional_views#policy'
   get '/mon_profil', to: 'users#show', as: 'mon_profil'
