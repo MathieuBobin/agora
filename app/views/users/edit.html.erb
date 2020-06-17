@@ -1,5 +1,5 @@
 <br>
-<br>
+<br> 
 <div class="container">
   <div class="col-md-3"></div>
   <div class="col-md-6">
@@ -30,6 +30,14 @@
           <div class="col-md-9">
             <div class="form-group is-empty">
               <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <label class="col-md-3 label-on-left">  <%= f.label :city, "Ville" %></label>                                            
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"} %>
             </div>
           </div>
         </div>
@@ -67,24 +75,6 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header card-header-icon" data-background-color="blue">
-        <i class="material-icons">delete_outline</i>
-      </div>
-      <div class="card-content">
-        <h4>Suppression du compte</h4>
-        <div class="text-center">
-          <p>Êtes vous sûr de vouloir supprimer votre compte ? Cette action est irréversible. 
-            <%= button_to "Supprimer mon compte", registration_path(current_user), data: { confirm: "Êtes-vous certain.e de vouloir supprimer votre compte?" }, method: :delete, class: "btn btn-primary" %>
-          </div>
-          <div class="col-md-3"></div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="container">
     <div class="col-md-3"></div>
     <div class="col-md-6">

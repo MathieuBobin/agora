@@ -10,6 +10,10 @@
           <div class="card-image" data-header-animation="true">
             <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
           </div>
+        <%else%>
+          <div class="card-image" data-header-animation="true">
+            <%= image_tag("no_picture.png", style: "height: 50vh;")%>
+          </div>
         <%end%>
         <div class="card-header">
           <h4 class="card-title"><%= @proposal.title %><br>
@@ -88,10 +92,12 @@
                   <div class="alert alert-warning">
                     <p class="text-center">Expirée</p>
                   </div>    
+                  <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
                 <%else%> 
                   <div class="alert alert-info">
                     <p class="text-center">Validée</p>
                   </div>
+                  <p class="text-muted text-center">Cette proposition a atteint les 5 votes, une action est en cours.</p> 
                 <%end%>
               <%end%>
             <% end %>
