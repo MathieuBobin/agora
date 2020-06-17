@@ -47,10 +47,13 @@
 
 <% @numnow = 0 %>
 <% @numthen = 0 %>
+<% @numvotes = 0 %>
 <% @proposals.each do |x| %>
   <%if (x.differencebetween == false) %>
     <% @numnow += 1 %>
-  <%else%>
+  <%elsif x.votes_count >= 100%>
+    <% @numvotes += 1 %>
+  <%elsif%>
     <% @numthen += 1 %>
   <%end%>
 <%end%>
@@ -127,7 +130,7 @@
   </div>
 
   <div class="container">
-    <% if @numthen == 0 %>
+    <% if @numthen == 0 && @numvotes == 0 %>
       <div class='no-proposal'>
         <h3><b>Pas de proposition terminée à <%= @city.name %> pour le moment. </b></h3>
       </div>
