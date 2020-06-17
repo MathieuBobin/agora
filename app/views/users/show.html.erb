@@ -6,7 +6,11 @@
         <%if @user.avatar.attached?%>
         <div class="card-avatar">
           <%= image_tag @user.avatar, alt: 'Avatar' , style: "width: 100%;height: auto;"%>
-          </div>
+        </div>
+        <%else%>
+        <div class="card-avatar">
+          <%= image_tag("avatar.png", style: "width:100%; height: auto;")%> 
+        </div>
         <%end%>
       <div class="card-content">
         <h6 class="category text-gray">Mes informations</h6>
