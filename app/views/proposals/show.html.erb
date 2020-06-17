@@ -62,6 +62,10 @@
               <div class="card-avatar">
                 <%= image_tag @proposal.user.avatar, alt: 'Picture', style: "width: 100%;height: auto;" %>
               </div>
+              <% else %>
+              <div class="card-avatar">
+                <%= image_tag("avatar.png", style: "width:100%; height: auto;")%> 
+            </div>
             <% end %>
           </div>
         </div>
