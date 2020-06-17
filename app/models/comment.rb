@@ -7,9 +7,7 @@ class Comment < ApplicationRecord
   
 
   # Validations
-  validates :content,
-    presence: true,
-    length: {minimum: 0, maximum: 300}
+  validates :content, presence: true, length: {minimum: 0, maximum: 300}
 
   # Instance methods
   def likes_count
