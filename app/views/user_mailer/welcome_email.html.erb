@@ -4,13 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Bonjour <%= @user.first_name %> et bienvenue chez nous !</h1>
     <p>
-      Tu t'es inscrit sur Agora en utilisant l'e-mail suivant : <%= @user.email %>.
+      Vous vous êtes inscrit sur Agora en utilisant l'e-mail suivant : <%= @user.email %>.
     </p>
     <p>
-      Pour accéder à ton compte, connecte-toi sur <%= link_to "Agora.com", @url %>
+      Pour accéder à votre compte, connectez-vous sur <%= link_to "Agora.com", @url %>
     </p>
-    <p> À très vite sur Agora !
+    <p> À très vite sur Agora !</p>
+
+    <p> L'équipe Agora.</p>
   </body>
 </html>
