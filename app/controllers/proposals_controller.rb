@@ -29,6 +29,12 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
     @comments = Comment.where(proposal_id: params[:id])
+
+    if params[:tweet]
+      @proposal = Proposal.find(permitted_proposal_id_param)
+      # tweet(@proposal)
+      TwitterBot.new.tweet('Hello world !')
+    end
   end
   
   def destroy
@@ -43,11 +49,6 @@ class ProposalsController < ApplicationController
     ProposalMailer.send_email_after_votes(@proposal, @user).deliver
     flash[:notice] = "Mail has been sent."
     redirect_to root_path
-  end
-
-  def tweet_proposal
-    @proposal = Proposal.find(permitted_proposal_id_param)
-    tweet(@proposal)
   end
 
   private

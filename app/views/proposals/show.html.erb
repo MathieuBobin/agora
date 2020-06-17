@@ -1,6 +1,7 @@
-<div class="container">
+<div id=<%= @proposal.id %> class="my-proposal container">
   <br>
   <h3>La proposition</h3>
+  <br>
   <br>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
@@ -44,10 +45,12 @@
         <div class="card card-testimonial">
           <div class="card-content">
             <h5 class="text-muted" style="margin-bottom: 2px">Une proposition de</h5>
-            <h6 class="card-title" style="margin-bottom: 15px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
+            <h6 class="card-title" style="margin-bottom: 0px"><%= @proposal.user.first_name %> <%= @proposal.user.last_name %></h6>
             <div>
               <% if is_current_user_owner_of?(@proposal) %>
-                <%= link_to '<i class="fa fa-twitter"></i> Tweeter ma proposition'.html_safe, :controller => "proposals", :action => "tweet_proposal", :id => @proposal.id, class: btn btn-simple btn-twitter" %><br>
+                <button id="tweet-btn" class="btn btn-simple btn-twitter" style="margin-top: 0px; margin-bottom: 0px">
+                  <i class="fa fa-twitter"></i> Tweeter ma proposition
+                </button><br>
                 <small class="text-muted">Besoin d'éditer ta proposition ? Ecrivez au support Agora !</small><br>
                 <a class="btn btn-primary btn-xs" href="mailto: zeagoraproject@gmail.com" role="button">Ecrire au support</a>
               <% end %>
