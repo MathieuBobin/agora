@@ -1,5 +1,5 @@
 <br>
-<br>
+<br> 
 <div class="container">
   <div class="col-md-3"></div>
   <div class="col-md-6">
@@ -30,6 +30,14 @@
           <div class="col-md-9">
             <div class="form-group is-empty">
               <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <label class="col-md-3 label-on-left">  <%= f.label :city, "Ville" %></label>                                            
+          <div class="col-md-9">
+            <div class="form-group is-empty">
+              <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"} %>
             </div>
           </div>
         </div>
