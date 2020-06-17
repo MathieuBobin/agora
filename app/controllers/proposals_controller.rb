@@ -28,7 +28,7 @@ class ProposalsController < ApplicationController
   
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
-    @comments = Comment.where(proposal_id: params[:id])
+    @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }.first(5)
 
     if params[:tweet]
       # tweet(@proposal)
