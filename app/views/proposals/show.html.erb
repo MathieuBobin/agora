@@ -95,10 +95,10 @@
                 <%end%>
               <%end%>
             <% end %>
-            <%if @proposal.votes_count == 1 || @proposal.votes_count == 0%>
+            <%if @proposal.votes_count >1 %>
               <h5><%= @proposal.votes_count %> VOTES</h5>
             <%else%>
-              <h5><%= @proposal.votes_count %> VOTES</h5>
+              <h5><%= @proposal.votes_count %> VOTE </h5>
             <%end%>
           </div>
           <% unless @proposal.votes_count == 0 %>
