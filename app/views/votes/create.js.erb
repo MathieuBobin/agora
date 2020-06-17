@@ -1,0 +1,5 @@
+proposalId = <%= @proposal.id %>;
+proposalRow = $('tr#'+proposalId);
+voteInfo = proposalRow.find($('.vote-info'));
+voteInfo.remove();
+proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');

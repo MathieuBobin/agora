@@ -3,13 +3,16 @@ class VotesController < ApplicationController
   before_action :not_permit_to_vote_in_other_cities, only: :create
   
   def create
-    Vote.create(
+    @proposal = Proposal.find(permitted_proposal_id_param)
+    
+    vote = Vote.create(
       user: current_user,
-      proposal_id: permitted_proposal_id_param
+      proposal: @proposal
     )
     
     flash[:success] = "Votre vote a bien été pris en compte !"  
-
+    
+    
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
       format.js { }
@@ -17,10 +20,16 @@ class VotesController < ApplicationController
   end
   
   def destroy
+    @proposal = Proposal.find(permitted_proposal_id_param)
+
     Vote.destroy(permitted_vote_id_param)
     
-    @city = Proposal.find(params[:proposal_id]).city
-    redirect_back fallback_location: root_path
+    @city = @proposal.city
+    
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { }
+    end
   end
   
   private
