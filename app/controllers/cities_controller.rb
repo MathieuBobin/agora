@@ -2,6 +2,7 @@ class CitiesController < ApplicationController
   def show
     @city = City.find(params[:id])
     @categories = Category.all
+    
     category_ids = params[:category_ids]
     additional_filter = params[:additional_filter]
     

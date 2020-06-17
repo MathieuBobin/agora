@@ -1,0 +1,146 @@
+<% @numnow = 0 %>
+<% @numthen = 0 %>
+<% @numvotes = 0 %>
+<% @proposals.each do |x| %>
+  <%if (x.votes_count >= 5)%>
+    <% @numvotes += 1 %>
+  <%elsif (x.differencebetween == false) %>
+    <% @numnow += 1 %>
+  <%else%>
+    <% @numthen += 1 %>
+  <%end%>
+<%end%>
+
+<br><br>
+<div id=<%= city.id %> class="my-city">
+  <div class="container">
+    <% if proposals.count == 0 %>
+      <div class='no-proposal'>
+        <h3><b>Personne n'a posté de proposition à <%= @city.name %> pour le moment.  Change ça en cliquant sur le bouton :</b></h3>
+        <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      </div>
+    <%elsif @numnow == 0 %>
+      <div class='no-proposal'>
+        <h3><b> Aucune proposition en cours à <%= @city.name %>. Change ça en cliquant sur le bouton : </b></h3>
+        <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+      </div>
+    <%else%>
+      <h3><b>Les propositions en cours : votez pour vos propositions préférées !</b></h3>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-content">
+              <table class="table table-responsive table-full-width">
+                <tbody>
+                  <% @proposals.each do |x| %>
+                    <%if (x.differencebetween == false) && (x.votes_count < 5) %>
+                      <tr>
+                        <td></td>
+                        <td>
+                          <h3 class='text-primary'><%= @proposals.index(x)+1 %></h3>
+                        </td>
+                        <td>
+                          <%if x.picture.attached?%>
+                            <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                          <%else%>
+                            <p>=Image=</p>
+                          <%end%>
+                        </td>
+                        <td>
+                          <h4 class='text-wrap'><%= x.title %></h4>
+                          <% t = (Time.now- (x.created_at+(60*60*24*30)))%>
+                          <p class='text-muted' style='font-style: italic;'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
+                          <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                            <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                          </a>
+                          <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                            <i class="material-icons" style="font-size: 15px">mode_comment</i> <%=x.comments.count%>
+                          </a>
+                          <span class="badge badge-primary"><%= x.category.name %></span>
+                        </td>
+                          <td class='text-center'>
+                            <%if x.vote_of(current_user)%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", method: :delete, remote: true %>
+                            <%else%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-md", method: :post, remote: true %>
+                            <%end%>
+                            <%if x.votes_count>1%>
+                              <h5> <%=x.votes_count%> votes</h5>
+                            <%else%>
+                              <h5> <%=x.votes_count%> vote</h5>
+                            <%end%>
+                          </td>
+                        <td><td>
+                      </tr>
+                    <%end%>
+                  <%end%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="container">
+    <% if (@numthen == 0) && (@numvotes == 0) %>
+      <div class='no-proposal'>
+        <h3><b>Pas de proposition terminée à <%= @city.name %> pour le moment. </b></h3>
+        <br><br>
+      </div>
+    <%else%>
+      <h3><b>Les propositions terminées :</b></h3>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-content">
+              <table class="table table-responsive table-full-width">
+                <tbody>
+                  <% @proposals.each do |x| %>
+                    <%if (x.differencebetween == true) || (x.votes_count >= 5) %>
+                    <tr>
+                      <td></td>
+                      <td>
+                        <h3 class='text-primary'><%= @proposals.index(x)+1 %></h3>
+                      </td>
+                      <td>
+                        <%if x.picture.attached?%>
+                          <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                        <%else%>
+                          <p>=Image=</p>
+                        <%end%>
+                      </td>
+                      <td>
+                        <h4 class='text-wrap'><%=x.title %></h4>
+                        <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                          <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
+                        </a>
+                        <span class="badge badge-primary"><%= x.category.name %></span>
+                      </td>
+                      <td>
+                        <%if (x.differencebetween == true) %>
+                          <div class="alert alert-warning">
+                            <p class="text-center">Expirée</p>
+                          </div>   
+                          <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
+                        <%elsif x.votes_count >= 5%> 
+                          <div class="alert alert-info">
+                            <p class="text-center">Validée</p>
+                          </div>
+                          <p class="text-muted text-center">Cette proposition a atteint les 5 votes!</p> 
+                        <%end%>
+                      <td>
+                    </tr>
+                    <%else%>
+                    <%end%>
+                  <%end%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
