@@ -1,4 +1,5 @@
 class ProposalMailer < ApplicationMailer
+  require 'csv'
   default from: 'zeagoraproject@gmail.com'
 
   def info_admin(proposal)
@@ -43,11 +44,19 @@ class ProposalMailer < ApplicationMailer
     @url6 = 'https://www.amf.asso.fr/documents-modalites-participation-citoyens-aux-decisions-locales/7718'
     @url7 = 'http://periurbain.cget.gouv.fr/sites/default/files/Dossier%20pre%CC%81sentation%20Formation%20Emergence%20juin%202016-Les%20Pionnie%CC%80res.pdf'
 
-    @user_list = @votes.each do |vote| 
-      vote.user.email
-    end
+    #@votes.each do |vote| 
+     #vote.user.email
+     #end
+     
+     
+@user_list = CSV.generate(headers: true) do |csv|
+  csv << ["Liste des emails des utilisateurs ayant soutenus ta proposition :"]
+  @votes.all.each do |votes|
+    csv << [votes.user.email]
+  end
+end
 
-    attachments['emails_utilisateurs.txt'] = {:mime_type => 'application/pdf',
+    attachments['emails_utilisateurs.txt'] = {:mime_type => 'application/txt',
       :content => @user_list }
     if @proposal.votes_count == 5
     mail(to: @user.email, subject: 'Mise en relation !')
