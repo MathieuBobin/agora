@@ -36,12 +36,13 @@ background-color: #FFFFFF !important;
 
 .img-top {
   position: relative;
-  top: 35px;
+  top: 50px;
 }
 
 .img-center {
   position: relative;
   bottom: 30px;
+  top: 15px;
 }
 
 .img-group {
@@ -51,7 +52,7 @@ background-color: #FFFFFF !important;
 
 .img-bottom {
   position: relative;
-  bottom: 35px;
+  bottom: 3px;
 }
 
 .city {
@@ -103,5 +104,35 @@ background-color: #FFFFFF !important;
 
 .badge
 {
-  background-color: #5bc0de;
+  background-color: #00bcd4;
+}
+
+.footer-down
+{
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #bdbdbd ;
+  background-color: white ;
+}
+
+.text-white-footer
+{
+  color: #212121;
+}
+
+.img-and-after {
+  position: relative;
+  top: 5px;
+  left: 0px;
+}
+
+.nav-btn {
+  position: relative;
+  top: 1px;
+}
+
+.img-profile {
+  position: relative;
+  bottom: 15px;
+  
 }

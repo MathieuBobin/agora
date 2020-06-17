@@ -1,10 +1,16 @@
-<div class="jumbotron jumbotron-fluid" style="background-image: url(https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940); background-size: 100%;">
-  <div class="container">
-    <h1 class="display-4">Les propositions citoyennes à <%= @city.name %></h1>
-    <p class="lead">Retrouvez les meilleurs propositions du moment ci-dessous</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 city">
+      <h1 class="display-4">Les propositions citoyennes à <%=@city.name%></h1>
+      <p class="lead">Retrouvez les meilleures propositions du moment ci-dessous</p>
+    </div>
+    <div class="col-md-5 city">
+     <%= image_tag("city.svg", style: "width:100%") %>
+    </div>
   </div>
 </div>
-
+<br>
+<br>
 <div id="filter" class="container">
   <div class="row">
     <div class="col-xs col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
@@ -70,7 +76,7 @@
               <table class="table table-responsive table-full-width">
                 <tbody>
                   <% @proposals.each do |x| %>
-                    <%if (x.differencebetween == false)%>
+                    <%if (x.differencebetween == false) && x.votes_count < 100%>
                       <tr>
                         <td></td>
                         <td>
@@ -90,19 +96,23 @@
                           <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
                             <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
                           </a>
+                          <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
+                            <i class="material-icons" style="font-size: 15px">mode_comment</i> <%=x.comments.count%>
+                          </a>
                           <span class="badge badge-primary"><%= x.category.name %></span>
                         </td>
-                        <%if x.vote_of(current_user)%>
                           <td class='text-center'>
-                            <%= link_to "#{x.votes_count} <i class='material-icons' style='font-size: 19px'>how_to_vote</i>".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
-                            <h5> A voté ! <i class="material-icons" style="font-size: 20px" >done</i></h5>
+                            <%if x.vote_of(current_user)%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté!".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-lg", method: :delete%>
+                            <%else%>
+                              <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
+                            <%end%>
+                            <%if x.votes_count>1%>
+                              <h5> <%=x.votes_count%> votes</h5>
+                            <%else%>
+                              <h5> <%=x.votes_count%> vote</h5>
+                            <%end%>
                           </td>
-                        <%else%>
-                          <td class='text-center'> 
-                            <%= link_to "#{x.votes_count}", proposal_votes_path(x.id), :class => "btn btn-primary btn-lg", method: :post%>
-                            <h5> Voter   <i class="material-icons"style="font-size: 20px" >arrow_drop_up</i></h5>
-                          </td>
-                        <%end%>
                         <td><td>
                       </tr>
                     <%end%>
@@ -119,10 +129,10 @@
   <div class="container">
     <% if @numthen == 0 %>
       <div class='no-proposal'>
-        <h3> Pas de proposition terminé à <%= @city.name %> pour le moment. </h3>
+        <h3> Pas de proposition terminée à <%= @city.name %> pour le moment. </h3>
       </div>
     <%else%>
-      <h3>Les propositions passées :</h3>
+      <h3>Les propositions terminées :</h3>
       <div class="row">
         <div class="col">
           <div class="card">
@@ -130,7 +140,7 @@
               <table class="table table-responsive table-full-width">
                 <tbody>
                   <% @proposals.each do |x| %>
-                    <%if (x.differencebetween == true)%>
+                    <%if (x.differencebetween == true) ||  x.votes_count >= 100%>
                     <tr>
                       <td></td>
                       <td>
@@ -150,7 +160,19 @@
                         </a>
                         <span class="badge badge-primary"><%= x.category.name %></span>
                       </td>
-                      <td><td>
+                      <td>
+                        <%if (x.differencebetween == true) %>
+                          <div class="alert alert-warning">
+                            <p class="text-center">Expirée</p>
+                          </div>   
+                          <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
+                        <%elsif x.votes_count >= 100%> 
+                          <div class="alert alert-info">
+                            <p class="text-center">Validée</p>
+                          </div>
+                          <p class="text-muted text-center">Cette proposition a atteint les 100 votes!</p> 
+                        <%end%>
+                      <td>
                     </tr>
                     <%else%>
                     <%end%>

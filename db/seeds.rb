@@ -406,11 +406,19 @@ Proposal.create!(title: "Dépistage COVID-19",
 
 puts "Les propositions ont été créées"
 
-40.times do 
+200.times do 
   Comment.create!(
     content: Faker::Lorem.characters(number: 100),
     user: User.all.sample,
     proposal: Proposal.all.sample
+  )
+end
+
+100.times do
+  Comment.create(
+    content: Faker::Lorem.characters(number: 100),
+    user: User.all.sample,
+    comment: Comment.all.sample
   )
 end
 
@@ -424,3 +432,12 @@ puts "Les commentaires ont été créés"
 end
 
 puts "Les likes ont été créés"
+
+50.times do 
+  Vote.create!(
+    user: User.all.sample,
+    proposal: Proposal.all.sample
+  )
+end
+
+puts "Les votes ont été créés"
