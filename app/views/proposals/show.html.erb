@@ -71,7 +71,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card">
+        <div class="card" style="padding-bottom: 0px;">
           <div class="card-content text-center">
             <% unless is_current_user_owner_of?(@proposal) %>
               <%if (@proposal.differencebetween == false) && @proposal.votes_count < 5 %>
@@ -102,7 +102,7 @@
             <%end%>
           </div>
           <% unless @proposal.votes_count == 0 %>
-            <div class="card-footer" style="padding-top: 0px;  padding-bottom: 0px;">
+            <div class="card-footer" style="padding-top: 0px;  margin-bottom: 0px;">
               <div class="price">
                 <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement général : <%= @proposal.general_classification %></span></small>
                 <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement catégorie <%= @proposal.category.name %> : <%= @proposal.category_classification %></span></small>
