@@ -14,11 +14,10 @@
       </div>
       <div class="col-md-4 col-sm-4">
         <h4 class=" mt-sm-3 text-white-footer">Nous connaître</h4>
-        <p><a href="/contact" class="text-white-footer">À propos</a></p>
-        <p><a href="#" class="text-white-footer">Mentions légales </a></p>
-        <p><a href="/policy" class="text-white-footer">Notre charte</a></p>
-        <p><a href="#" class="text-white-footer">Politique de confidentialité</a></p>
-        <p><a href="#" class="text-white-footer">FAQ</a></p>
+        <p><%= link_to "À propos", contact_path ,class: "text-white-footer"%></p>
+        <p><%= link_to "Mentions légales", legal_path ,class: "text-white-footer"%></p>
+        <p><%= link_to "Notre charte", policy_path ,class: "text-white-footer"%></p>
+        <p><%= link_to "FAQ", faq_path ,class: "text-white-footer"%></p>
       </div>
       <div class="col-md-4 col-sm-4">
         <h4 class="mt-lg-0 mt-sm-4 text-white-footer">Contact</h4>
