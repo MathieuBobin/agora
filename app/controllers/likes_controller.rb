@@ -7,10 +7,10 @@ class LikesController < ApplicationController
     )
 
     # For AJAX use
-    # Get proposal which comment has been liked
-    @proposal = Proposal.find(permitted_proposal_id_param)
-    # Get comments of proposel liked and sort them in alphabetical order
-    @comments = @proposal.comments.sort { |p1, p2| p2.likes_count <=> p1.likes_count }
+    # Get comment which has been liked
+    # Get proposal of comment
+    @comment = like.comment
+    @proposal = @comment.proposal
     
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
@@ -19,13 +19,13 @@ class LikesController < ApplicationController
   end
   
   def destroy
-    Like.destroy(permitted_like_id_param)
+    like = Like.destroy(permitted_like_id_param)
     
     # For AJAX use
-    # Get proposal which comment has been liked
-    @proposal = Proposal.find(permitted_proposal_id_param)
-    # Get comments of proposel liked and sort them in alphabetical order
-    @comments = @proposal.comments.sort { |p1, p2| p2.likes_count <=> p1.likes_count }
+    # Get comment which has been liked
+    # Get proposal of comment
+    @comment = like.comment
+    @proposal = @comment.proposal
     
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       resources :votes
 
       root to: "users#index"
-    end
+  end
+  
   root 'proposals#index'
   get '/contact', to: 'additional_views#contact', as: 'contact'
   get '/proposal_created', to: 'additional_views#proposal_created'
@@ -19,8 +20,6 @@ Rails.application.routes.draw do
   get '/faq', to: 'additional_views#faq', as: 'faq'
   get '/mon_profil', to: 'users#show', as: 'mon_profil'
   get '/editer_mon_profil', to: 'users#edit', as: 'editer_mon_profil'
-  #get 'ma_ville', to: 'cities#show', as: 'ma_ville'
-  #get '/send_email_after_votes', to: 'proposals#send_email_after_votes', as: :send_vote_mail
 
   resources :cities
   

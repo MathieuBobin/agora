@@ -21,7 +21,7 @@
         <%= link_to "#{@user.city.name}", city_path(@user.city), class: 'btn btn-primary btn-round btn-xs' %>
         <br>
         <div class="p-1 mb-1">
-          <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , edit_user_path(@user), class: "btn btn-primary" %>
+          <%= link_to 'Éditer mon profil &nbsp <i class="material-icons" style="font-size: 19px">create</i>'.html_safe , editer_mon_profil_path, class: "btn btn-primary" %>
           <%= link_to 'Paramètres &nbsp <i class="material-icons" style="font-size: 19px">settings</i>'.html_safe, edit_user_registration_path, class: "btn btn-primary" %> 
         </div>
       </div>

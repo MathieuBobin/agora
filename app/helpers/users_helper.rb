@@ -19,7 +19,7 @@ module UsersHelper
     current_user.city
   end
 
-  def current_user_arent_the_proposal_city?(proposal)
+  def current_user_arent_the_city_of?(proposal)
     current_user.city != proposal.city
   end
 end

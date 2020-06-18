@@ -1,8 +1,8 @@
 <p>Bonjour <%= @email %>!</p>
   <% if @resource.try(:unconfirmed_email?) %>
-     <p>Ton email va être modifié en tant que : <%= @resource.unconfirmed_email %>.</p>
+     <p>Votre email va être modifié en tant que : <%= @resource.unconfirmed_email %>.</p>
   <% else %>
-     <p>Ton email a été modifié en tant que : <%= @resource.email %>.</p>
+     <p>Votre email a été modifié en tant que : <%= @resource.email %>.</p>
   <% end %>
   <br>
 <p>L'équipe Agora</p>

@@ -1,9 +1,16 @@
 <% if params[:city_id]  %>
-  proposalId = <%= @proposal.id %>;
-  proposalRow = $('tr#'+proposalId);
-  voteInfo = proposalRow.find($('.vote-info'));
-  voteInfo.remove();
-  proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
+  <% if (@proposal.votes_count < 5) && (@proposal.differencebetween == false) %>
+    proposalId = <%= @proposal.id %>;
+    proposalRow = $('tr#'+proposalId);
+    voteInfo = proposalRow.find($('.vote-info'));
+    voteInfo.remove();
+    proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
+  <% else %>
+    proposalRow = $('tr#'+proposalId);
+    proposalRow.remove();
+    completedProposalsContainer = $('#completed-proposals');
+    completedProposalsContainer.prepend('<%= j render 'cities/completed_proposal', x: @proposal %>');
+  <% end %>
 <% else %>
   proposalInfo = $('#proposal-info');
   voteInfo = proposalInfo.find($('#proposal-vote-info'));
