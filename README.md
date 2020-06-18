@@ -8,6 +8,13 @@ Les accès:
 * En environnement de test: https://agora-development.herokuapp.com/
 * En environnement de production: https://agora-prd.herokuapp.com/
 
+Administrateur :
+* Email: zeagoraproject@gmail.com
+* Mot de passe : ririri
+* Lien du dashboard : http://agora-prd.herokuapp.com/admin
+
+Dû à une incompatibilité entre la gem gérant le dashboard et Active Storage il n'est pas possible de changer la photo d'une proposition ou l'avatar d'un utilisateur à partir du dashboard.
+
 Le projet a été réalisé dans le cadre de la session 12 de TheHackingProject.
 
 ## Contributeurs
