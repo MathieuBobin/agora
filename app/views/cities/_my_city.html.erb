@@ -35,7 +35,7 @@
                   <tbody>
                     <% proposals.each do |x| %>
                       <%if (x.differencebetween == false) && (x.votes_count < 5) %>
-                        <%= render 'ongoing_proposal', x: x %>
+                        <%= render 'cities/ongoing_proposal', x: x %>
                       <%end%>
                     <%end%>
                   </tbody>
@@ -65,7 +65,7 @@
                   <tbody>
                     <% proposals.each do |x| %>
                       <% if (x.differencebetween == true) || (x.votes_count >= 5) %>
-                        <%= render 'completed_proposal', x: x %>
+                        <%= render 'cities/completed_proposal', x: x %>
                       <%end%>
                     <%end%>
                   </tbody>

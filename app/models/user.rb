@@ -34,10 +34,6 @@ class User < ApplicationRecord
     self.email == 'zeagoraproject@gmail.com'
   end
 
-  def votes_quotas 
-    days_since_sign_up = ((Time.now - self.created_at).to_f / 1.day).floor
-  end
-
   #Mailer
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
