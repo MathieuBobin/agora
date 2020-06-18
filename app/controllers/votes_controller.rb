@@ -12,7 +12,6 @@ class VotesController < ApplicationController
     
     flash[:success] = "Votre vote a bien été pris en compte !"  
     
-    
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
       format.js { }
@@ -20,10 +19,10 @@ class VotesController < ApplicationController
   end
   
   def destroy
-    @proposal = Proposal.find(permitted_proposal_id_param)
-
     Vote.destroy(permitted_vote_id_param)
-    
+
+    # For AJAX use
+    @proposal = Proposal.find(permitted_proposal_id_param)
     @city = @proposal.city
     
     respond_to do |format|

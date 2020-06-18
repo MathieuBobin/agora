@@ -27,4 +27,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy, :edit]
     end
   end
+
+  resources :cities do
+    resources :proposals do
+      resources :votes, only: [:create, :destroy]
+    end
+  end
 end

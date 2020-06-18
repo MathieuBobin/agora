@@ -1,9 +1,13 @@
 <td class='vote-info text-center'>
-  <%if x.vote_of(current_user)%>
-    <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, proposal_vote_path(x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", id: 'delete-btn', method: :delete, remote: true %>
-  <%else%>
-    <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, proposal_votes_path(x.id), :class => "btn btn-primary btn-md", id: 'create-btn', method: :post, remote: true %>
-  <%end%>
+  <% unless is_current_user_owner_of?(x) %>
+    <%if x.vote_of(current_user)%>
+      <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, city_proposal_vote_path(x.city.id, x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", id: 'delete-btn', method: :delete, remote: true %>
+    <%else%>
+      <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, city_proposal_votes_path(x.city.id, x.id), :class => "btn btn-primary btn-md", id: 'create-btn', method: :post, remote: true %>
+    <%end%>
+  <% else %>
+    <p class='text-muted' style='font-style: italic;'>Vous ne pouvez pas voter pour ta proposition</p>
+  <% end %>
   <%if x.votes_count>1%>
     <h5> <%= x.votes_count %> votes</h5>
   <%else%>

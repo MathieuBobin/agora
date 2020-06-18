@@ -1,5 +1,12 @@
-proposalId = <%= @proposal.id %>;
-proposalRow = $('tr#'+proposalId);
-voteInfo = proposalRow.find($('.vote-info'));
-voteInfo.remove();
-proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
+<% if params[:city_id]  %>
+  proposalId = <%= @proposal.id %>;
+  proposalRow = $('tr#'+proposalId);
+  voteInfo = proposalRow.find($('.vote-info'));
+  voteInfo.remove();
+  proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
+<% else %>
+  proposalInfo = $('#proposal-info');
+  voteInfo = proposalInfo.find($('#proposal-vote-info'));
+  voteInfo.remove();
+  proposalInfo.append('<%= j render 'proposals/proposal_vote_informations', proposal: @proposal %>');
+<% end %>

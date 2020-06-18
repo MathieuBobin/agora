@@ -15,7 +15,7 @@
       <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
     </a>
     <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
-      <i class="material-icons" style="font-size: 15px">mode_comment</i> <%=x.comments.count%>
+      <i class="material-icons" style="font-size: 15px">mode_comment</i> <%= x.comments.count %>
     </a>
     <span class="badge badge-primary"><%= x.category.name %></span>
   </td>
