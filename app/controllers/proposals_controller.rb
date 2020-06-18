@@ -12,6 +12,8 @@ class ProposalsController < ApplicationController
   
   def new
     @proposal = Proposal.new
+    @cityid = User.find_by(id: current_user.id).city_id
+    @cityuser = City.find_by(id: @cityid).name
     @city = current_user.city
   end
 
