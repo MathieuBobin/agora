@@ -13,16 +13,16 @@ class CommentsController < ApplicationController
 
       if @comment.save
         flash[:success] = "Votre commentaire a bien été posté !"
-        
+        redirect_back fallback_location: root_path
       else
         flash[:success] = @comment.errors.full_messages.to_sentence
-        # redirect_to @proposal
+        redirect_to @proposal
       end
 
-      respond_to do |format|
-        format.html { redirect_back fallback_location: root_path }
-        format.js { }
-      end
+      # respond_to do |format|
+      #   format.html { redirect_back fallback_location: root_path }
+      #   format.js { }
+      # end
     else
       @comment = Comment.new(
         content: params[:content],
@@ -31,15 +31,15 @@ class CommentsController < ApplicationController
       )
       if @comment.save
         flash[:success] = "Votre commentaire a bien été posté !"
-        
+        redirect_back fallback_location: root_path
       else
         flash[:success] = @comment.errors.full_messages.to_sentence
-        # redirect_to @proposal
+        redirect_to @proposal
 
-        respond_to do |format|
-          format.html { redirect_back fallback_location: root_path }
-          format.js { }
-        end
+        # respond_to do |format|
+        #   format.html { redirect_back fallback_location: root_path }
+        #   format.js { }
+        # end
       end
     end
   end
