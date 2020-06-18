@@ -56,6 +56,10 @@ class Proposal < ApplicationRecord
     self.update(is_online: true)
   end
 
+  def lifetime
+    30 - ((Time.now - self.created_at).to_f / 1.day).floor
+  end
+
   def user_receipt
     ProposalMailer.info_user(self).deliver_now
   end
