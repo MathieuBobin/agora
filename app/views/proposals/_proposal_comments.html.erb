@@ -3,7 +3,7 @@
       <table class="table table-responsive text-wrap">
         <tbody>
           <% comments.each do |x| %>
-            <%= render 'proposal_comment', x: x, proposal: proposal %>
+            <%= render 'proposals/proposal_comment', x: x, proposal: proposal %>
           <%end%>
         </tbody>
       </table>
