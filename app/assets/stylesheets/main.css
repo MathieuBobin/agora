@@ -1,3 +1,16 @@
+.logo img {
+  position: relative;
+  height: auto;
+  width: 50%;
+  bottom: 23px;
+  margin-left: -1px;
+} 
+
+.drop{
+ position: relative;
+ margin-left: -7em;
+} 
+
 .font-brand {
   font-size: 35px;
   bottom: 3px;
