@@ -18,4 +18,8 @@ module UsersHelper
   def current_user_city
     current_user.city
   end
+
+  def current_user_arent_the_proposal_city?(proposal)
+    current_user.city != proposal.city
+  end
 end
