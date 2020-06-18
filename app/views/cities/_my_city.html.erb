@@ -62,7 +62,7 @@
             <div class="card-content">
               <div class="table-responsive">
                 <table class="table">
-                  <tbody>
+                  <tbody id='completed-proposals'>
                     <% proposals.each do |x| %>
                       <% if (x.differencebetween == true) || (x.votes_count >= 5) %>
                         <%= render 'cities/completed_proposal', x: x %>

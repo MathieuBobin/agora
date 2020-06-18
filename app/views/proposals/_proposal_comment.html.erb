@@ -1,4 +1,4 @@
-<tr id='proposal-comment'>
+<tr id='<%= x.id %>' class='proposal-comment'>
   <td>
     <b>
     <div class="avatar">
@@ -28,7 +28,7 @@
     <div class = "container">
       <div class="row">
         <div class="col-xs-11 col-xs-offset-1">
-          <% x.comments.each do |y| %>
+          <% x.comments.order('created_at').reverse.each do |y| %>
             <br><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%= y.user.first_name%><%=" "%><%= y.user.last_name%></b><br><br>
             <%= y.content%><br><br>
             <small class='text-muted' style='font-style: italic;'>Message posté le <%= y.created_at.to_formatted_s(:short) %></small>

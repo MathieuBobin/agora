@@ -1,4 +1,3 @@
-debateSpace = $('#debate-space');
-proposalComments = $('#proposal-comments');
-proposalComments.remove();
-debateSpace.append('<%= j render 'proposals/proposal_comments', comments: @comments, proposal: @proposal %>');
+LikedCommentId = <%= @comment.id %>
+LikedComment = $('#'+LikedCommentId);
+LikedComment.replaceWith('<%= j render 'proposals/proposal_comment', x: @comment, proposal: @proposal %>');
