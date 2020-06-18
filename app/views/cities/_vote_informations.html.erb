@@ -2,7 +2,7 @@
   <%if user_signed_in?%>
     <% if is_current_user_owner_of?(x) %>
       <p class='text-muted' style='font-style: italic;'>Vous ne pouvez pas voter pour votre proposition !</p>
-    <% elsif current_user_arent_the_proposal_city?(x) %>
+    <% elsif current_user_arent_the_city_of?(x) %>
       <p class='text-muted' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
     <% else %>
       <%if x.vote_of(current_user)%>
@@ -12,7 +12,7 @@
       <%end%>
     <% end %>
   <%else%>
-    <p>Connectez-vous pour pouvoir voter!</p>
+    <p>Connectez-vous pour pouvoir voter !</p>
   <%end%>
   <%if x.votes_count>1%>
     <h5> <%= x.votes_count %> VOTES</h5>
