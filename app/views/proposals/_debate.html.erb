@@ -2,7 +2,7 @@
   <br>
   <h3><b>L'espace débat</b></h3><br>
   <%if user_signed_in?%>
-    <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %> 
+    <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %>
       <%= label_tag "Que pensez-vous de cette proposition ?" %>
       <p><%= text_field_tag 'content',"", {class: 'form-control'} %></p>
       <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
