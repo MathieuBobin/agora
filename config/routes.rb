@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :categories
+      resources :cities
+      resources :comments
+      resources :likes
+      resources :proposals
+      resources :votes
+
+      root to: "users#index"
+    end
   root 'proposals#index'
   get '/contact', to: 'additional_views#contact', as: 'contact'
   get '/proposal_created', to: 'additional_views#proposal_created'
