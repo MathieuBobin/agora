@@ -9,7 +9,9 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # TODO Add authentication logic here.
+      if !current_user.admin?
+        redirect_to root_path, alert: "Désolé vous n'avez pas l'accès !"
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
