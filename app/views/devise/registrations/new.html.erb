@@ -17,46 +17,49 @@
               <h4 class="card-title">Inscription</h4>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :first_name, "Prénom *" %>                                              
+                  <%= f.label :first_name, "Prénom ⁽¹⁾" %>                                              
                 </label>
                 <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
               </div>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :last_name, "Nom * " %>
+                  <%= f.label :last_name, "Nom ⁽¹⁾" %>
                 </label>
                 <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
               </div>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :email, "Email *" %>                                                                      
+                  <%= f.label :email, "Email ⁽¹⁾ ⁽²⁾" %>                                                                      
                 </label>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
               </div>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :city, "Ville * (Les prochaines villes arrivent bientôt ;)" %>                                                                   
+                  <%= f.label :city, "Ville ⁽¹⁾ (D'autres villes arrivent bientôt !)" %>                                                                   
                 </label>
                 <br>
                 <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: "btn btn-sm btn-primary btn-round"} %>
               </div>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :password, "Mot de passe *" %>
+                  <%= f.label :password, "Mot de passe ⁽¹⁾" %>
                   <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> caractères minimum)</em>
+                  (<%= @minimum_password_length %> caractères minimum)
                   <% end %><br />                            
                 </label>
                 <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
               </div>
               <div class="form-group label-floating">
                 <label class="control-label">
-                  <%= f.label :password_confirmation, "Confirmation du mot de passe *" %><br />                                              
+                  <%= f.label :password_confirmation, "Confirmation du mot de passe ⁽¹⁾" %><br />                                              
                 </label>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
               </div>
               <div class="category form-category">
-                <small><em>* Tous les champs sont obligatoires</em></small>
+                <small>⁽¹⁾<em> Champs sont obligatoires</em></small>
+                <br>
+                <small>⁽²⁾<em> En vous inscrivant, vous acceptez que votre email soit communiqué à l'initiateur d'un projet, 
+                dans le cas où ce projet serait validé par Agora</em></small>
               </div>
               <%= f.submit "Je m'inscris !", class: "btn btn-primary" %>
               <%= render "devise/shared/links" %>

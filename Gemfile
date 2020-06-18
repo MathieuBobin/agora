@@ -19,7 +19,7 @@ gem 'rails-i18n', '~> 5.0'
 gem 'devise-i18n', '~> 1.9', '>= 1.9.1'
 gem 'twitter'
 gem "administrate"
-gem 'administrate-field-active_storage', '~>0.1.8'
+gem 'administrate-field-active_storage', '~>0.1.8', :path => "vendor/gems/administrate-field-active_storage-0.1.8"
 # -------
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
