@@ -19,7 +19,7 @@ class ProposalMailer < ApplicationMailer
     
 
     @url  = 'https://agora-prd.herokuapp.com/' 
-    mail(to: @user.email, subject: 'Ta proposition a été enregistrée') 
+    mail(to: @user.email, subject: 'Votre proposition a été enregistrée') 
   end
 
   def confirmation_proposal(proposal)
@@ -27,7 +27,7 @@ class ProposalMailer < ApplicationMailer
     @url  = 'https://agora-prd.herokuapp.com/' 
     
     
-      mail(to: @user.email, subject: 'Ta proposition a été acceptée !') 
+      mail(to: @user.email, subject: 'Votre proposition a été acceptée !') 
     
   end
 
@@ -43,12 +43,8 @@ class ProposalMailer < ApplicationMailer
     @url5 = 'https://lumieresdelaville.net/citoyens-prochains-decideurs-ville/'
     @url6 = 'https://www.amf.asso.fr/documents-modalites-participation-citoyens-aux-decisions-locales/7718'
     @url7 = 'http://periurbain.cget.gouv.fr/sites/default/files/Dossier%20pre%CC%81sentation%20Formation%20Emergence%20juin%202016-Les%20Pionnie%CC%80res.pdf'
-
-    #@votes.each do |vote| 
-     #vote.user.email
-     #end
-     
-     
+   
+          
 @user_list = CSV.generate(headers: true) do |csv|
   csv << ["Liste des emails des utilisateurs ayant soutenus ta proposition :"]
   @votes.all.each do |votes|
