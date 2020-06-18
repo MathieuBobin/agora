@@ -3,9 +3,6 @@ class VotesController < ApplicationController
   before_action :not_permit_to_vote_in_other_cities, only: :create
   
   def create
-    puts '$'*110
-    p params[:city_id]
-    puts '$'*110
     @proposal = Proposal.find(permitted_proposal_id_param)
     
     vote = Vote.create(
