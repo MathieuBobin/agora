@@ -1,0 +1,4 @@
+debateSpace = $('#debate-space');
+proposalComments = $('#proposal-comments');
+proposalComments.remove();
+debateSpace.append('<%= j render 'proposals/proposal_comments', comments: @comments, proposal: @proposal %>');

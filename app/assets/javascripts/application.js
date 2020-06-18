@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require jquery-3.1.1.min
 //= require jquery-ui.min
+//= require rails-ujs
 //= require jquery.validate.min
 //= require jquery.tagsinput
 //= require jquery.select-bootstrap

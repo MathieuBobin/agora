@@ -117,7 +117,7 @@
           <h4 class="card-title">Julien Jacquet</h4>
           <h6 class="category">@jjacquet</h6>
           <div class="card-avatar">
-             <%= image_tag("julien.jpg", style: "width: 100%;height: auto") %>
+            <%= image_tag("julien.jpg", style: "width: 100%;height: auto") %>
           </div>
         </div>
       </div>
@@ -154,11 +154,9 @@
           <div class="footer">
             <h4 class="card-title">Marie Brun</h4>
             <h6 class="category">@mariebrun</h6>
-            <div class="card-avatar">
-              <a href="">
-                <img src="https://images.unsplash.com/photo-1570840934347-4dc56c98b8ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" style="width: 100%;height: auto;" class="img-profile">
-              </a>
-            </div>
+          <div class="card-avatar">
+            <%= image_tag("alexis.jpg", style: "width: 100%;height: auto") %>
+          </div>
           </div>
         </div>
       </div>
@@ -197,12 +195,12 @@
               <td></td>
               <td>
                 <%if x.picture.attached?%>
-                <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+                  <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
                 <%else%>
-                <p>=Image=</p>
+                  <%= image_tag("no_picture.png", width: 170, style: "height: auto")%>
                 <%end%>
               </td>
-              <td class="flex-column">
+              <td>
                 <p class="text-wrap"><%= x.title %></p>
                 <p><a class="btn btn-primary btn-round btn-sm" href= "<%= proposal_path(x) %>" role="button">
                   <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition
@@ -227,10 +225,10 @@
             <tr>
               <td></td>
               <td>
-                <%if Proposal.find(x.id).picture.attached?%>
+                <%if x.picture.attached?%>
                 <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
                 <%else%>
-                <p>=Image=</p>
+                  <%= image_tag("no_picture.png", width: 170, style: "height: auto")%>
                 <%end%>                  
               </td>
               <td>
@@ -252,7 +250,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora! N'hésitez pas à les consulter!</b></h3>
+      <h3 class="display-4 text-white"><b>D'autres villes sont disponibles sur Agora ! N'hésitez pas à les consulter !</b></h3>
       <div class="dropdown">
         <button href="#" class="btn dropdown-toggle btn-primary btn-lg" data-toggle="dropdown" aria-expanded="true" >
           <i class="material-icons">home</i>  Les villes disponibles
@@ -277,7 +275,3 @@
 </div>
 </div>
 </div>
-
-
-
-

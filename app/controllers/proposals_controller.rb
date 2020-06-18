@@ -13,7 +13,8 @@ class ProposalsController < ApplicationController
   def new
     @proposal = Proposal.new
     @cityid = User.find_by(id: current_user.id).city_id
-    @city = City.find_by(id: @cityid).name
+    @cityuser = City.find_by(id: @cityid).name
+    @city = current_user.city
   end
 
   def create
@@ -33,8 +34,8 @@ class ProposalsController < ApplicationController
     @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }
 
     if params[:tweet]
-      # tweet(@proposal)
-      TwitterBot.new.tweet('Hello world !')
+      tweet(@proposal)
+      # TwitterBot.new.tweet('Hello world !')
     end
   end
   
