@@ -9,7 +9,7 @@
     proposalId = <%= @proposal.id %>;
     proposalRow = $('tr#'+proposalId);
     proposalRow.remove();
-    completedProposalsContainer = $('#completed-proposals');
+    completedProposalsContainer = $('tbody#completed-proposals');
     completedProposalsContainer.prepend('<%= j render 'cities/completed_proposal', x: @proposal %>');
   <% end %>
 <% else %>

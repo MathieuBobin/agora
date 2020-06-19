@@ -197,7 +197,7 @@
                 <%if x.picture.attached?%>
                   <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
                 <%else%>
-                  <%= image_tag("no_picture.png", width: 170, style: "height: auto")%>
+                  <%= image_tag("home.jpg", width: 170, style: "height: auto")%>
                 <%end%>
               </td>
               <td>
@@ -228,7 +228,7 @@
                 <%if x.picture.attached?%>
                 <%= image_tag Proposal.find(x.id).picture, alt: "Card image",  width: 170, style: "height: auto"%>
                 <%else%>
-                  <%= image_tag("no_picture.png", width: 170, style: "height: auto")%>
+                  <%= image_tag("home.jpg", width: 170, style: "height: auto")%>
                 <%end%>                  
               </td>
               <td>
