@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
     @city = City.find(params[:id])
     @categories = Category.all
     
-    # For proposals filter in city show (data comming from AJAX request, see filter public/filter.js)
+    # For proposals filter in city page (data comming from AJAX request, see filter public/filter.js)
     category_ids = params[:category_ids]
     additional_filter = params[:additional_filter]
     
