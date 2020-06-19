@@ -79,15 +79,17 @@
   </div>
 </div>
 
-<div class='row'>
-  <div class="col">
-    <% if user_signed_in? %>
-      <% if is_current_user_admin? %>
-        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-          <%= file_field_tag :picture %>
-          <%= submit_tag "Mettre à jour" %>
+<div class="container">
+  <div class='row'>
+    <div class="col-md-4">
+      <% if user_signed_in? %>
+        <% if is_current_user_admin? %>
+          <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+            <%= file_field_tag :picture, class: "btn btn-sm btn-primary btn-round"%>
+            <%= submit_tag "Mettre à jour", class: "btn btn-primary" %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
