@@ -5,7 +5,6 @@
 Bienvenue sur Agora! Agora est une plate-forme permettant aux citoyens d'échanger sur des idées à apporter pour améliorer la ville.
 
 Les accès: 
-* En environnement de test: https://agora-development.herokuapp.com/
 * En environnement de production: https://agora-prd.herokuapp.com/
 
 Administrateur :
