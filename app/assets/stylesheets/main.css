@@ -175,3 +175,11 @@ background-color: #FFFFFF !important;
   position: relative;
   bottom: 1px;
 }
+
+.zoom {
+  transition: transform 0.5s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
