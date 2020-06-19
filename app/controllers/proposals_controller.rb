@@ -34,7 +34,7 @@ class ProposalsController < ApplicationController
     @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }
 
     if params[:tweet]
-      # tweet(@proposal)
+      tweet(@proposal)
     end
   end
   
