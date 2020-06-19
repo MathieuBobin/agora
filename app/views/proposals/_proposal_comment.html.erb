@@ -2,7 +2,7 @@
   <td>
     <b>
     <div class="avatar">
-      <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%=x.user.first_name%><%=" "%><%=x.user.last_name%>
+      <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%= x.user.first_name %><%=" "%><%= x.user.last_name %>
       <%if x.user.id == x.proposal.user.id %>
         <span class="badge badge-primary">Initiateur</span>
       <%end%>
@@ -41,8 +41,10 @@
           <%end%>
           <%if user_signed_in?%>
             <%=form_tag url_for(proposal_comment_comments_path(proposal.id, x.id)) do %> 
-              <%= label_tag "Répondre à #{x.user.first_name}" %>
-              <p><%= text_field_tag 'content',"", {class: 'form-control border'} %></p>
+              <div class="form-group">
+                <label>Répondre à <%= x.user.first_name %></label>
+                <p><%= text_area_tag 'content',"", class: 'form-control border' %></p>
+              </div>
               <%=submit_tag "Envoyer", {class: 'btn btn-primary btn-sm'}%>
             <%end%>
           <%end%>

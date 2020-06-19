@@ -5,43 +5,55 @@
   <br>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
-      <div class="card card-product box">
-        <%if @proposal.picture.attached?%>
-          <div class="card-image" data-header-animation="true">
-            <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
-          </div>
-        <%else%>
-          <div class="card-image" data-header-animation="true">
-            <%= image_tag("no_picture.png", style: "height: 50vh;")%>
-          </div>
-        <%end%>
-        <div class="card-header">
-          <h4 class="card-title"><%= @proposal.title %><br>
-            <div class='flex-row-center'>
-              <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
-              <span class="badge badge-primary"><%= @proposal.category.name %></span>
+      <div class="col">
+        <div class="card card-product box">
+          <%if @proposal.picture.attached?%>
+            <div class="card-image" data-header-animation="true">
+              <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
             </div>
-          </h4>
-        </div>
-        <div class="card-content">
-          <ul class="nav nav-pills nav-pills-warnin">
-            <li class="active primary">
-              <a href="#pill1" data-toggle="tab">Problème adressé</a>
-            </li>
-            <li>
-              <a href="#pill2" data-toggle="tab">Solution proposée</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="pill1">
-              <%= @proposal.purpose %>
+          <%else%>
+            <div class="card-image" data-header-animation="true">
+              <%= image_tag("no_picture.png", style: "height: 50vh;")%>
             </div>
-            <div class="tab-pane" id="pill2">
-              <%= @proposal.description %>
+          <%end%>
+          <div class="card-header">
+            <h4 class="card-title"><%= @proposal.title %><br>
+              <div class='flex-row-center'>
+                <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
+                <span class="badge badge-primary"><%= @proposal.category.name %></span>
+              </div>
+            </h4>
+          </div>
+          <div class="card-content">
+            <ul class="nav nav-pills nav-pills-warnin">
+              <li class="active primary">
+                <a href="#pill1" data-toggle="tab">Problème adressé</a>
+              </li>
+              <li>
+                <a href="#pill2" data-toggle="tab">Solution proposée</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="pill1">
+                <%= @proposal.purpose %>
+              </div>
+              <div class="tab-pane" id="pill2">
+                <%= @proposal.description %>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <% if user_signed_in? %>
+        <div class="col">
+            <% if is_current_user_admin? %>
+              <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
+                <%= file_field_tag :picture %>
+                <%= submit_tag "Mettre à jour" %>
+              <% end %>
+            <% end %>
+        </div>
+      <% end %>
     </div>
     <div class='col-md-1'></div>
     <div id='proposal-info' class="col-md-5">
@@ -76,18 +88,5 @@
       </div>
       <%= render 'proposals/proposal_vote_informations', proposal: @proposal %>
     </div>
-  </div>
-</div>
-
-<div class='row'>
-  <div class="col">
-    <% if user_signed_in? %>
-      <% if is_current_user_admin? %>
-        <%= form_tag proposal_pictures_path(@proposal), multipart: true do %>
-          <%= file_field_tag :picture %>
-          <%= submit_tag "Mettre à jour" %>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 </div>

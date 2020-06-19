@@ -48,7 +48,7 @@
     <%end%>
   </div>
 
-  <div class="container">
+  <div id='completed-proposals' class="container">
     <% if (@numthen == 0) && (@numvotes == 0) %>
       <div class='no-proposal'>
         <h3><b>Pas de proposition terminée à <%= city.name %> pour le moment. </b></h3>
@@ -62,7 +62,7 @@
             <div class="card-content">
               <div class="table-responsive">
                 <table class="table">
-                  <tbody id='completed-proposals'>
+                  <tbody>
                     <% proposals.each do |x| %>
                       <% if (x.differencebetween == true) || (x.votes_count >= 5) %>
                         <%= render 'cities/completed_proposal', x: x %>

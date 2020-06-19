@@ -9,7 +9,7 @@
           <div class="row">
             <h6 class='text-muted'>Filtrez les propositions qui vous intéressent</h6>
             <div class="col-xs col-sm-6">
-              <select id="categories" class="selectpicker" data-style="select-with-transition" multiple title="Choisissez une catégorie" data-size="7">
+              <select id="categories" class="selectpicker" data-style="select-with-transition" multiple title="Sélectionnez des catégories" data-size="7">
                 <% categories.each do |category| %>
                   <option value="<%= category.id %>"><%= category.name %></option>
                 <% end %>
