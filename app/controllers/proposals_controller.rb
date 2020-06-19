@@ -35,7 +35,7 @@ class ProposalsController < ApplicationController
 
     if params[:tweet]
       tweet(@proposal)
-      # TwitterBot.new.tweet('Hello world !')
+      flash[:success] = 'Votre proposition vient d\'être tweeté avec le hashtag : # projet_agora'
     end
   end
   
