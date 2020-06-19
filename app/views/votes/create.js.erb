@@ -6,6 +6,7 @@
     voteInfo.remove();
     proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
   <% else %>
+    proposalId = <%= @proposal.id %>;
     proposalRow = $('tr#'+proposalId);
     proposalRow.remove();
     completedProposalsContainer = $('#completed-proposals');
