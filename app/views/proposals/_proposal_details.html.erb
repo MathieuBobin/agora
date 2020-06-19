@@ -5,25 +5,15 @@
   <br>
   <div class="row">
     <div class="col-md-6 text-wrap text-justify">
-      <div class="card card-product box">
-        <%if @proposal.picture.attached?%>
-          <div class="card-image" data-header-animation="true">
-            <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
-          </div>
-        <%else%>
-          <div class="card-image" data-header-animation="true">
-            <%= image_tag("home.jpg", style: "height: 50vh;")%>
-          </div>
-        <%end%>
-        <div class="card-header">
-          <h4 class="card-title"><%= @proposal.title %><br>
-            <div class='flex-row-center'>
-              <%= link_to "#{@proposal.city.name}", city_path(@proposal.city.id), class: 'btn btn-primary btn-round btn-xs' %>
-              <span class="badge badge-primary"><%= @proposal.category.name %></span>
+      <div class="col">
+        <div class="card card-product box">
+          <%if @proposal.picture.attached?%>
+            <div class="card-image" data-header-animation="true">
+              <%= image_tag @proposal.picture, alt: 'Picture', style: "height: 50vh;" %>
             </div>
           <%else%>
             <div class="card-image" data-header-animation="true">
-              <%= image_tag("no_picture.png", style: "height: 50vh;")%>
+              <%= image_tag("home.jpg", style: "height: 50vh;")%>
             </div>
           <%end%>
           <div class="card-header">

@@ -24,13 +24,13 @@
               <p class="text-center">Expirée</p>
             </div>    
             <p class="text-muted text-center">Cette proposition n'a pas reçu le nombre de votes suffisant pour être validée avant la date limite.</p>
-            <p class="text-muted text-center">Merci pour votre proposition <%= @proposal.user.first_name %>! </p>    
+            <p class="text-muted text-center">Merci pour votre proposition <%= @proposal.user.first_name %> !</p>    
           <%else%> 
             <div class="alert alert-info">
               <p class="text-center">Validée</p>
             </div>
-            <p class="text-muted text-center">Cette proposition a reçu le nombre de votes minimum pour passer à l'action! <%= @proposal.user.first_name %> a été mis(e) en relation avec les votants.</p>
-            <p class="text-muted text-center"> Bravo <%= @proposal.user.first_name %>! </p> 
+            <p class="text-muted text-center">Cette proposition a reçu le nombre de votes minimum pour passer à l'action ! <%= @proposal.user.first_name %> a été mis(e) en relation avec les votants.</p>
+            <p class="text-muted text-center"> Bravo <%= @proposal.user.first_name %> !</p> 
           <%end%>
         <%end%>
       <% else %>  
