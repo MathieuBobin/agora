@@ -1,0 +1,4 @@
+  proposalInfo = $('#proposal-info');
+  voteInfo = proposalInfo.find($('#proposal-vote-info'));
+  voteInfo.remove();
+  proposalInfo.append('<%= j render 'proposals/proposal_vote_informations', proposal: @proposal %>');

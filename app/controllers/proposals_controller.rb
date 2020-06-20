@@ -34,7 +34,7 @@ class ProposalsController < ApplicationController
     @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }
 
     # update lifetime value
-    @proposal.upadate(lifetime: @proposal.lifetimt)
+    @proposal.update(lifetime: @proposal.calculate_lifetime)
 
     if params[:tweet]
       tweet(@proposal)

@@ -54,7 +54,7 @@ class Proposal < ApplicationRecord
     self.update(is_online: true)
   end
 
-  def lifetime
+  def calculate_lifetime
     30 - ((Time.now - self.created_at).to_f / 1.day).floor
   end
 
