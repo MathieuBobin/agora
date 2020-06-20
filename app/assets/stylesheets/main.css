@@ -23,8 +23,8 @@
 } 
 
 .drop{  
- position: relative;
- margin-left: -7em;
+  position: relative;
+  margin-left: -7em;
 } 
 
 .font-brand {
@@ -37,7 +37,7 @@ background-color: #FFFFFF !important;
 }
 
 .text-wrap {
-  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .idea-icon {
@@ -121,6 +121,15 @@ background-color: #FFFFFF !important;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.flex-row-start-wrap
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .flex-column

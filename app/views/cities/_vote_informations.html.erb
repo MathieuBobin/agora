@@ -1,9 +1,9 @@
 <td class='vote-info text-center'>
   <%if user_signed_in?%>
     <% if is_current_user_owner_of?(x) %>
-      <p class='text-muted' style='font-style: italic;'>Vous ne pouvez pas voter pour votre proposition !</p>
+      <p class='text-muted text-wrap' style='font-style: italic;'>Vous ne pouvez pas voter pour votre proposition !</p>
     <% elsif current_user_arent_the_city_of?(x) %>
-      <p class='text-muted' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
+      <p class='text-muted text-wrap' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
     <% else %>
       <%if x.vote_of(current_user)%>
         <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, city_proposal_vote_path(x.city.id, x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", id: 'delete-btn', method: :delete, remote: true %>
