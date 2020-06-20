@@ -37,8 +37,6 @@ class Proposal < ApplicationRecord
   def votes_count
     self.votes.count
   end
-  
- 
 
   def vote_of(user)
     self.votes.find_by(user: user)
