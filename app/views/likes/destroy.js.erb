@@ -1,3 +1,5 @@
-LikedCommentId = <%= @comment.id %>
-LikedComment = $('#'+LikedCommentId);
-LikedComment.replaceWith('<%= j render 'proposals/proposal_comment', x: @comment, proposal: @proposal %>');
+$(document).ready(function() {
+  LikedCommentId = <%= @comment.id %>
+  LikedComment = $('#'+LikedCommentId);
+  LikedComment.replaceWith('<%= j render 'proposals/proposal_comment', x: @comment, proposal: @proposal %>');
+});

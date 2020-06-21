@@ -1,9 +1,9 @@
 <tr>
   <td>
     <%if x.picture.attached?%>
-      <%= image_tag x.picture, alt: "image", style: "max-width: 200px; max-height: auto; display: block; margin-right: 60px;" %>
+      <%= image_tag x.picture, alt: "image", width: 200, style: 'height: auto;' %>
     <%else%>
-      <%= image_tag ("home.jpg"), style: "max-width: 200px; max-height: auto; display: block; margin-right: 60px;" %>
+      <%= image_tag ("home.jpg"), width: 200, style: 'height: auto;' %>
     <%end%>
   </td>
   <td>
