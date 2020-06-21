@@ -107,7 +107,7 @@ background-color: #FFFFFF !important;
   display: block;
 }
 
-.flex-row
+.flex-row-start-center
 {
   display: flex;
   flex-direction: row;
@@ -115,30 +115,11 @@ background-color: #FFFFFF !important;
   align-items: center;
 }
 
-.flex-row-center
+.border
 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  border: 1px black solid;
 }
 
-.flex-row-start-wrap
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.flex-column
-{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-}
 
 .badge
 {

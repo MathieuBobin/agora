@@ -1,12 +1,12 @@
 <tr>
-  <td></td>
   <td>
     <%if x.picture.attached?%>
-      <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+      <%= image_tag x.picture, alt: "image", style: "max-width: 200px; max-height: auto; display: block;" %>
     <%else%>
-      <%= image_tag ("home.jpg"), width: 170, style: "height: auto" %>
+      <%= image_tag ("home.jpg"), style: "max-width: 200px; max-height: auto; display: block;" %>
     <%end%>
   </td>
+  <td></td>
   <td>
     <h4 class='text-wrap'><%=x.title %></h4>
     <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">
@@ -26,5 +26,5 @@
       </div>
       <p class="text-muted text-center text-wrap">Cette proposition a atteint les 5 votes !</p> 
     <%end%>
-  <td>
+  </td>
 </tr>

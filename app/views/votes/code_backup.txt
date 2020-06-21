@@ -1,4 +1,15 @@
-  proposalInfo = $('#proposal-info');
-  voteInfo = proposalInfo.find($('#proposal-vote-info'));
-  voteInfo.remove();
-  proposalInfo.append('<%= j render 'proposals/proposal_vote_informations', proposal: @proposal %>');
+proposalInfo = $('#proposal-info');
+voteInfo = proposalInfo.find($('#proposal-vote-info'));
+voteInfo.remove();
+proposalInfo.append('<%= j render 'proposals/proposal_vote_informations', proposal: @proposal %>');
+
+
+classification = $('div#classification');
+classification.empty();
+classification.append('<%= j render 'proposals/classifications', proposal: @proposal %>');
+
+
+proposalRow = $('tr#'+proposalId);
+voteInfo = proposalRow.find($('.vote-info'));
+voteInfo.remove();
+proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');

@@ -24,29 +24,28 @@
               <p class="text-center">Expirée</p>
             </div>    
             <p class="text-muted text-center">Cette proposition n'a pas reçu le nombre de votes suffisant pour être validée avant la date limite.</p>
-            <p class="text-muted text-center">Merci pour votre proposition <%= @proposal.user.first_name %> !</p>    
+            <p class="text-muted text-center">Merci pour votre proposition <%= proposal.user.first_name %> !</p>    
           <%else%> 
             <div class="alert alert-info">
               <p class="text-center">Validée</p>
             </div>
-            <p class="text-muted text-center">Cette proposition a reçu le nombre de votes minimum pour passer à l'action ! <%= @proposal.user.first_name %> a été mis(e) en relation avec les votants.</p>
-            <p class="text-muted text-center"> Bravo <%= @proposal.user.first_name %> !</p> 
+            <p class="text-muted text-center">Cette proposition a reçu le nombre de votes minimum pour passer à l'action ! <%= proposal.user.first_name %> a été mis(e) en relation avec les votants.</p>
+            <p class="text-muted text-center"> Bravo <%= proposal.user.first_name %> !</p> 
           <%end%>
         <%end%>
       <% else %>  
         <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= proposal.calculate_lifetime %> jours avant l'expiration de la proposition</p>
       <% end %>
       <%if proposal.votes_count > 1 %>
-        <h5 id='votes-count'><%= proposal.votes_count %> VOTES</h5>
+        <h6 id='votes-count'><%= proposal.votes_count %> VOTES</h6>
       <%else%>
-        <h5 id='votes-count'><%= proposal.votes_count %> VOTE </h5>
+        <h6 id='votes-count'><%= proposal.votes_count %> VOTE </h6>
       <%end%>
     </div>
     <% unless proposal.votes_count == 0 %>
-      <div class="card-footer" style="padding-top: 0px;  margin-bottom: 0px;">
-        <div class="price">
-          <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement général : <%= proposal.general_classification %></span></small>
-          <small class="flex-row"><i class="material-icons">upgrade</i> <span>Classement catégorie <%= proposal.category.name %> : <%= proposal.category_classification %></span></small>
+      <div class="card-footer" style="padding-top: 3px;  margin-bottom: 0px;">
+        <div id='classification' class="price">
+          <%= render 'proposals/classifications', proposal: proposal %>
         </div>
       </div>
     <% end %>
