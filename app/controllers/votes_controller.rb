@@ -18,7 +18,7 @@ class VotesController < ApplicationController
       (proposal.differencebetween == false) && (proposal.votes_count < 5)
     }
     @city = @proposal.city
-
+    
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
       format.js { }
@@ -27,9 +27,10 @@ class VotesController < ApplicationController
   
   def destroy
     Vote.destroy(permitted_vote_id_param)
-
+    
     # For AJAX use
     @proposal = Proposal.find(permitted_proposal_id_param)
+    @city = @proposal.city
     
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }

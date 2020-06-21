@@ -1,11 +1,25 @@
-<% if params[:city_id]  %>
+proposalId = <%= @proposal.id %>;
+<% if params[:city_id] %>
   <% unless @ongoing_proposals_count == 0%>
     <% if (@proposal.votes_count < 5) && (@proposal.differencebetween == false) %>
-      proposalId = <%= @proposal.id %>;
-      proposalRow = $('tr#'+proposalId);
-      voteInfo = proposalRow.find($('.vote-info'));
-      voteInfo.remove();
-      proposalRow.append('<%= j render 'cities/vote_informations', x: @proposal %>');
+      cityId = <%= @city.id %>
+      addVoteBtn = $('div#btns-' + proposalId + '> a');
+      console.log(addVoteBtn);
+      addVoteBtn.html('A voté !');
+      addVoteBtn.removeClass('btn-primary');
+      addVoteBtn.addClass('btn-success');
+      addVoteBtn.attr('id', 'del-vote-btn-1');
+      addVoteBtn.attr('data-method', 'delete');
+      addVoteBtn.prepend('<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> ');
+      currentUserProposalVoteId = <%= @proposal.vote_of(current_user).id %>;
+      addVoteBtn.attr('href', '/cities/' + cityId + '/proposals/' + proposalId + '/votes/' + currentUserProposalVoteId);
+      votesCountTag = $('div#lbls-votes-conut-' + proposalId + '> h6');
+      proposalVotesCount = <%= @proposal.votes_count %>;
+      if (proposalVotesCount > 1) {
+        votesCountTag.html(proposalVotesCount + ' VOTES');
+      } else {
+        votesCountTag.html(proposalVotesCount + ' VOTE');
+      }
     <% else %>
       window.location = '<%= city_path @city %>'
     <% end %>
@@ -13,8 +27,20 @@
     window.location = '<%= city_path @city %>'
   <% end %>
 <% else %>
-  proposalInfo = $('#proposal-info');
-  voteInfo = proposalInfo.find($('#proposal-vote-info'));
-  voteInfo.remove();
-  proposalInfo.append('<%= j render 'proposals/proposal_vote_informations', proposal: @proposal %>');
+  addVoteBtn = $('a#add-vote-btn');
+  addVoteBtn.html('A voté !');
+  addVoteBtn.removeClass('btn-primary');
+  addVoteBtn.addClass('btn-success');
+  addVoteBtn.attr('id', 'del-vote-btn');
+  addVoteBtn.attr('data-method', 'delete');
+  addVoteBtn.prepend('<i class="material-icons" style="font-size: 19px">sentiment_satisfied_alt</i> ');
+  currentUserProposalVoteId = <%= @proposal.vote_of(current_user).id %>;
+  addVoteBtn.attr('href', '/proposals/' + proposalId + '/votes/' + currentUserProposalVoteId);
+  votesCountTag = $('h6#votes-count');
+  proposalVotesCount = <%= @proposal.votes_count %>;
+  if (proposalVotesCount > 1) {
+    votesCountTag.html(proposalVotesCount + ' VOTES');
+  } else {
+    votesCountTag.html(proposalVotesCount + ' VOTE');
+  }
 <% end %>
