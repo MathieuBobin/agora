@@ -12,10 +12,37 @@ $(document).ready(() => {
       dataType: 'html',
       data: { category_ids: categoryIds, additional_filter: additionalFilter },
       success: (result) => {
-        $('.my-city').remove();        
-        let myCity = $(result).filter('.my-city')[0];
-        $('#filter').after(myCity);
-        $('.no-proposal').remove();   
+        $('div.my-city').remove();        
+        let myCity = $(result).filter('div.my-city')[0];
+        $('div#filter').after(myCity);
+        $('div.no-proposal').remove();
+        
+        $('#datatables-1').DataTable({
+          "pagingType": "full_numbers",
+          "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "Tous"]
+          ],
+          responsive: true,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Rechercher",
+          }
+        });
+      
+        //Second table
+        $('#datatables-2').DataTable({
+          "pagingType": "full_numbers",
+          "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "Tous"]
+          ],
+          responsive: true,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Rechercher",
+          }
+        });  
       },
       error: (error) => {
         console.log(error);

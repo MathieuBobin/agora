@@ -2,7 +2,7 @@ $(document).ready(() => {
   function showNotification(from, align){
     $.notify({
       icon: "add_alert",
-      message: "Félicitation ! Votre proposition a été tweetée, vous pouverez la retrouver sur Twitter avec le hashtag <strong># projet_agora<strong>"
+      message: "Félicitation ! Votre proposition a été tweetée, vous pouvez la retrouver sur Twitter avec le hashtag <strong># projet_agora<strong>"
       
     },{
       type: 'success',
