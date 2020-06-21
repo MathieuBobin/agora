@@ -1,12 +1,11 @@
 <tr>
   <td>
     <%if x.picture.attached?%>
-      <%= image_tag x.picture, alt: "image", style: "max-width: 200px; max-height: auto; display: block;" %>
+      <%= image_tag x.picture, alt: "image", style: "max-width: 200px; max-height: auto; display: block; margin-right: 90px;" %>
     <%else%>
-      <%= image_tag ("home.jpg"), style: "max-width: 200px; max-height: auto; display: block;" %>
+      <%= image_tag ("home.jpg"), style: "max-width: 200px; max-height: auto; display: block; margin-right: 90px;" %>
     <%end%>
   </td>
-  <td></td>
   <td>
     <h4 class='text-wrap'><%=x.title %></h4>
     <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%=x.id%>" role="button">

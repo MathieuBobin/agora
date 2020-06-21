@@ -1,21 +1,10 @@
 proposalId = <%= @proposal.id %>;
 <% if params[:city_id]  %>
   cityId = <%= @city.id %>
-  delVoteBtn = $('div#btns-' + proposalId + '> a')
-  delVoteBtn.html('Je vote');
-  delVoteBtn.removeClass('btn-success');
-  delVoteBtn.addClass('btn-primary');
-  delVoteBtn.attr('id', 'add-vote-btn-1');
-  delVoteBtn.attr('data-method', 'post');
-  delVoteBtn.prepend('<i class="material-icons" style="font-size: 19px">how_to_vote</i> ');
-  delVoteBtn.attr('href', '/cities/' + cityId + '/proposals/' + proposalId + '/votes/');
-  votesCountTag = $('div#lbls-votes-conut-' + proposalId + '> h6');
-  proposalVotesCount = <%= @proposal.votes_count %>;
-  if (proposalVotesCount > 1) {
-    votesCountTag.html(proposalVotesCount + ' VOTES');
-  } else {
-    votesCountTag.html(proposalVotesCount + ' VOTE');
-  }
+  delVoteBtn = $('div#btns-' + proposalId + '> a');
+  delVoteBtn.replaceWith('<%= j render 'cities/add_vote_btn', x: @proposal %>');
+  votesCountTag = $('div#lbls-votes-conut-' + proposalId);
+  votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
 <% else %>
   delVoteBtn = $('a#del-vote-btn');
   delVoteBtn.html('Je vote');
