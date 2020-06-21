@@ -15,7 +15,7 @@ $(document).ready(() => {
         $('.my-city').remove();        
         let myCity = $(result).filter('.my-city')[0];
         $('#filter').after(myCity);
-        $('.no-proposal').remove();        
+        $('.no-proposal').remove();   
       },
       error: (error) => {
         console.log(error);

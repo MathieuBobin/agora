@@ -5,22 +5,16 @@
     <% elsif current_user_arent_the_city_of?(x) %>
       <p class='text-muted text-wrap' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
     <% else %>
-    <div id='btns-<%= x.id %>'>
-      <%if x.vote_of(current_user)%>
-        <%= link_to "<i class='material-icons' style='font-size: 19px'>sentiment_satisfied_alt</i> A voté !".html_safe, city_proposal_vote_path(x.city.id, x.id, x.vote_of(current_user).id), :class => "btn btn-success btn-md", id: 'del-vote-btn-1', method: :delete, remote: true %>
-      <%else%>
-        <%= link_to "<i class='material-icons' style='font-size: 19px'>how_to_vote</i> Je vote".html_safe, city_proposal_votes_path(x.city.id, x.id), :class => "btn btn-primary btn-md", id: 'add-vote-btn-1', method: :post, remote: true %>
-      <%end%>
-    </div>
+      <div id='btns-<%= x.id %>'>
+        <%if x.vote_of(current_user)%>
+          <%= render 'cities/del_vote_btn', x: x %>
+        <%else%>
+          <%= render 'cities/add_vote_btn', x: x %>
+        <%end%>
+      </div>
     <% end %>
   <%else%>
     <p>Connectez-vous pour pouvoir voter !</p>
   <%end%>
-  <div id="lbls-votes-conut-<%= x.id %>">
-    <%if x.votes_count >1 %>
-      <h6 class='text-center'> <%= x.votes_count %> VOTES</h6>
-    <%else%>
-      <h6 class='text-center'><%= x.votes_count %> VOTE</h6>
-    <%end%>
-  </div>
+    <%= render 'cities/votes_count', x: x %>
 </td>

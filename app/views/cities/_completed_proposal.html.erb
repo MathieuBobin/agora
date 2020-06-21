@@ -1,10 +1,9 @@
 <tr>
-  <td></td>
   <td>
     <%if x.picture.attached?%>
-      <%= image_tag x.picture, alt: "Card image", width: 170, style: "height: auto" %>
+      <%= image_tag x.picture, alt: "image", style: "max-width: 200px; max-height: auto; display: block; margin-right: 90px;" %>
     <%else%>
-      <%= image_tag ("home.jpg"), width: 170, style: "height: auto" %>
+      <%= image_tag ("home.jpg"), style: "max-width: 200px; max-height: auto; display: block; margin-right: 90px;" %>
     <%end%>
   </td>
   <td>
@@ -19,12 +18,12 @@
       <div class="alert alert-warning">
         <p class="text-center">Expirée</p>
       </div>   
-      <p class="text-muted text-center">Cette proposition a atteint la date d'expiration</p>    
+      <p class="text-muted text-center text-wrap">Cette proposition a atteint la date d'expiration</p>    
     <%elsif x.votes_count >= 3%> 
       <div class="alert alert-info">
         <p class="text-center">Validée</p>
       </div>
-      <p class="text-muted text-center">Cette proposition a atteint les 5 votes !</p> 
+      <p class="text-muted text-center text-wrap">Cette proposition a atteint les 5 votes !</p> 
     <%end%>
-  <td>
+  </td>
 </tr>
