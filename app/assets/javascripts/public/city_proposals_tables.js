@@ -9,7 +9,7 @@ $(document).ready(function() {
     responsive: true,
     language: {
       search: "_INPUT_",
-      searchPlaceholder: "Recherchez une proposition",
+      searchPlaceholder: "Rechercher",
     }
   });
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
     responsive: true,
     language: {
       search: "_INPUT_",
-      searchPlaceholder: "Recherchez une proposition",
+      searchPlaceholder: "Rechercher",
     }
   });
 });
