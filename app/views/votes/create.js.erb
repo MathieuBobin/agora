@@ -4,7 +4,6 @@ proposalId = <%= @proposal.id %>;
     <% if (@proposal.votes_count < 5) && (@proposal.differencebetween == false) %>
       cityId = <%= @city.id %>
       addVoteBtn = $('div#btns-' + proposalId + '> a');
-      console.log(addVoteBtn);
       addVoteBtn.html('A voté !');
       addVoteBtn.removeClass('btn-primary');
       addVoteBtn.addClass('btn-success');
