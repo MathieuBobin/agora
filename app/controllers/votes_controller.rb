@@ -5,10 +5,14 @@ class VotesController < ApplicationController
   def create
     @proposal = Proposal.find(permitted_proposal_id_param)
 
-    vote = Vote.create(
-      user: current_user,
-      proposal: @proposal
-    )
+    @current_user_vote_tokens_before_vote = current_user_vote_tokens
+
+    if @current_user_vote_tokens_before_vote > 0
+      vote = Vote.create(
+        user: current_user,
+        proposal: @proposal
+      )
+    end
     
     # flash[:success] = "Votre vote a bien été pris en compte !"  
 

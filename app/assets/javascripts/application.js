@@ -22,5 +22,6 @@
 //= require bootstrap-notify
 //= require material.min
 //= require material-dashboard
+//= require sweetalert2.js
 //= require_tree .
 //= require_tree ./public

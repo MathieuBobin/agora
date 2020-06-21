@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include UsersHelper
   include ProposalsHelper
+  include VotesHelper
   
   before_action :configure_device_parameters, if: :devise_controller?
   

@@ -33,3 +33,13 @@ proposalId = <%= @proposal.id %>;
     votesCountTag.html(proposalVotesCount + ' VOTE');
   }
 <% end %>
+currentUserVoteTokensAfterVote = <%= current_user_vote_tokens %>
+
+if (currentUserVoteTokensAfterVote == 0) {
+  message = 'Il ne vous reste aucun jeton de vote !'
+} else if (currentUserVoteTokensAfterVote == 1)
+  message = 'Il vous reste un dernier jeton de vote !'
+else {
+  message = `Il vous reste encore ${currentUserVoteTokensAfterVote} jetons de vote !` 
+}
+swal({ title:"Vote retiré !", text: "Vous venez de dévoter pour la proposition ! Pas grave ! Nous espérons que vous trouviez d'autres propositions plus pertinetes aux quelles vous contribuerez ! " + message, type: "warning", buttonsStyling: false, confirmButtonClass: "btn btn-warning"});
