@@ -5,7 +5,7 @@
     <% elsif current_user_arent_the_city_of?(x) %>
       <p class='text-muted text-wrap' style='font-style: italic;'>Vous ne pouvez pas voter pour les propositions en dehors de votre ville !</p>
     <% else %>
-      <div id='btns-<%= x.id %>'>
+      <div id='btns-<%= x.id %>' class='text-center'>
         <%if x.vote_of(current_user)%>
           <%= render 'cities/del_vote_btn', x: x %>
         <%else%>
