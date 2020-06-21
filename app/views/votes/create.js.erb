@@ -31,6 +31,9 @@
     } else {
       votesCountTag.html(proposalVotesCount + ' VOTE');
     }
+    proposalClassification = $('div#classification');
+    proposalClassification.empty();
+    proposalClassification.append('<%= j render 'proposals/classifications', proposal: @proposal %>');
   <% end %>
   currentUserVoteTokensAfterVote = <%= current_user_vote_tokens %>
   
