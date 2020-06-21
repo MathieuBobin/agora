@@ -11345,7 +11345,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Prcédent"
+				"sPrevious": "Précédent"
 			},
 
 			/**
