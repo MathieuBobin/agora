@@ -6,7 +6,7 @@ $(document).ready(() => {
   window.onscroll = function() {showScrollBtn()};
 
   function showScrollBtn() {
-    if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       scrollTopBtn.style.display = "block";
     } else {
       scrollTopBtn.style.display = "none";
