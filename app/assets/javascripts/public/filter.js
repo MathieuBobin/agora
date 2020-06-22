@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('#validate_btn').click(() => {
+  $('#proposal-filter-btn').click(() => {
     let url = "/cities/" + $('.my-city')[0].id;
     let categoryIds = [];
       $.each($("#categories option:selected"), function() {            
