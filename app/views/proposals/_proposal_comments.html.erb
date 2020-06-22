@@ -1,7 +1,7 @@
-<div id='proposal-comments' class="row">
+<div class="row">
   <div class="col">
     <table class="table table-responsive text-wrap">
-      <tbody>
+      <tbody id='proposal-comments'>
         <% comments.each do |x| %>
           <%= render 'proposals/proposal_comment', x: x, proposal: proposal %>
         <%end%>

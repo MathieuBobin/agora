@@ -22,28 +22,20 @@
     <%end%>
     <%if user_signed_in?%>
       <%if current_user.id == x.user.id %>
-        <%= link_to 'effacer',proposal_comment_path(proposal.id, x.id), class: 'btn btn-danger btn-xs',method: :delete %> <span class='label label-success' style='font-weight: normal;'><%= x.likes.count %> AIMES</span>
+        <%= link_to 'effacer',proposal_comment_path(proposal.id, x.id), class: 'btn btn-danger btn-xs', method: :delete, remote: true %> <span class='label label-success' style='font-weight: normal;'><%= x.likes.count %> AIMES</span>
       <%end%>
     <%end%>
     <div class = "container">
       <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
+        <div id='comment-comments' class="col-xs-11 col-xs-offset-1">
           <% x.comments.order('created_at').reverse.each do |y| %>
-            <br><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%= y.user.first_name%><%=" "%><%= y.user.last_name%></b><br><br>
-            <%= y.content%><br><br>
-            <small class='text-muted' style='font-style: italic;'>Message posté le <%= y.created_at.to_formatted_s(:short) %></small>
-            <%if user_signed_in?%>
-              <%if current_user.id == y.user.id %>
-                <%= link_to 'effacer',proposal_comment_path(proposal.id, y.id), class: 'btn btn-danger btn-xs',method: :delete %>
-              <%end%>
-            <%end%>
-            <br><br>
+            <%= render 'proposals/proposal_comment_comment', y: y, x: x, proposal: proposal  %>
           <%end%>
           <%if user_signed_in?%>
-            <%=form_tag url_for(proposal_comment_comments_path(proposal.id, x.id)) do %> 
+            <%=form_tag url_for(proposal_comment_comments_path(proposal.id, x.id)), remote: true do %> 
               <div class="form-group">
                 <label>Répondre à <%= x.user.first_name %></label>
-                <p><%= text_area_tag 'content',"", class: 'form-control border' %></p>
+                <p id="comment-comment-content"><%= text_area_tag 'content',"", class: 'form-control border' %></p>
               </div>
               <%=submit_tag "Envoyer", {class: 'btn btn-primary btn-sm'}%>
             <%end%>

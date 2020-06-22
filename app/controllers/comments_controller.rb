@@ -5,49 +5,62 @@ class CommentsController < ApplicationController
     @proposal = Proposal.find(permitted_proposal_id_param)
 
     if params[:comment_id]
-      @comment = Comment.new(
+      @comment = Comment.find(permitted_comment_id_param)
+
+      @comment_comment = Comment.new(
         content: params[:content],
         user: current_user,
-        comment_id: permitted_comment_id_param
+        comment: @comment 
       )
 
-      if @comment.save
-        flash[:success] = "Votre commentaire a bien été posté !"
-        redirect_back fallback_location: root_path
+      if @comment_comment.save
+        # flash[:success] = "Votre commentaire a bien été posté !"
+        # redirect_back fallback_location: root_path
       else
-        flash[:success] = @comment.errors.full_messages.to_sentence
-        redirect_to @proposal
+        @errors = @comment_comment.errors.full_messages.to_sentence
+        # flash[:success] = @comment.errors.full_messages.to_sentence
+        # redirect_to @proposal
       end
 
-      # respond_to do |format|
-      #   format.html { redirect_back fallback_location: root_path }
-      #   format.js { }
-      # end
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path }
+        format.js { }
+      end
     else
+      @proposal = Proposal.find(permitted_proposal_id_param)
       @comment = Comment.new(
         content: params[:content],
         user: current_user,
-        proposal_id: permitted_proposal_id_param
+        proposal: @proposal
       )
       if @comment.save
-        flash[:success] = "Votre commentaire a bien été posté !"
-        redirect_back fallback_location: root_path
+        # flash[:success] = "Votre commentaire a bien été posté !"
+        # redirect_back fallback_location: root_path
       else
-        flash[:success] = @comment.errors.full_messages.to_sentence
-        redirect_to @proposal
+        @errors = @comment.errors.full_messages.to_sentence
+        # flash[:success] = @comment.errors.full_messages.to_sentence
+        # redirect_to @proposal
 
-        # respond_to do |format|
-        #   format.html { redirect_back fallback_location: root_path }
-        #   format.js { }
-        # end
+        respond_to do |format|
+          format.html { redirect_back fallback_location: root_path }
+          format.js { }
+        end
       end
     end
   end
 
   def destroy
+    # Here id it can be comment_id or comment_comment_id
+    @id = params[:id]
+
     Comment.destroy(params[:id])
-    flash[:success] = "Votre commentaire a bien été supprimé !"  
-    redirect_back fallback_location: root_path
+    # flash[:success] = "Votre commentaire a bien été supprimé !"  
+    # redirect_back fallback_location: root_path
+
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { }
+    end
   end
 
   private

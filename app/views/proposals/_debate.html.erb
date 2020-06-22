@@ -2,10 +2,10 @@
   <br>
   <h3 style='margin-bottom: 0px;'><b>L'espace débat</b></h3><br>
   <%if user_signed_in?%>
-    <%= form_tag url_for(proposal_comments_path(@proposal.id)) do %>
+    <%= form_tag url_for(proposal_comments_path(@proposal.id)), remote: true do %>
       <div class="form-group">
         <%= label_tag "Que pensez-vous de cette proposition ?" %>
-        <p><%= text_area_tag 'content',"", class: 'form-control' %></p>
+        <p id='comment-content'><%= text_area_tag 'content',"", class: 'form-control' %></p>
       </div>
       <%= submit_tag "Envoyer", {class: 'btn btn-primary text-right'} %>
     <%end%>
