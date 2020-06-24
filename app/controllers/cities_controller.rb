@@ -7,9 +7,9 @@ class CitiesController < ApplicationController
     category_ids = params[:category_ids]
     additional_filter = params[:additional_filter]
     
-    unless (category_ids || additional_filter) # in case of REST request
+    if (category_ids.nil? && additional_filter.nil?) # no data comming from AJAX request, REST request case
       @proposals = @city.proposals.where(is_online: true).sort { |p1, p2| p2.votes_count <=> p1.votes_count }
-    else  # in case of AJAX request
+    else  # Here are a data comming from AJAX request, so it's an AJAX request
       if category_ids
         @proposals = @city.proposals.where(is_online: true, category_id: category_ids)
         

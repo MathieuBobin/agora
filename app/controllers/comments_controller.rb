@@ -22,12 +22,7 @@ class CommentsController < ApplicationController
         # redirect_to @proposal
       end
 
-      respond_to do |format|
-        format.html { redirect_back fallback_location: root_path }
-        format.js { }
-      end
     else
-      @proposal = Proposal.find(permitted_proposal_id_param)
       @comment = Comment.new(
         content: params[:content],
         user: current_user,
@@ -41,11 +36,12 @@ class CommentsController < ApplicationController
         # flash[:success] = @comment.errors.full_messages.to_sentence
         # redirect_to @proposal
 
-        respond_to do |format|
-          format.html { redirect_back fallback_location: root_path }
-          format.js { }
-        end
       end
+    end
+    
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { }
     end
   end
 

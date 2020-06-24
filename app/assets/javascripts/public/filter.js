@@ -1,6 +1,6 @@
 $(document).ready(() => {
   $('#proposal-filter-btn').click(() => {
-    let url = "/cities/" + $('.my-city')[0].id;
+    let url = "/cities/" + $('div.my-city').attr('id');
     let categoryIds = [];
       $.each($("#categories option:selected"), function() {            
         categoryIds.push($(this).val());
@@ -13,7 +13,7 @@ $(document).ready(() => {
       data: { category_ids: categoryIds, additional_filter: additionalFilter },
       success: (result) => {
         $('div.my-city').remove();        
-        let myCity = $(result).filter('div.my-city')[0];
+        let myCity = $(result).filter('div.my-city');
         $('div#filter').after(myCity);
         $('div.no-proposal').remove();
         

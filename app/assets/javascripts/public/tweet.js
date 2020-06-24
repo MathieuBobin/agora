@@ -24,7 +24,6 @@ $(document).ready(() => {
       dataType: 'html',
       data: { tweet: 'tweet' },
       success: () => {
-        console.log('Success');
         showNotification('top','center');
       },
       error: (error) => {

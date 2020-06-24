@@ -3,18 +3,15 @@ class ProposalsController < ApplicationController
   
   def index
     @paris = City.find(1)
-    @proposal_paris= @paris.proposals.where(is_online: true).sort { |p1, p2| p2.votes_count <=> p1.votes_count }.first(5)
+    @proposal_paris= @paris.proposals.where(is_online: true).sort { |c1, c2| c2.votes_count <=> c1.votes_count }.first(5)
     
     @lyon = City.find(2)
-    @proposal_lyon= @lyon.proposals.where(is_online: true).sort { |p1, p2| p2.votes_count <=> p1.votes_count }.first(5)
+    @proposal_lyon= @lyon.proposals.where(is_online: true).sort { |c1, c2| c2.votes_count <=> c1.votes_count }.first(5)
     @user = User.all
   end
   
   def new
     @proposal = Proposal.new
-    @cityid = User.find_by(id: current_user.id).city_id
-    @cityuser = City.find_by(id: @cityid).name
-    @city = current_user.city
   end
 
   def create
@@ -32,9 +29,20 @@ class ProposalsController < ApplicationController
   def show
     @proposal = Proposal.find(permitted_proposal_id_param)
     @comments = @proposal.comments.order('created_at').reverse
-    # @comments = Comment.where(proposal_id: params[:id]).sort { |p1, p2| p2.likes_count <=> p1.likes_count }
 
-    if params[:tweet]
+    sort_value = params[:sortValue]
+    tweet = params[:tweet]
+    
+    if sort_value # AJAX request comming from comments sorter, see public/comments_sorter.js
+      case sort_value
+      when '1'
+        @comments = @proposal.comments.order('created_at').reverse
+      when '2'
+        @comments = @proposal.comments.sort { |c1, c2| c2.likes_count <=> c1.likes_count }
+      when '3'
+        @comments = @proposal.comments.sort { |c1, c2| c2.comments_count <=> c1.comments_count }
+      end
+    elsif tweet # AJAX request comming from tweet button, see public/tweet.js
       tweet(@proposal)
     end
   end

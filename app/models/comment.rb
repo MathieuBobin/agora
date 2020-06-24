@@ -13,4 +13,8 @@ class Comment < ApplicationRecord
   def likes_count
     self.likes.count
   end
+
+  def comments_count
+    self.comments.count
+  end
 end
