@@ -2,14 +2,14 @@
   <td>
     <b>
     <div class="avatar">
-      <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%=" "%><%= x.user.first_name %><%=" "%><%= x.user.last_name %>
+      <h5><b><i class="material-icons" style="font-size: 17px">face</i> <%= x.user.first_name %><%=" "%><%= x.user.last_name %>
       <%if x.user.id == x.proposal.user.id %>
         <span class="badge badge-primary">Initiateur</span>
       <%end%>
       </b><h5>
     </div>
     </b>
-    <p><%= x.content %></p>
+    <p class='text-wrap'><%= x.content %></p>
     <em class='text-muted'>Message posté le <%= x.created_at.to_formatted_s(:short )%> -</em>
     <%if user_signed_in?%>
       <%if current_user.id != x.user.id%>
