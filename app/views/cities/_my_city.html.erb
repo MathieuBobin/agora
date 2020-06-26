@@ -4,7 +4,7 @@
 <% proposals.each do |x| %>
 <%if (x.votes_count >= 5)%>
 <% @numvotes += 1 %>
-<%elsif (x.differencebetween == false) %>
+<% elsif (x.differencebetween == false) %>
 <% @numnow += 1 %>
 <%else%>
 <% @numthen += 1 %>
