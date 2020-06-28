@@ -11322,7 +11322,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Suivant",
+				"sNext": "Suiv.",
 
 
 				/**
@@ -11345,7 +11345,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Précédent"
+				"sPrevious": "Préc."
 			},
 
 			/**
@@ -11400,8 +11400,8 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Affichage de _START_ à _END_ parmi _TOTAL_ propositions",
-
+			// "sInfo": "Affichage de _START_ à _END_ parmi _TOTAL_ propositions",
+			"sInfo": "",
 
 			/**
 			 * Display information string for when the table is empty. Typically the

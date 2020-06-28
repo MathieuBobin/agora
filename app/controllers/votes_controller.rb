@@ -4,23 +4,19 @@ class VotesController < ApplicationController
   
   def create
     @proposal = Proposal.find(permitted_proposal_id_param)
-
+    
     @current_user_vote_tokens_before_vote = current_user_vote_tokens
-
+    
     if @current_user_vote_tokens_before_vote > 0
-      vote = Vote.create(
+      Vote.create(
         user: current_user,
         proposal: @proposal
       )
     end
     
     # flash[:success] = "Votre vote a bien été pris en compte !"  
-
+    
     # For AJAX
-    @proposals = @proposal.city.proposals
-    @ongoing_proposals_count = @proposals.count { |proposal| 
-      (proposal.differencebetween == false) && (proposal.votes_count < 5)
-    }
     @city = @proposal.city
     
     respond_to do |format|
@@ -34,8 +30,7 @@ class VotesController < ApplicationController
     
     # For AJAX use
     @proposal = Proposal.find(permitted_proposal_id_param)
-    @city = @proposal.city
-    
+
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
       format.js { }

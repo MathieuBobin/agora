@@ -1,7 +1,6 @@
 $(document).ready(function() {
-  // First table
-  $('#datatables-1').DataTable({
-    "pagingType": "full_numbers",
+  $('.datatables-s').DataTable({
+    "pagingType": "simple",
     "lengthMenu": [
     [10, 25, 50, -1],
     [10, 25, 50, "Tous"]
@@ -13,8 +12,7 @@ $(document).ready(function() {
     }
   });
 
-  //Second table
-  $('#datatables-2').DataTable({
+  $('.datatables-fn').DataTable({
     "pagingType": "full_numbers",
     "lengthMenu": [
     [10, 25, 50, -1],

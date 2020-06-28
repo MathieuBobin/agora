@@ -2,16 +2,22 @@ $(document).ready(function() {
   <% unless @current_user_vote_tokens_before_vote <= 0 %>
     proposalId = <%= @proposal.id %>;
     <% if params[:city_id] %>
-      <% unless @ongoing_proposals_count == 0%>
-        <% if (@proposal.votes_count < 5) && (@proposal.differencebetween == false) %>
-          cityId = <%= @city.id %>
-          addVoteBtn = $('div#btns-' + proposalId + '> a');
-          addVoteBtn.replaceWith('<%= j render 'cities/del_vote_btn', x: @proposal %>');
-          votesCountTag = $('div#lbls-votes-conut-' + proposalId);
-          votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
-        <% else %>
-          window.location = '<%= city_path @city %>'
-        <% end %>
+      <% if @proposal.votes_count < 5 %>
+        addVoteBtn = $('div#btns-' + proposalId + '> a');
+        delVoteBtn = '<%= j render 'cities/del_vote_btn', x: @proposal %>';
+        addVoteBtn.replaceWith(delVoteBtn);
+        
+        votesCountTag = $('div#lbls-votes-conut-' + proposalId);
+        votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
+
+        $('td#' + proposalId).unbind();
+        $('td#' + proposalId).click(() => {
+          window.setTimeout(function(){
+            btnsVoteContainer = $('td.child div#btns-' + proposalId);
+            btnsVoteContainer.empty();
+            btnsVoteContainer.append(delVoteBtn);
+          }, 0);
+        });
       <% else %>
         window.location = '<%= city_path @city %>'
       <% end %>

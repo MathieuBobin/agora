@@ -17,7 +17,7 @@ $(document).ready(() => {
         $('div#filter').after(myCity);
         $('div.no-proposal').remove();
         
-        $('#datatables-1').DataTable({
+        $('.datatables-fn').DataTable({
           "pagingType": "full_numbers",
           "lengthMenu": [
           [10, 25, 50, -1],
@@ -29,20 +29,6 @@ $(document).ready(() => {
             searchPlaceholder: "Rechercher",
           }
         });
-      
-        //Second table
-        $('#datatables-2').DataTable({
-          "pagingType": "full_numbers",
-          "lengthMenu": [
-          [10, 25, 50, -1],
-          [10, 25, 50, "Tous"]
-          ],
-          responsive: true,
-          language: {
-            search: "_INPUT_",
-            searchPlaceholder: "Rechercher",
-          }
-        });  
       },
       error: (error) => {
         console.log(error);

@@ -1,10 +1,10 @@
 Rails.application.eager_load!
 ApplicationRecord.descendants.each { |model|
-  unless model == User
+  # unless model == User
     model.delete_all
     ActiveRecord::Base.connection.reset_pk_sequence!(model.table_name)
     puts "La table #{model.table_name} est supprimée"
-  end
+  # end
 }
 
 @Paris = City.create!(name: "Paris", zip_code: "75000")
@@ -406,9 +406,22 @@ Proposal.create!(title: "Dépistage COVID-19",
 
 puts "Les propositions ont été créées"
 
+50.times do
+  user = User.all.sample
+  proposal = Proposal.all.sample
+  if !proposal.vote_of(user) && user.city == proposal.city
+    Vote.create!(
+      user: User.all.sample,
+      proposal: Proposal.all.sample
+    )
+  end
+end
+
+puts "Les votes ont été créés"
+
 200.times do 
   Comment.create!(
-    content: Faker::Lorem.characters(number: 100),
+    content: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
     user: User.all.sample,
     proposal: Proposal.all.sample
   )
@@ -416,7 +429,7 @@ end
 
 100.times do
   Comment.create(
-    content: Faker::Lorem.characters(number: 100),
+    content: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
     user: User.all.sample,
     comment: Comment.all.sample
   )
@@ -424,20 +437,15 @@ end
 
 puts "Les commentaires ont été créés"
 
-100.times do 
-  Like.create!(
-    user: User.all.sample,
-    comment: Comment.all.sample
-  )
+200.times do
+  user = User.all.sample
+  comment = Comment.all.sample
+  if comment.not_liked_by?(user) && comment.isnt_comment_comment?
+    Like.create!(
+      user: User.all.sample,
+      comment: Comment.all.sample
+    )
+  end
 end
 
 puts "Les likes ont été créés"
-
-50.times do 
-  Vote.create!(
-    user: User.all.sample,
-    proposal: Proposal.all.sample
-  )
-end
-
-puts "Les votes ont été créés"

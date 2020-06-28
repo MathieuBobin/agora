@@ -6,7 +6,7 @@ ruby '2.5.1'
 # Additional gems needed for our project
 gem 'devise'
 gem 'stripe'
-gem 'faker'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "letter_opener", :group => :development
 gem 'activesupport'

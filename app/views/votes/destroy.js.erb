@@ -1,11 +1,21 @@
 $(document).ready(function() {
   proposalId = <%= @proposal.id %>;
   <% if params[:city_id]  %>
-    cityId = <%= @city.id %>
     delVoteBtn = $('div#btns-' + proposalId + '> a');
-    delVoteBtn.replaceWith('<%= j render 'cities/add_vote_btn', x: @proposal %>');
+    addVoteBtn = '<%= j render 'cities/add_vote_btn', x: @proposal %>';
+    delVoteBtn.replaceWith(addVoteBtn);
+
     votesCountTag = $('div#lbls-votes-conut-' + proposalId);
     votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
+
+    $('td#' + proposalId).unbind();
+    $('td#' + proposalId).click(() => {
+      window.setTimeout(function(){
+        btnsVoteContainer = $('td.child div#btns-' + proposalId);
+        btnsVoteContainer.empty();
+        btnsVoteContainer.append(addVoteBtn);
+      }, 0);
+    });
   <% else %>
     delVoteBtn = $('a#del-vote-btn');
     delVoteBtn.html('Je vote');
