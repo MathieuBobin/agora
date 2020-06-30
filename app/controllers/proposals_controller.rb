@@ -7,11 +7,11 @@ class ProposalsController < ApplicationController
     
     @lyon = City.find(2)
     @proposal_lyon= @lyon.proposals.where(is_online: true).sort { |c1, c2| c2.votes_count <=> c1.votes_count }.first(5)
-    @user = User.all
   end
   
   def new
     @proposal = Proposal.new
+    @current_user_city_name = current_user.city.name
   end
 
   def create
