@@ -16,7 +16,7 @@ $(document).ready(function() {
             btnsVoteContainer = $('td.child div#btns-' + proposalId);
             btnsVoteContainer.empty();
             btnsVoteContainer.append(delVoteBtn);
-          }, 0);
+          }, 10);
         });
       <% else %>
         window.location = '<%= city_path @city %>'
