@@ -11,11 +11,9 @@ $(document).ready(function() {
           votesCountTag = $('div#lbls-votes-conut-' + proposalId);
           votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
 
-          console.log($('td#img-' + proposalId));
           $('td#img-' + proposalId).unbind();
           $('td#img-' + proposalId).click(() => {
             window.setTimeout(function(){
-              console.log($('td#img-' + proposalId));
               btnsVoteContainer = $('td.child div#btns-' + proposalId);
               btnsVoteContainer.empty();
               btnsVoteContainer.append(delVoteBtn);
