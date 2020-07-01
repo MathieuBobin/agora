@@ -19,7 +19,7 @@
           <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h4>
           <p class="text"><%= @user.email %></p>
           <div>
-            <p class='text-success' style='margin-bottom: 0px;'>Jetons de votes</p>
+            <p class='text-success' style='margin-bottom: 0px;'>Jetons de vote</p>
             <% if current_user_vote_tokens == 0 %>
               <em class='text-muted text-wrap text-center'>Désolé ! Vous n'avez aucun jeton de vote pour le moment, attendez le prochain renouvellement le <%= current_user_next_renewal_of_vote_tokens_date.strftime('%d/%m/%Y à %H:%M') %> ou dévotez pour des propositions qui vous semblent moins pertinentes !</em>
             <% else %>

@@ -14,7 +14,7 @@
     <span class="badge badge-primary"><%= x.category.name %></span>
   </td>
   <td>
-    <%if (x.differencebetween == true) %>
+    <%if x.is_expired? %>
       <div class="alert alert-warning">
         <p class="text-center">Expirée</p>
       </div>   

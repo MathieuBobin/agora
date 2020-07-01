@@ -1,17 +1,17 @@
-<br><br>
-<div id=<%= city.id %> class="my-city">
-  <div class="container">
-    <% if proposals.count == 0 %>
-      <div class='no-proposal'>
-        <h3><b>Personne n'a posté de proposition à <%= city.name %> pour le moment.  Change ça en cliquant sur le bouton :</b></h3>
-        <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
-      </div>
-    <%elsif ongoing_proposals.count == 0 %>
+<br>
+<div id=<%= city.id %> class="my-city container">
+  <% if proposals.count == 0 %>
+    <div class='no-proposal'>
+      <h3><b>Personne n'a posté de proposition à <%= city.name %> pour le moment.  Change ça en cliquant sur le bouton :</b></h3>
+      <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
+    </div>
+  <%else%>
+    <% if ongoing_proposals.count == 0 %>
       <div class='no-proposal'>
         <h3><b> Aucune proposition en cours à <%= city.name %>. Change ça en cliquant sur le bouton : </b></h3>
         <p><%= link_to 'Je veux créer ma proposition', new_proposal_path, class: 'btn btn-primary btn-lg' %></p>
       </div>
-    <%else%>
+    <% else %>
       <h3><b>Les propositions en cours : votez pour vos propositions préférées !</b></h3>
       <div class="row">
         <div class="col-md-12">
@@ -37,10 +37,8 @@
           </div>
         </div>
       </div>
-    <%end%>
-  </div>
-  
-  <div id='completed-proposals' class="container">
+    <% end %>
+
     <% if completed_proposals.count == 0 %>
       <div class='no-proposal'>
         <h3><b>Pas de proposition terminée à <%= city.name %> pour le moment. </b></h3>
@@ -73,5 +71,5 @@
         </div>
       </div>
     <%end%>
-  </div>
+  <%end%>
 </div>
