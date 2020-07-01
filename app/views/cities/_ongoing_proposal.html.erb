@@ -8,8 +8,7 @@
   </td>
   <td>
     <h4 class='text-wrap'><%= x.title %></h4>
-    <% t = (Time.now- (x.created_at+(60*60*24*30)))%>
-    <p class='text-muted text-wrap' style='font-style: italic;'> Il reste : <%= ((t.to_i)/(60*60*24)).abs %> jours pour voter</p>
+    <p class='text-muted text-wrap' style='font-style: italic;'> Il reste : <%= x.lifetime %> jours pour voter</p>
     <div>
       <a class="btn btn-primary btn-round btn-sm" href= "/proposals/<%= x.id %>" role="button">
         <i class="material-icons" style="font-size: 15px">visibility</i> Voir la proposition

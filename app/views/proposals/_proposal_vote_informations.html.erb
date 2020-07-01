@@ -2,9 +2,9 @@
   <div class="card box" style="padding-bottom: 0px;">
     <div class="card-content text-center">
       <% unless is_current_user_owner_of?(proposal) %>
-        <%if (proposal.differencebetween == false) && proposal.votes_count < 5 %>
+        <%if !proposal.is_expired? && proposal.votes_count < 5 %>
           <h5 class="text-muted" style='margin-bottom: 0px;'>Votez pour cette proposition</h5>
-          <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= proposal.calculate_lifetime %> jours pour voter</p>
+          <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= proposal.lifetime %> jours pour voter</p>
           <%if user_signed_in?%>
             <%if proposal.city == current_user.city %>
               <%if proposal.vote_of(current_user)%>
@@ -19,7 +19,7 @@
             <p>Connectez-vous pour pouvoir voter !</p> 
           <%end%>
         <%else%>
-          <%if (proposal.differencebetween == true) %>
+          <%if proposal.is_expired? %>
             <div class="alert alert-warning">
               <p class="text-center">Expirée</p>
             </div>    
@@ -34,7 +34,7 @@
           <%end%>
         <%end%>
       <% else %>  
-        <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= proposal.calculate_lifetime %> jours avant l'expiration de la proposition</p>
+        <p class='text-muted' style='font-style: italic; margin-top: 0px'> Il reste : <%= proposal.lifetime %> jours avant l'expiration de la proposition</p>
       <% end %>
       <% if proposal.votes_count > 1 %>
         <h6 id='votes-count'><%= proposal.votes_count %> VOTES</h6>

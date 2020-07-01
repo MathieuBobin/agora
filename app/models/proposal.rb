@@ -22,14 +22,7 @@ class Proposal < ApplicationRecord
   # validate :must_has_attachment
 
   # Instance methods
-  def differencebetween
-    if(Time.now > (self.created_at+(60*60*24*30)))
-      return true
-    else
-      return false
-    end
-  end
-
+  
   def comments_count
     self.comments.count
   end
@@ -37,7 +30,7 @@ class Proposal < ApplicationRecord
   def votes_count
     self.votes.count
   end
-
+  
   def vote_of(user)
     self.votes.find_by(user: user)
   end
@@ -53,9 +46,17 @@ class Proposal < ApplicationRecord
   def on_line
     self.update(is_online: true)
   end
-
-  def calculate_lifetime
+  
+  def lifetime
     30 - ((Time.now - self.created_at).to_f / 1.day).floor
+  end
+  
+  def is_expired?
+    if(Time.now > (self.created_at + (60 * 60 * 24 * 30)))
+      return true
+    else
+      return false
+    end
   end
 
   def user_receipt
