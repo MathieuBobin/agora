@@ -8,13 +8,18 @@ class VotesController < ApplicationController
     @current_user_vote_tokens_before_vote = current_user_vote_tokens
     
     if @current_user_vote_tokens_before_vote > 0
-      Vote.create(
+      @vote = Vote.new(
         user: current_user,
         proposal: @proposal
       )
+
+      if @vote.save
+        # flash[:success] = "Votre vote a bien été pris en compte !"  
+      else
+        # flash[:alert] = @vote.errors.full_messages.to_sentence
+      end
     end
     
-    # flash[:success] = "Votre vote a bien été pris en compte !"  
     
     # For AJAX
     @city = @proposal.city
