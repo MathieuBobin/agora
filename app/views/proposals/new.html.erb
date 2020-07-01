@@ -4,7 +4,7 @@
     <div class="card box">
       <%= form_for @proposal do |f| %>
         <div class="card-header card-header-text" data-background-color="blue">
-          <h4 class="card-title">Proposez une initiative à <%= @current_user_city_name %></h4>
+          <h4 class="card-title">Proposez une initiative à <%= current_user.city.name %></h4>
         </div>
         <div class="card-content">
           <div class="row">

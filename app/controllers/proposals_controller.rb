@@ -11,7 +11,6 @@ class ProposalsController < ApplicationController
   
   def new
     @proposal = Proposal.new
-    @current_user_city_name = current_user.city.name
   end
 
   def create
