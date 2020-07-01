@@ -31,7 +31,7 @@ class VotesController < ApplicationController
   end
   
   def destroy
-    Vote.destroy(permitted_vote_id_param)
+    @vote = Vote.destroy(permitted_vote_id_param)
     
     # For AJAX use
     @proposal = Proposal.find(permitted_proposal_id_param)
