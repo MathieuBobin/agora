@@ -11,6 +11,8 @@ $(document).ready(function() {
           votesCountTag = $('div#lbls-votes-conut-' + proposalId);
           votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
 
+          console.log($('div#' + proposalId));
+          console.log(proposalId);
           console.log($('td#' + proposalId));
           $('td#' + proposalId).unbind();
           $('td#' + proposalId).click(() => {
