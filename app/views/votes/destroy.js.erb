@@ -8,8 +8,8 @@ $(document).ready(function() {
     votesCountTag = $('div#lbls-votes-conut-' + proposalId);
     votesCountTag.replaceWith('<%= j render 'cities/votes_count', x: @proposal %>')
 
-    $('td#' + proposalId).unbind();
-    $('td#' + proposalId).click(() => {
+    $('td#img-' + proposalId).unbind();
+    $('td#img-' + proposalId).click(() => {
       window.setTimeout(function(){
         btnsVoteContainer = $('td.child div#btns-' + proposalId);
         btnsVoteContainer.empty();

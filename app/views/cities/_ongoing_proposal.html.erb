@@ -1,5 +1,5 @@
 <tr>
-  <td id='<%= x.id %>' class='text-center'>
+  <td id='img-<%= x.id %>' class='text-center'>
     <%if x.picture.attached?%>
       <%= image_tag x.picture, alt: "image", width: 200, style: 'height: auto;' %>
     <%else%>
